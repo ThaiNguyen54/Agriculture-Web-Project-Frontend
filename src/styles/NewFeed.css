@@ -1,0 +1,114 @@
+.logo-brand {
+    margin: 0 4rem;
+}
+
+.input-searching {
+    margin-left: 2rem;
+}
+
+.searching {
+    margin-right: 5rem;
+}
+
+.input100 {
+    margin-top: 0.5rem;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+    background-color: #D8D8D8;
+    margin: 0 1.5rem;
+}
+
+.btn-circle:hover{
+    background-color: #B7C4CF;
+}
+
+.btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+    padding: 0;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+}
+
+.image-item{
+    width: 2.3rem;
+}
+
+.navbar-item-left{
+    margin-left: 10rem;
+}
+
+.item-left{
+    margin: 0 1.5rem;
+}
+
+.scrollbar {
+    margin-top: 1.5rem;
+    margin-left: 0.8rem;
+    float: left;
+    height: 300px;
+    width: 17%;
+    background: #fff;
+    overflow-y: scroll;
+    margin-bottom: 25px;
+}
+
+.force-overflow {
+    min-height: 450px;
+}
+
+.scrollbar-primary::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+.scrollbar-primary::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #4285F4;
+}
+
+.scrollbar-primary {
+    scrollbar-color: #4285F4 #F5F5F5;
+}
+
+.logo-forum{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.Whatnew{
+    text-decoration: none;
+    margin: 1.2rem 0;
+}
+
+.Whatnew p{
+    padding: 0.5rem;
+    margin-left: 1rem;
+}
+
+.Forum{
+    background-color: #F8F9FA;
+    padding: 1rem;
+    margin-right: 1rem;
+    border-radius: 1rem;
+}
