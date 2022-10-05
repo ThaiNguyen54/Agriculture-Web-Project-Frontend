@@ -172,7 +172,7 @@
 }
 
 .card-news{
-    margin: 0 1.2rem;
+    margin: 1rem 1rem;
     width: 19rem;
 }
 
@@ -189,6 +189,9 @@
     }
 }
 
+.ContentTitle {
+    margin-left: 2rem;
+}
 
 /* -------------------------------> Weather Card New Feed <-------------------------- */
 .content-weather{

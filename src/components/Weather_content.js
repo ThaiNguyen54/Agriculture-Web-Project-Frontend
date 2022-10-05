@@ -2,7 +2,7 @@ import TempApp from './store/TempApp'
 import weatherImage from '../images/cloudy.png'
 function WeatherContent(){
     return(
-        <div className='card content-weather'>
+        <div className='card content-weather' >
             <div className='d-flex'>
                 <img src={weatherImage} alt="weather" style={{width: "2rem"}}></img>
                 <p style={{fontWeight: "bold"}}>Thời tiết</p>
