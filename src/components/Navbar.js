@@ -1,21 +1,23 @@
-import seafood from '../images/seafood.png'
-import agriculture from '../images/agriculture.png'
-import buying from '../images/buying.png'
-import livestock from '../images/livestock.png'
 import notification from '../images/bell.png'
-import message from '../images/messenger.png'
 import setting from '../images/setting.png'
 import user from '../images/user.png'
 import cicada from '../images/explore.png'
+import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 
 const NavBar = () => {
+    const [displayDropdown, setDisplayDropdown] = useState(true);
+    const location = useLocation();
+    const HandleDropdown = async() => {
+        setDisplayDropdown(!displayDropdown);
+    }
     return (
         <div>
             <header>
                 <div className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="navbar-brand logo-brand">
-                        <img src={cicada}></img>
+                        <img src={cicada} alt="logo-brand"></img>
                     </div>
                     <div className="searching">
                         <div className="wrap-input100 validate-input input-searching">
@@ -29,23 +31,26 @@ const NavBar = () => {
                             </span>
                         </div>
                     </div>
-                    <div className='navbar-item'>
-                        <button type="button" class="btn btn-default btn-circle btn-lg"><img className="image-item" src={seafood} alt="seafood"></img></button>
-                    </div>
-                    <div className='navbar-item'>
-                        <button type="button" class="btn btn-default btn-circle btn-lg"><img className="image-item" src={agriculture} alt="agriculture"></img></button>
-                    </div>
-                    <div className='navbar-item'>
-                        <button type="button" class="btn btn-default btn-circle btn-lg"><img className="image-item" src={livestock} alt="buying"></img></button>
-                    </div>
-                    <div className='navbar-item'>
-                        <button type="button" class="btn btn-default btn-circle btn-lg"><img className="image-item" src={buying} alt="buying"></img></button>
-                    </div>
-                    <div className='navbar-item-left'>
-                        <button type="button" class="btn-lg"><img className="image-item item-left" src={message} alt="buying"></img></button>
+                    <a className='hyper-navbar' href='/'>Chăn nuôi</a>
+                    <a className='hyper-navbar' href='/'>Trồng trọt</a>
+                    <a className='hyper-navbar' href='/'>Mua và bán</a>
+                    <div className='navbar-item-left d-flex'>
                         <button type="button" class="btn-lg"><img className="image-item item-left" src={notification} alt="buying"></img></button>
                         <button type="button" class="btn-lg"><img className="image-item item-left" src={setting} alt="buying"></img></button>
-                        <button type="button" class="btn-lg"><img className="image-item item-left" src={user} alt="buying"></img></button>
+                        <div>
+                            <button type="button" onClick={HandleDropdown} class="btn-lg"><img className="image-item item-left" src={user} alt="buying"></img></button>
+                            <div className="dropdown-menu" style={{display:
+                                displayDropdown?(
+                                    "none"
+                                ):(
+                                    "grid"
+                                )}}>
+                                <h3 className="name-dropdown">Hello, {location.state.lname}</h3>
+                                <a className="dropdown-item" href="/">Profile</a>
+                                <a className="dropdown-item" href="/">Settings</a>
+                                <a className="dropdown-item" href="/">Log out</a>
+                            </div>
+                        </div>
                     </div>
                 </div> 
             </header>
