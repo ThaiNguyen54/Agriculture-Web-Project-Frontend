@@ -1,16 +1,13 @@
 import { useState } from "react";
 import "../styles/font-awesome-4.7.0/css/font-awesome.min.css"
 import "../styles/Login.css"
-import { TempApp, ReturnIconTemp } from "./store/TempApp";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 function FormLogin(){
-    const city = TempApp();
     const [Email, setEmail] = useState("");
     const [Password, setpassword] = useState("");
     const [loginStatus, setLoginStatus] = useState(false);
-    const [success, setSuccess] = useState(false);
     const navigate = useNavigate();
     const HandleSubmit = async(event) =>{
         event.preventDefault();
@@ -18,7 +15,12 @@ function FormLogin(){
             email: Email,
             password: Password
         }).then((response => {
-            navigate('/newfeed');
+            if(response){
+                navigate('/newfeed', {state: {lname: response.data.lname}});
+            }
+            else{
+                navigate('/');
+            }
         })).catch((e)=>{
             setLoginStatus("Wrong Username / Password. Try again.");
         })
@@ -26,19 +28,6 @@ function FormLogin(){
 
     return (
         <div className="limiter">
-            <div className="picture">
-                <div>
-                {
-                        !city?
-                        (
-                        <p>No Data Found</p>
-                        ):
-                        (
-                        <ReturnIconTemp name={city} />
-                        )
-                    }
-                </div>
-            </div>
             <div className="login100-form validate-form">
                 <span className="login100-form-title">
                     Member Login
@@ -80,10 +69,10 @@ function FormLogin(){
                 <p>{loginStatus}</p>
                 <div className="text-center p-t-12">
                     <span className="txt1">
-                        Forgot
+                        Don't have account?
                     </span>
-                    <a className="txt1">
-                        Username / Password?
+                    <a className="txt1" href="/register">
+                        Click here
                     </a>
                 </div>
             </div>
