@@ -20,7 +20,7 @@ function TempApp(search){
     console.log(city);
     return (
         city?(
-            <div className="card d-grid justify-content-center" style={{width: "8rem"}}>
+            <div className="card d-grid justify-content-center" style={{width: "90%"}}>
                 <p style={{fontSize: "18px"}}>{city.name}</p>
                 <img className="Picture" src={`http://openweathermap.org/img/wn/${city.weather[0].icon}.png`} alt=" Weather"></img>
                 <p style={{fontSize: "15px", marginLeft: "0.5rem"}}>{city.main.temp} °C</p>

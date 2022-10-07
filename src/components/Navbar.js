@@ -4,7 +4,23 @@ import user from '../images/user.png'
 import cicada from '../images/explore.png'
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import React from 'react'
+import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
+import Scrollnews from './Scroll_news'
 
+const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+    <a href="" ref={ref} style={{textDecoration: "none"}} onClick={(e) => {
+        e.preventDefault();
+        onClick(e);}}>
+      {children}
+      <img className="image-item item-left" src={user} alt="buying"></img>
+    </a>
+));
 
 const NavBar = () => {
     const [displayDropdown, setDisplayDropdown] = useState(true);
@@ -13,48 +29,34 @@ const NavBar = () => {
         setDisplayDropdown(!displayDropdown);
     }
     return (
-        <div>
-            <header>
-                <div className="navbar navbar-expand-lg navbar-light bg-light">
-                    <div className="navbar-brand logo-brand">
-                        <img src={cicada} alt="logo-brand"></img>
-                    </div>
-                    <div className="searching">
-                        <div className="wrap-input100 validate-input input-searching">
-                            <input className="input100" 
-                                type="text"
-                                placeholder="Search">
-                            </input>
-                            <span className="focus-input100"></span>
-                            <span className="symbol-input100">
-                                <i className="fa fa-search" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <a className='hyper-navbar' href='/'>Chăn nuôi</a>
-                    <a className='hyper-navbar' href='/'>Trồng trọt</a>
-                    <a className='hyper-navbar' href='/'>Mua và bán</a>
-                    <div className='navbar-item-left d-flex'>
-                        <button type="button" class="btn-lg"><img className="image-item item-left" src={notification} alt="buying"></img></button>
-                        <button type="button" class="btn-lg"><img className="image-item item-left" src={setting} alt="buying"></img></button>
-                        <div>
-                            <button type="button" onClick={HandleDropdown} class="btn-lg"><img className="image-item item-left" src={user} alt="buying"></img></button>
-                            <div className="dropdown-menu" style={{display:
-                                displayDropdown?(
-                                    "none"
-                                ):(
-                                    "grid"
-                                )}}>
-                                <h3 className="name-dropdown">Hello, {location.state.lname}</h3>
-                                <a className="dropdown-item" href="/">Profile</a>
-                                <a className="dropdown-item" href="/">Settings</a>
-                                <a className="dropdown-item" href="/">Log out</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-            </header>
-        </div>
+      <header>
+        <Navbar className='navbar' bg="light" expand="lg" fixed='top'>
+          <Container>
+            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link className="me-auto-a" href="#link">Diễn đàn</Nav.Link>
+                <Nav.Link className="me-auto-a" href="#home">Chăn nuôi</Nav.Link>
+                <Nav.Link className="me-auto-a" href="#link">Trồng trọt</Nav.Link>
+              </Nav>
+              <div className='justify-content-end d-flex'>
+                  <Nav.Item><img className="image-item item-left" src={notification} alt="buying"></img></Nav.Item>
+                  <Nav.Item><img className="image-item item-left" src={setting} alt="buying"></img></Nav.Item>
+                  <Dropdown align="end">
+                    <Dropdown.Toggle id="dropdown-custom-components" as={CustomToggle}></Dropdown.Toggle>
+                    <Dropdown.Menu className='dropdown-custom'>
+                        <Dropdown.ItemText eventKey="1" className='dropdown-custom-a'>Hello, {location.state.lname}</Dropdown.ItemText>
+                        <Dropdown.Item eventKey="2">Profile</Dropdown.Item>
+                        <Dropdown.Item eventKey="3">Settings</Dropdown.Item>
+                        <Dropdown.Item eventKey="1">Log out</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+              </div>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+      </header>
     );
 }
 
