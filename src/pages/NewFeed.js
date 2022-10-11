@@ -4,16 +4,19 @@ import ForumOption from '../components/Forum_option';
 import NewsNfeed from '../components/Nf_News';
 import Scrollnews from '../components/Scroll_news';
 import WeatherContent from '../components/Weather_content';
+import Container from 'react-bootstrap/esm/Container';
 
 function NewFeed(){
     return(
-        <div>
+        <div className='all-content-newfeed'>
             <NavBar />
             <Scrollnews />
             <div className='body-content d-flex'>
-                <ForumOption />
-                <NewsNfeed />
-                <WeatherContent />
+                <Container className="dis-flex">
+                    <ForumOption />
+                    <NewsNfeed />
+                    <WeatherContent />
+                </Container>
             </div>
         </div>
     );
