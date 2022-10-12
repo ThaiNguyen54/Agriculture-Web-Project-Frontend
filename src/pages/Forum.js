@@ -9,7 +9,7 @@ import '../styles/Forum.css';
 import footerPage from "../components/Footer";
 
 
-function Forum(){
+function ForumBreed(){
     return(
     <div className='all-content-newfeed'>
         <Scrollnews />
@@ -25,4 +25,4 @@ function Forum(){
     );
 }
 
-export default Forum;
+export default ForumBreed;
