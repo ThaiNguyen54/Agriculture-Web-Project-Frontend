@@ -4,6 +4,8 @@ import newsContentImage2 from '../images/news-2.jpg'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+
+
 function NewsNfeed(){
     return(
         <Container>

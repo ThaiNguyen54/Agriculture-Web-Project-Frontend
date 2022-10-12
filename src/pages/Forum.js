@@ -1,5 +1,4 @@
 import '../styles/NewFeed.css'
-import NavBar from '../components/Navbar';
 import ForumOption from '../components/Forum_option';
 import Scrollnews from '../components/Scroll_news';
 import WeatherContent from '../components/Weather_content';

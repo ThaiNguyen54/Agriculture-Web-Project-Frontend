@@ -10,7 +10,6 @@ import Footer from '../components/Footer';
 const NewFeed = () =>{
     return(
         <div className='all-content-newfeed'>
-            <NavBar />
             <Scrollnews />
             <div className='body-content d-flex'>
                 <Container className="dis-flex">

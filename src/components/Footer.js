@@ -1,26 +1,26 @@
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import { Container } from 'react-bootstrap'
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import location from "../images/location.png";
 
+function footerPage(){
+    return(
+        <footer>
+            <Row>
+                <Col lg="6">
+                    <div className="">
+                        <div>
+                            <img src={location}></img>
+                        </div>
+                    </div>
+                </Col>
+                <Col lg="6">
+                    <div className="">
 
-
-
-const Footer = () => {
-
-  return (
-    <Navbar expand='lg' bg='dark' variant='dark' className='header' >
-        <Container>
-        <Nav className='font-weight-bolder text-white mr-auto' >
-                <a href='https://coreui.io'>Core UI</a>
-                <span>© 2022 MSIS207.N12.CTTT</span>
-            </Nav>
-            <Nav className='font-weight-bolder text-white ms-auto'>
-                <span>Powered by </span>
-                <a href=''>© Us</a>
-            </Nav>
-        </Container>
-    </Navbar>
-  )
+                    </div>
+                </Col>
+            </Row>
+        </footer>
+    );
 }
 
-export default Footer
+export default footerPage;
