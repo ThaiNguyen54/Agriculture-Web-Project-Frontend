@@ -4,7 +4,7 @@ import Scrollnews from '../components/Scroll_news';
 import WeatherContent from '../components/Weather_content';
 import Container from 'react-bootstrap/esm/Container';
 import NewsForum from '../components/Forum_content';
-import Footer from '../components/Footer';
+import footerPage from '../components/Footer';
 
 const Forum = () => {
     return(
@@ -17,7 +17,7 @@ const Forum = () => {
                     <WeatherContent />
                 </Container>
             </div>
-            <Footer/>
+            <footerPage />
         </div>
     );
 }

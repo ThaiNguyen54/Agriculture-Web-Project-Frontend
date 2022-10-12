@@ -5,7 +5,7 @@ import NewsNfeed from '../components/Nf_News';
 import Scrollnews from '../components/Scroll_news';
 import WeatherContent from '../components/Weather_content';
 import Container from 'react-bootstrap/esm/Container';
-import Footer from '../components/Footer';
+import footerPage from '../components/Footer';
 
 const NewFeed = () =>{
     return(
@@ -18,7 +18,7 @@ const NewFeed = () =>{
                     <WeatherContent />
                 </Container>
             </div>
-            <Footer/>
+            <footerPage />
         </div>
     );
 }
