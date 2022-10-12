@@ -1,20 +1,16 @@
 import notification from '../images/bell.png'
 import setting from '../images/setting.png'
 import user from '../images/user.png'
-import cicada from '../images/explore.png'
-import { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import React from 'react'
 import Dropdown from 'react-bootstrap/Dropdown'
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
-import Scrollnews from './Scroll_news'
+import { useNavigate } from 'react-router-dom'
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-    <a href="" ref={ref} style={{textDecoration: "none"}} onClick={(e) => {
+    <a ref={ref} style={{textDecoration: "none"}} onClick={(e) => {
         e.preventDefault();
         onClick(e);}}>
       {children}
@@ -23,12 +19,13 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
 ));
 
 const NavBar = () => {
-    const [displayDropdown, setDisplayDropdown] = useState(true);
     const location = useLocation();
-    const HandleDropdown = async() => {
-        setDisplayDropdown(!displayDropdown);
+    const navigate = useNavigate();
+    const Forum = async() =>{
+      navigate("/forum", {state: {lname: location.state.lname}})
     }
     return (
+      <div>
       <header>
         <Navbar className='navbar' bg="light" expand="lg" fixed='top'>
           <Container>
@@ -37,7 +34,7 @@ const NavBar = () => {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link className="me-auto-a" href="#link">Diễn đàn</Nav.Link>
-                <Nav.Link className="me-auto-a" href="#home">Chăn nuôi</Nav.Link>
+                <Nav.Link className="me-auto-a" onClick={Forum}>Chăn nuôi</Nav.Link>
                 <Nav.Link className="me-auto-a" href="#link">Trồng trọt</Nav.Link>
               </Nav>
               <div className='justify-content-end d-flex'>
@@ -57,6 +54,8 @@ const NavBar = () => {
           </Container>
         </Navbar>
       </header>
+      <Outlet />
+      </div>
     );
 }
 

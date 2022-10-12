@@ -9,7 +9,6 @@ import Container from 'react-bootstrap/esm/Container';
 function NewFeed(){
     return(
         <div className='all-content-newfeed'>
-            <NavBar />
             <Scrollnews />
             <div className='body-content d-flex'>
                 <Container className="dis-flex">
