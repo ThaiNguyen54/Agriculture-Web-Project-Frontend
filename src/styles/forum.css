@@ -1,0 +1,52 @@
+.Pen {
+    margin-right: 8px;
+}
+
+.Card {
+    border-radius: .9rem;
+    margin-bottom: 25px;
+    overflow: hidden;
+    border: solid;
+}
+
+.Card span {
+    font-weight: bold;
+}
+
+.cardbg {
+    background-color: #9FD3FA;
+    
+}
+
+.cardh {
+    background-color: #376FFF;
+}
+
+.cardh2 {
+    background-color: #00A023;
+}
+
+.cardh2 span {
+    font-size: 1.15rem;
+    color: white;
+    font-weight: bold;
+}
+
+.cardh3 {
+    background-color: #124684;
+}
+
+.cardh3 span {
+    font-size: 1.15rem;
+    color: white;
+    font-weight: bold;
+}
+
+.cardh span {
+    font-size: 1.15rem;
+    color: white;
+}
+
+.card-text {
+    color: black
+}

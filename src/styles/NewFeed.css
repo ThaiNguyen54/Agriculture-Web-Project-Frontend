@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Combo&family=Montserrat:wght@300;500;700&family=Quicksand:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500&family=Montserrat:wght@300;500;700&family=Raleway&display=swap');
 
 .all-content-newfeed{
     background: rgb(255,255,255);
@@ -202,6 +203,9 @@
     }
 }
 
+.ContentTitle {
+    margin-left: 2rem;
+}
 
 /* -------------------------------> Weather Card New Feed <-------------------------- */
 .content-weather{
@@ -251,3 +255,23 @@
     width: 97%;
     font-family: 'Montserrat', sans-serif;
 }
+
+/*Web scroll bar*/
+/* width */
+::-webkit-scrollbar {
+	width: 15px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px black;
+	border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+	background: #3B66FE;
+	border-radius: 10px;
+    border-style: solid;
+    border-color: #645C5C;
+  }

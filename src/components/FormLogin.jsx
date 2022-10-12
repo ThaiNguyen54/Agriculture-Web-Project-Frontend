@@ -16,7 +16,7 @@ function FormLogin(){
         await axios.post('http://localhost:3001/signup', {
             email: Email,
             password: Password
-        }).then((response => {
+        }).then((response => {  //response = findUser = {username, password}  {}
             if(response){
                 navigate('/newfeed', {state: {lname: response.data.lname}});
             }
@@ -50,7 +50,7 @@ function FormLogin(){
                     </div>
                     <div className="wrap-input100 validate-input">
                         <input className="input100" 
-                            type="text"
+                            type="password"
                             name="Password" 
                             placeholder="Password"
                             onChange={(e) => {
