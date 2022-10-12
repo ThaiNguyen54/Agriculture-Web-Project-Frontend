@@ -4,7 +4,7 @@ import About from "../pages/About";
 import NewFeed from "../pages/NewFeed";
 import RegisterForm from "./Register";
 import NavBar from "./Navbar";
-import ForumBreed from "../pages/Forum";
+import ForumBreed from "../pages/ForumBreed";
 
 function App() {
 
