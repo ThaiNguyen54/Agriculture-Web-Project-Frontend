@@ -8,6 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import { useNavigate } from 'react-router-dom'
+import logo from "../images/AFlogo.png"
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a ref={ref} style={{textDecoration: "none"}} onClick={(e) => {
@@ -22,20 +23,20 @@ const NavBar = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const Forum = async() =>{
-      navigate("/forum", {state: {lname: location.state.lname}})
+      navigate("/forum", {state: {UserName: location.state.UserName}})
     }
     const ForumBreed = async() =>{
-      navigate("/forumbreed", {state: {lname: location.state.lname}})
+      navigate("/forumbreed", {state: {UserName: location.state.UserName}})
     }
     const newfeed = async() =>{
-      navigate("/newfeed", {state: {lname: location.state.lname}})
+      navigate("/newfeed", {state: {UserName: location.state.UserName}})
     }
     return (
       <div>
       <header>
         <Navbar className='navbar' bg="light" expand="lg" fixed='top'>
           <Container>
-            <Navbar.Brand onClick={newfeed}>React-Bootstrap</Navbar.Brand>
+              <img onClick={newfeed} src={logo} width="85px" height="55px"/>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
@@ -49,7 +50,7 @@ const NavBar = () => {
                   <Dropdown align="end">
                     <Dropdown.Toggle id="dropdown-custom-components" as={CustomToggle}></Dropdown.Toggle>
                     <Dropdown.Menu className='dropdown-custom'>
-                        <Dropdown.ItemText eventKey="1" className='dropdown-custom-a'>Hello, {location.state.lname}</Dropdown.ItemText>
+                        <Dropdown.ItemText eventKey="1" className='dropdown-custom-a'>Hello, {location.state.UserName}</Dropdown.ItemText>
                         <Dropdown.Item eventKey="2">Profile</Dropdown.Item>
                         <Dropdown.Item eventKey="3">Settings</Dropdown.Item>
                         <Dropdown.Item eventKey="1">Log out</Dropdown.Item>

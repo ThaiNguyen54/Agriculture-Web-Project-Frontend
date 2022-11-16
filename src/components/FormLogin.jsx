@@ -3,9 +3,10 @@ import "../styles/font-awesome-4.7.0/css/font-awesome.min.css"
 import "../styles/Login.css"
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "../Constants/constants";
 
 function FormLogin(){
-    const [Email, setEmail] = useState("");
+    const [loginname, setLoginname] = useState("");
     const [Password, setpassword] = useState("");
     const [loginStatus, setLoginStatus] = useState(false);
     const navigate = useNavigate();
@@ -13,12 +14,12 @@ function FormLogin(){
         event.preventDefault();
         ////http://localhost:3001/signup
         //https://agriculture-app12-api.herokuapp.com/signup
-        await axios.post('http://localhost:3001/signup', {
-            email: Email,
-            password: Password
+        await axios.post(`${apiUrl}/login`, {
+            LoginName: loginname,
+            Password: Password
         }).then((response => {  //response = findUser = {username, password}  {}
             if(response){
-                navigate('/newfeed', {state: {lname: response.data.lname}});
+                navigate('/newfeed', {state: {UserName: response.data.UserName}});
             }
             else{
                 navigate('/');
@@ -27,6 +28,8 @@ function FormLogin(){
             setLoginStatus("Wrong Username / Password. Try again.");
         })
     }
+
+    
 
     return (
         <div className="limiter">
@@ -38,10 +41,10 @@ function FormLogin(){
                     <div className="wrap-input100 validate-input">
                         <input className="input100" 
                             type="text" 
-                            name="Email" 
-                            placeholder="Email" 
+                            name="LoginName" 
+                            placeholder="Login Name" 
                             onChange={(e) => {
-                            setEmail(e.target.value)}}>
+                            setLoginname(e.target.value)}}>
                         </input>
                         <span className="focus-input100"></span>
                         <span className="symbol-input100">

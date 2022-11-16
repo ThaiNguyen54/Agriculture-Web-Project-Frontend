@@ -17,7 +17,7 @@ function TempApp(search){
         }
         fetchApi();
     }, [search])
-    console.log(city);
+
     return (
         city?(
             <div className="card d-grid justify-content-center" style={{width: "90%"}}>

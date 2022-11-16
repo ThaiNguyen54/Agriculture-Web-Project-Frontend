@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/font-awesome-4.7.0/css/font-awesome.min.css"
 import "../styles/Login.css"
+import { apiUrl } from "../Constants/constants";
 
 function RegisterForm(){
     const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ function RegisterForm(){
         {
             //https://agriculture-app12-api.herokuapp.com/register
             //http://localhost:3001/register
-            await axios.post("//http://localhost:3001/register", {
+            await axios.post(`${apiUrl}/register`, {
                 email : email,
                 bthday: bthday,
                 fname: fname,
