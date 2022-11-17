@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { userLogin } from "./features/users/userAction";
+import logo from "../images/AFlogo.png"
 function FormLogin(){
     const [loginname, setLoginname] = useState("");
     const [Password, setpassword] = useState("");
@@ -75,6 +76,7 @@ function FormLogin(){
                     </a>
                 </div>
             </div>
+            <img className="Logo" src={logo}/>
         </div>
     );
 }
