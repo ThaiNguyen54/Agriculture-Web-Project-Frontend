@@ -17,8 +17,6 @@ function RegisterForm(){
         event.preventDefault();
         if(password === apassword)
         {
-            //https://agriculture-app12-api.herokuapp.com/register
-            //http://localhost:3001/register
             await axios.post(`${apiUrl}/register`, {
                 email : email,
                 bthday: bthday,
