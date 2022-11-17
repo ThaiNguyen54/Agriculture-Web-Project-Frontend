@@ -1,13 +1,18 @@
+import user from '../images/user.png'
 import notification from '../images/bell.png'
 import setting from '../images/setting.png'
-import user from '../images/user.png'
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet} from 'react-router-dom'
 import React from 'react'
-import Dropdown from 'react-bootstrap/Dropdown'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
-import { useNavigate } from 'react-router-dom'
+import logo from "../images/AFlogo.png"
+import { Link } from 'react-router-dom'
+import "../styles/navbar.css"
+import { Dropdown } from 'react-bootstrap';
+import { logout } from './features/users/userSlice';
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux';
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a ref={ref} style={{textDecoration: "none"}} onClick={(e) => {
@@ -19,43 +24,49 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
 ));
 
 const NavBar = () => {
-    const location = useLocation();
-    const navigate = useNavigate();
-    const Forum = async() =>{
-      navigate("/forum", {state: {lname: location.state.lname}})
-    }
-    const ForumBreed = async() =>{
-      navigate("/forumbreed", {state: {lname: location.state.lname}})
-    }
-    const newfeed = async() =>{
-      navigate("/newfeed", {state: {lname: location.state.lname}})
-    }
+    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
     return (
       <div>
       <header>
         <Navbar className='navbar' bg="light" expand="lg" fixed='top'>
           <Container>
-            <Navbar.Brand onClick={newfeed}>React-Bootstrap</Navbar.Brand>
+              <Link to="/">
+                <img src={logo} width="85px" height="55px"/>
+              </Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link className="me-auto-a" onClick={Forum}>Diễn đàn</Nav.Link>
-                <Nav.Link className="me-auto-a" onClick={ForumBreed}>Chăn nuôi</Nav.Link>
-                <Nav.Link className="me-auto-a" href="#link">Trồng trọt</Nav.Link>
+                <Link className="me-auto-a" to="/forum">Diễn đàn</Link>
+                <Link className="me-auto-a" to="/forumbreed">Chăn nuôi</Link>
+                <Link className="me-auto-a" href="/">Trồng trọt</Link>
               </Nav>
-              <div className='justify-content-end d-flex'>
-                  <Nav.Item><img className="image-item item-left" src={notification} alt="buying"></img></Nav.Item>
-                  <Nav.Item><img className="image-item item-left" src={setting} alt="buying"></img></Nav.Item>
-                  <Dropdown align="end">
-                    <Dropdown.Toggle id="dropdown-custom-components" as={CustomToggle}></Dropdown.Toggle>
-                    <Dropdown.Menu className='dropdown-custom'>
-                        <Dropdown.ItemText eventKey="1" className='dropdown-custom-a'>Hello, {location.state.lname}</Dropdown.ItemText>
-                        <Dropdown.Item eventKey="2">Profile</Dropdown.Item>
-                        <Dropdown.Item eventKey="3">Settings</Dropdown.Item>
-                        <Dropdown.Item eventKey="1">Log out</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-              </div>
+              {
+                user.userInfo?
+                (
+                  <div className='justify-content-end d-flex'>
+                    <Nav.Item><img className="image-item item-left" src={notification} alt="buying"></img></Nav.Item>
+                    <Nav.Item><img className="image-item item-left" src={setting} alt="buying"></img></Nav.Item>
+                    <Dropdown align="end">
+                      <Dropdown.Toggle id="dropdown-custom-components" as={CustomToggle}></Dropdown.Toggle>
+                      <Dropdown.Menu className='dropdown-custom'>
+                          <Dropdown.ItemText eventKey="1" className='dropdown-custom-a'>Hello, {user.userInfo.UserName}</Dropdown.ItemText>
+                          <Dropdown.Item eventKey="2">Profile</Dropdown.Item>
+                          <Dropdown.Item eventKey="3">Settings</Dropdown.Item>
+                          <Dropdown.Item eventKey="1" onClick={() => dispatch(logout())}>Log out</Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </div>
+                ):
+                (
+                  <>
+                    <div className="button-navbar">
+                      <a className="btn btn-primary login-button" href='/login'>Đăng nhập</a>
+                      <a className="btn btn-primary" href='/login'>Đăng kí</a>
+                    </div>
+                  </>        
+                )
+              }
             </Navbar.Collapse>
           </Container>
         </Navbar>

@@ -275,3 +275,7 @@
     border-style: solid;
     border-color: #645C5C;
   }
+
+.login-button{
+    margin: 0 1rem;
+}

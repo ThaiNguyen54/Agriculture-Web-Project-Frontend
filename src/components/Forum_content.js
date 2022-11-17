@@ -53,7 +53,7 @@ function NewsForum(){
                 <Card className='Card'>
                         <Card.Header className='cardh'>
                             <img className='Pen' src={message} width='40rem'  />
-                            <span>Trả Lời Mới </span>
+                            <span>Câu Hỏi Mới </span>
                         </Card.Header>
                         <Card.Body className='cardbg'>
                         <Card.Text >
@@ -123,7 +123,7 @@ function NewsForum(){
                 <Card className='Card'>
                         <Card.Header className='cardh'>
                             <img className='Pen' src={snb} width='40rem'  />
-                            <span>Bài Viết Mới </span>
+                            <span>Mua Bán Mới </span>
                         </Card.Header>
                         <Card.Body className='cardbg'>
                         <Card.Text >

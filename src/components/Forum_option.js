@@ -3,7 +3,6 @@ import location from '../images/location.png'
 
 function ForumOption(){
     return(
-        <div class="scrollbar scrollbar-primary">
             <div class="force-overflow">
                 <div className='Forum'>
                     <p>Diễn đàn</p>
@@ -17,11 +16,10 @@ function ForumOption(){
                     </a>
                     <a href='' className='Whatnew d-flex'>
                         <img className='logo-forum' src={location}></img>
-                        <p>Agricultural Knowledge</p>
+                        <p>Chợ nhà nông</p>
                     </a>
                 </div>
             </div>
-        </div>
     );
 }
 

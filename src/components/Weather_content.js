@@ -3,7 +3,6 @@ import weatherImage from '../images/cloudy.png'
 import ClockCurrent from './store/ClockCurrent';
 function WeatherContent(){
     const clock = ClockCurrent();
-    console.log(clock);
     return(
         <div className='card content-weather'>
             <h6 className='text-center'>{clock}</h6>
