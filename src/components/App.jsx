@@ -6,20 +6,23 @@ import RegisterForm from "./Register";
 import NavBar from "./Navbar";
 import ForumBreed from "../pages/ForumBreed";
 import Forum from "../pages/Forum"
-
+import { Provider } from "react-redux";
+import store from "./store/store";
 function App() {
 
   return (
-    <Routes>
-      <Route path="/" element = {<Login />} />
-      <Route path="register" element={<RegisterForm />} />
-      <Route element={<NavBar/>} >
-        <Route path="newfeed" element = {<NewFeed />} />
-        <Route path="forum" element = {<Forum/>}/>
-        <Route path="forumbreed" element = {<ForumBreed />} />
-        <Route path="about" element={<About />} />
-      </Route>
-    </Routes>
+    <Provider store={store}>
+      <Routes>
+        <Route path="/" element={<NavBar/>} >
+          <Route index element = {<NewFeed />} />
+          <Route path="forum" element = {<Forum/>}/>
+          <Route path="forumbreed" element = {<ForumBreed />} />
+          <Route path="about" element={<About />} />
+        </Route>
+        <Route path="login" element = {<Login />} />
+        <Route path="register" element={<RegisterForm />} />
+      </Routes>
+    </Provider>
   );
 }
 

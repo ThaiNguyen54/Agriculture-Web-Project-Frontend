@@ -1,35 +1,29 @@
 import { useState } from "react";
 import "../styles/font-awesome-4.7.0/css/font-awesome.min.css"
 import "../styles/Login.css"
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { apiUrl } from "../Constants/constants";
-
+import { useEffect } from "react";
+import { userLogin } from "./features/users/userAction";
 function FormLogin(){
     const [loginname, setLoginname] = useState("");
     const [Password, setpassword] = useState("");
     const [loginStatus, setLoginStatus] = useState(false);
     const navigate = useNavigate();
+    const {userInfo} = useSelector((state) => state.user)
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if (userInfo) {
+            navigate('/')
+        }else{
+            navigate('/login')
+        }
+    }, [navigate, userInfo])
+
     const HandleSubmit = async(event) =>{
         event.preventDefault();
-        ////http://localhost:3001/signup
-        //https://agriculture-app12-api.herokuapp.com/signup
-        await axios.post(`${apiUrl}/login`, {
-            LoginName: loginname,
-            Password: Password
-        }).then((response => {  //response = findUser = {username, password}  {}
-            if(response){
-                navigate('/newfeed', {state: {UserName: response.data.UserName}});
-            }
-            else{
-                navigate('/');
-            }
-        })).catch((e)=>{
-            setLoginStatus("Wrong Username / Password. Try again.");
-        })
+        dispatch(userLogin({email: loginname, password: Password}));
     }
-
-    
 
     return (
         <div className="limiter">
