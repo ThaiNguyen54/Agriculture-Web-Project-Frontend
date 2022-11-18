@@ -23,7 +23,7 @@ const userSlice = createSlice({
           state.status = 'loading'
         })
         .addCase(userLogin.fulfilled, (state, action) => {
-          state.status = 'succeded'
+          state.status = 'succeeded'
           state.userInfo = action.payload
         })
         .addCase(userLogin.rejected, (state, action) => {
