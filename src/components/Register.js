@@ -6,10 +6,9 @@ import "../styles/Login.css"
 import { apiUrl } from "../Constants/constants";
 
 function RegisterForm(){
+    const [username, setUsername] = useState("");
+    const [loginname, setLoginname] = useState("");
     const [email, setEmail] = useState("");
-    const [bthday, setBthday] = useState(null);
-    const [fname, setFname] = useState("");
-    const [lname, setLname] = useState("");
     const [password, setPassword] = useState("");
     const [apassword, setAPassword] = useState("");
     const navigate = useNavigate();
@@ -17,13 +16,13 @@ function RegisterForm(){
         event.preventDefault();
         if(password === apassword)
         {
-            await axios.post(`${apiUrl}/register`, {
-                email : email,
-                bthday: bthday,
-                fname: fname,
-                lname: lname,
-                password: password,
-                apassword: apassword
+            await axios.post(`${apiUrl}/ver1/user`, {
+                UserName : username,
+                LoginName: loginname,
+                Email: email,
+                Password: password,
+                apassword: apassword,
+                UserRight: "BASIC_USER"
             }).then((res => {
                 navigate("/");
             })).catch((err) => {
@@ -44,7 +43,33 @@ function RegisterForm(){
                 <div className="wrap-input100 validate-input">
                     <input className="input100" 
                         type="text" 
-                        name="email" 
+                        name="UserName" 
+                        placeholder="User Name" 
+                        onChange={(e) => {
+                        setUsername(e.target.value)}}>
+                    </input>
+                    <span className="focus-input100"></span>
+                    <span className="symbol-input100">
+                        <i className="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div className="wrap-input100 validate-input">
+                    <input className="input100" 
+                        type="text" 
+                        name="LoginName" 
+                        placeholder="Login Name" 
+                        onChange={(e) => {
+                        setLoginname(e.target.value)}}>
+                    </input>
+                    <span className="focus-input100"></span>
+                    <span className="symbol-input100">
+                        <i className="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div className="wrap-input100 validate-input">
+                    <input className="input100" 
+                        type="text" 
+                        name="Email" 
                         placeholder="Email" 
                         onChange={(e) => {
                         setEmail(e.target.value)}}>
@@ -56,47 +81,8 @@ function RegisterForm(){
                 </div>
                 <div className="wrap-input100 validate-input">
                     <input className="input100" 
-                        type="text" 
-                        name="fname" 
-                        placeholder="First Name" 
-                        onChange={(e) => {
-                        setFname(e.target.value)}}>
-                    </input>
-                    <span className="focus-input100"></span>
-                    <span className="symbol-input100">
-                        <i className="fa fa-envelope" aria-hidden="true"></i>
-                    </span>
-                </div>
-                <div className="wrap-input100 validate-input">
-                    <input className="input100" 
-                        type="text" 
-                        name="lname" 
-                        placeholder="Last Name" 
-                        onChange={(e) => {
-                        setLname(e.target.value)}}>
-                    </input>
-                    <span className="focus-input100"></span>
-                    <span className="symbol-input100">
-                        <i className="fa fa-envelope" aria-hidden="true"></i>
-                    </span>
-                </div>
-                <div className="wrap-input100 validate-input">
-                    <input className="input100" 
-                        type="date" 
-                        name="bthday" 
-                        placeholder="Birthday" 
-                        onChange={(e) => {
-                        setBthday(e.target.value)}}>
-                    </input>
-                    <span className="focus-input100"></span>
-                    <span className="symbol-input100">
-                        <i className="fa fa-envelope" aria-hidden="true"></i>
-                    </span>
-                </div>
-                <div className="wrap-input100 validate-input">
-                    <input className="input100" 
                         type="password"
-                        name="password" 
+                        name="Password" 
                         placeholder="Enter Password"
                         onChange={(e) => {
                             setPassword(e.target.value)
@@ -125,6 +111,14 @@ function RegisterForm(){
                     <button className="login100-form-btn" type="submit">
                         Register
                     </button>
+                </div>
+                <div className="text-center p-t-12">
+                    <span className="txt1">
+                        Already have an account?
+                    </span>
+                    <a className="txt1" href="/login">
+                        Click here
+                    </a>
                 </div>
             </form>
         </div>

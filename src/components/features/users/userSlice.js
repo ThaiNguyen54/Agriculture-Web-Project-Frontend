@@ -11,10 +11,13 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
+      loginfailed: (state) => {
+        state.status = 'idle'
+      },
       logout: (state) => {
-        state.loading = false
         state.userInfo = null
         state.error = null
+        state.status = 'idle'
       }
     },
     extraReducers: (builder) => {
@@ -23,7 +26,7 @@ const userSlice = createSlice({
           state.status = 'loading'
         })
         .addCase(userLogin.fulfilled, (state, action) => {
-          state.status = 'succeded'
+          state.status = 'succeeded'
           state.userInfo = action.payload
         })
         .addCase(userLogin.rejected, (state, action) => {
@@ -33,7 +36,9 @@ const userSlice = createSlice({
     }
   })
 
-export const getUserStatus = (state) => state.user.status
+export const getUserStatus = (state) => {
+  return state.user.status
+}
 export const getUserError = (state) => state.user.error
-export const { logout } = userSlice.actions
+export const { logout, loginfailed } = userSlice.actions
 export default userSlice.reducer
