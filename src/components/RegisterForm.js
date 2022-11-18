@@ -34,6 +34,7 @@ function RegisterForm(){
         }
     }
     return(
+        <div className="limiter">
         <div className="limiter d-flex justify-content-center">
             <div className="login100-form validate-form">
             <span className="login100-form-title">
@@ -122,6 +123,7 @@ function RegisterForm(){
                 </div>
             </form>
         </div>
+    </div>
     </div>
     );
 }
