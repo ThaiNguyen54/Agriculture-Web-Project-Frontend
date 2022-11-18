@@ -5,26 +5,32 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { userLogin } from "./features/users/userAction";
-import logo from "../images/AFlogo.png"
+import logo from "../images/AFlogo.png";
+import { loginfailed } from "./features/users/userSlice";
 function FormLogin(){
     const [loginname, setLoginname] = useState("");
     const [Password, setpassword] = useState("");
     const [loginStatus, setLoginStatus] = useState(false);
     const navigate = useNavigate();
-    const {userInfo} = useSelector((state) => state.user)
+    const {userInfo, status} = useSelector((state) => state.user)
     const dispatch = useDispatch();
-    useEffect(() => {
-        if (userInfo) {
-            navigate('/')
-        }else{
-            navigate('/login')
-        }
-    }, [navigate, userInfo])
 
     const HandleSubmit = async(event) =>{
         event.preventDefault();
         dispatch(userLogin({email: loginname, password: Password}));
     }
+    console.log(status);
+    useEffect(() => {
+        if(status === 'succeeded'){
+            if(userInfo.success){
+                navigate("/")
+            }else{
+                setLoginStatus(userInfo.description)
+                dispatch(loginfailed(userInfo))
+                navigate('/login')
+            }
+        }
+    }, [status])
 
     return (
         <div className="limiter">
