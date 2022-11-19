@@ -5,17 +5,18 @@ import ForumOption from "../components/Forum_option";
 import WeatherContent from "../components/Weather_content";
 import '../styles/NewFeed.css';
 import '../styles/ForumBreed.css';
-import ForumbreedContent from "../components/forumbreed_content";
+import ForumbuysellContent from "../components/forumbuysell_content";
 
 
-function ForumBreed(){
+
+function ForumBuySell(){
     return(
     <div className='all-content-newfeed'>
         <Scrollnews />
         <div className='body-content d-flex'>
             <Container className="dis-flex">
                 <ForumOption />
-                <ForumbreedContent/>
+                <ForumbuysellContent/>
                 <WeatherContent />
             </Container>
         </div>
@@ -23,4 +24,4 @@ function ForumBreed(){
     );
 }
 
-export default ForumBreed;
+export default ForumBuySell;

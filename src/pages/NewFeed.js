@@ -1,11 +1,9 @@
 import '../styles/NewFeed.css'
-import NavBar from '../components/Navbar';
 import ForumOption from '../components/Forum_option';
 import NewsNfeed from '../components/Nf_News';
 import Scrollnews from '../components/Scroll_news';
 import WeatherContent from '../components/Weather_content';
 import Container from 'react-bootstrap/esm/Container';
-import footerPage from '../components/Footer';
 
 const NewFeed = () =>{
     return(
@@ -18,7 +16,6 @@ const NewFeed = () =>{
                     <WeatherContent />
                 </Container>
             </div>
-            <footerPage />
         </div>
     );
 }

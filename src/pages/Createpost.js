@@ -1,21 +1,23 @@
-
+import NavBar from "../components/Navbar";
 import Scrollnews from "../components/Scroll_news";
 import Container from "react-bootstrap/esm/Container";
 import ForumOption from "../components/Forum_option";
 import WeatherContent from "../components/Weather_content";
+
 import '../styles/NewFeed.css';
 import '../styles/ForumBreed.css';
-import ForumbreedContent from "../components/forumbreed_content";
+import footerPage from "../components/Footer";
+import CreatePost from "../components/CreatePost";
 
 
-function ForumBreed(){
+function Createpost(){
     return(
     <div className='all-content-newfeed'>
         <Scrollnews />
         <div className='body-content d-flex'>
             <Container className="dis-flex">
                 <ForumOption />
-                <ForumbreedContent/>
+                <CreatePost />
                 <WeatherContent />
             </Container>
         </div>
@@ -23,4 +25,4 @@ function ForumBreed(){
     );
 }
 
-export default ForumBreed;
+export default Createpost;
