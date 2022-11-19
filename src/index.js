@@ -13,13 +13,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
         <Provider store={store}>
-            <NotificationProvider 			config={{
-                                            position: 'top-right',
-                                            isCloseable: false,
-                                            showTitle: true,
-                                            showIcon: true,
-                                            duration: 5,
-                                        }}>
+            <NotificationProvider 	
+                config={{
+                position: 'top-right',
+                isCloseable: false,
+                showTitle: true,
+                showIcon: true,
+                duration: 5,
+            }}>
                 <App />
             </NotificationProvider>
         </Provider>

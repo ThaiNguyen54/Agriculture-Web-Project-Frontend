@@ -1,5 +1,5 @@
-import news from '../images/news.png'
-import location from '../images/location.png'
+import news from '../../../images/news.png'
+import location from '../../../images/location.png'
 
 function ForumOption(){
     return(

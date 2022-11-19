@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/font-awesome-4.7.0/css/font-awesome.min.css"
-import "../styles/Login.css"
-import { apiUrl } from "../Constants/constants";
+import "../../../styles/font-awesome-4.7.0/css/font-awesome.min.css"
+import "../../../styles/Login.css"
+import { apiUrl } from "../../../Constants/constants";
 
 function RegisterForm(){
     const [username, setUsername] = useState("");

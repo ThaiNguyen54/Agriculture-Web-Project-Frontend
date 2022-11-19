@@ -2,12 +2,16 @@ import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import Pen from '../images/Pen.png'
-import ph from '../images/pointedhand.png'
-import message from '../images/Message.png'
-import snb from '../images/SellandBuy.png'
-import '../styles/forum.css'
+import Pen from '../../../images/Pen.png'
+import ph from '../../../images/pointedhand.png'
+import message from '../../../images/Message.png'
+import snb from '../../../images/SellandBuy.png'
+import '../../../styles/forum.css'
+import { useSelector } from 'react-redux';
+
 function NewsForum(){
+    const post = useSelector((state) => state.post)
+    console.log(post);
     return(
         <Container>
             <Row>
@@ -21,31 +25,15 @@ function NewsForum(){
                             <span>Bài Viết Mới </span>
                         </Card.Header>
                         <Card.Body className='cardbg'>
-                        <Card.Text >
-                            <img className='ph' src={ph} width='25rem'  />
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
+                            {
+                                post.posts.map((item, idx) => (
+                                    <Card.Text key={idx}>
+                                        <img className='ph' src={ph} width='25rem'  />
+                                        {item.Title}
+                                    </Card.Text>
+
+                                ))    
+                            }
                         </Card.Body>
                     </Card>
                 </Col>

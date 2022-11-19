@@ -1,6 +1,6 @@
 import '../styles/NewFeed.css'
-import ForumOption from '../components/Forum_option';
-import NewsNfeed from '../components/Nf_News';
+import ForumOption from '../components/Body/Forum/Forum_option';
+import NewsNfeed from '../components/Body/Nf_News';
 import Scrollnews from '../components/Scroll_news';
 import WeatherContent from '../components/Weather_content';
 import Container from 'react-bootstrap/esm/Container';

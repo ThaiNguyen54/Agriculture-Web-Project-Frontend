@@ -1,6 +1,6 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import location from "../images/location.png";
+import location from "../../images/location.png";
 
 function footerPage(){
     return(
