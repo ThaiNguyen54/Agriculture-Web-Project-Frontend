@@ -1,13 +1,13 @@
 import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
-import createPostImg from "../images/reviews.png"
+import createPostImg from "../../../images/reviews.png"
 import Button from 'react-bootstrap/Button';
 import { useState } from "react";
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import { ButtonGroup } from "react-bootstrap";
 import axios from "axios";
-import { apiUrl } from "../Constants/constants";
+import { apiUrl } from "../../../Constants/constants";
 import { useSelector } from "react-redux";
 import { Form } from "react-bootstrap";
 import { useNotification } from "use-toast-notification";

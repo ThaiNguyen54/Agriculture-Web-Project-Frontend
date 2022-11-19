@@ -1,12 +1,12 @@
 import { useState } from "react";
-import "../styles/font-awesome-4.7.0/css/font-awesome.min.css"
-import "../styles/Login.css"
+import "../../../styles/font-awesome-4.7.0/css/font-awesome.min.css"
+import "../../../styles/Login.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { userLogin } from "./features/users/userAction";
-import logo from "../images/AFlogo.png";
-import { loginfailed } from "./features/users/userSlice";
+import { userLogin } from "../../features/users/userAction";
+import logo from "../../../images/AFlogo.png";
+import { loginfailed } from "../../features/users/userSlice";
 function FormLogin(){
     const [loginname, setLoginname] = useState("");
     const [Password, setpassword] = useState("");

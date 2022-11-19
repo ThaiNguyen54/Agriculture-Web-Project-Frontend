@@ -1,9 +1,9 @@
 import '../styles/NewFeed.css'
-import ForumOption from '../components/Forum_option';
+import ForumOption from '../components/Body/Forum/Forum_option';
 import Scrollnews from '../components/Scroll_news';
 import WeatherContent from '../components/Weather_content';
 import Container from 'react-bootstrap/esm/Container';
-import NewsForum from '../components/Forum_content';
+import NewsForum from '../components/Body/Forum/Forum_content';
 
 const Forum = () => {
     return(

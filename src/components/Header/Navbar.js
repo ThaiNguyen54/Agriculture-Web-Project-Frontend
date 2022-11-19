@@ -1,16 +1,16 @@
-import user from '../images/user.png'
-import notification from '../images/bell.png'
-import setting from '../images/setting.png'
+import user from '../../images/user.png'
+import notification from '../../images/bell.png'
+import setting from '../../images/setting.png'
 import { Outlet} from 'react-router-dom'
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
-import logo from "../images/AFlogo.png"
+import logo from "../../images/AFlogo.png"
 import { Link } from 'react-router-dom'
-import "../styles/navbar.css"
+import "../../styles/navbar.css"
 import { Dropdown } from 'react-bootstrap';
-import { logout } from './features/users/userSlice';
+import { logout } from '../features/users/userSlice';
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux';
 

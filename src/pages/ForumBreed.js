@@ -1,11 +1,11 @@
 
 import Scrollnews from "../components/Scroll_news";
 import Container from "react-bootstrap/esm/Container";
-import ForumOption from "../components/Forum_option";
+import ForumOption from "../components/Body/Forum/Forum_option";
 import WeatherContent from "../components/Weather_content";
 import '../styles/NewFeed.css';
 import '../styles/ForumBreed.css';
-import ForumbreedContent from "../components/forumbreed_content";
+import ForumbreedContent from "../components/Body/Forum/Forumbreed_content";
 
 
 function ForumBreed(){
