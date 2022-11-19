@@ -39,7 +39,8 @@ const NavBar = () => {
               <Nav className="me-auto">
                 <Link className="me-auto-a" to="/forum">Diễn đàn</Link>
                 <Link className="me-auto-a" to="/forumbreed">Chăn nuôi</Link>
-                <Link className="me-auto-a" href="/">Trồng trọt</Link>
+                <Link className="me-auto-a" to="/forumcrop">Trồng trọt</Link>
+                <Link className="me-auto-a" to="/buysell">Mua Bán</Link>
               </Nav>
               {
                 user.userInfo?

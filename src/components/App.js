@@ -11,6 +11,10 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import store from "./store/store";
 import Register from "../pages/Register";
+import Createpost from "../pages/Createpost";
+import ForumCrop from "../pages/ForumCrop";
+import ForumBuySell from "../pages/ForumBuySell";
+
 function App() {
 
   const persistor = persistStore(store);
@@ -20,8 +24,10 @@ function App() {
           <Route path="/" element={<NavBar/>} >
             <Route index element = {<NewFeed />} />
             <Route path="forum" element = {<Forum/>}/>
-            <Route path={`uploadpost/accessUserId=:userId`} element = {<ForumBreed />} />
-            <Route path="about" element={<About />} />
+            <Route path={`uploadpost/accessUserId=:userId`} element = {<Createpost/>} />
+            <Route path="forumbreed" element={<ForumBreed />} />
+            <Route path="forumcrop" element={<ForumCrop />} />
+            <Route path="buysell" element={<ForumBuySell />} />
           </Route>
           <Route path="login" element = {<Login />} />
           <Route path="register" element={<Register />} />

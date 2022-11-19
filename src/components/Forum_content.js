@@ -195,7 +195,7 @@ function NewsForum(){
                 <Col lg="12">
                 <Card className='Card'>
                         <Card.Header className='cardh3'>
-                            <span>SINH VẬT CẢNH </span>
+                            <span>CHỢ NHÀ NÔNG </span>
                         </Card.Header>
                         <Card.Body className='cardbg'>
                         <Card.Text >
