@@ -46,7 +46,7 @@ const NavBar = () => {
                 (
                   <div className='justify-content-end d-flex'>
                     <div className="button-navbar">
-                      <a className="btn btn-primary login-button" href=''>Đăng bài</a>
+                      <Link className='button-post' to={`uploadpost/accessUserId=${user.userInfo.id}`}>Đăng bài</Link>
                     </div>
                     <Nav.Item><img className="image-item item-left" src={notification} alt="buying"></img></Nav.Item>
                     <Nav.Item><img className="image-item item-left" src={setting} alt="buying"></img></Nav.Item>

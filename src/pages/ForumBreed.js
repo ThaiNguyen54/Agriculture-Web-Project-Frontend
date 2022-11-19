@@ -20,7 +20,6 @@ function ForumBreed(){
                 <WeatherContent />
             </Container>
         </div>
-        <footerPage />
     </div>
     );
 }
