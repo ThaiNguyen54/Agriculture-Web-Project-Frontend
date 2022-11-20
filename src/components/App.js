@@ -16,6 +16,7 @@ import ForumCrop from "../pages/ForumCrop";
 import ForumBuySell from "../pages/ForumBuySell";
 import { useDispatch } from "react-redux";
 import { postFetch } from "./features/posts/postFetch";
+import Post from "../pages/Post";
 function App() {
   const dispatch = useDispatch();
   dispatch(postFetch());
@@ -26,10 +27,11 @@ function App() {
           <Route path="/" element={<NavBar/>} >
             <Route index element = {<NewFeed />} />
             <Route path="forum" element = {<Forum/>}>
-              <Route path=":postId" element={<></>}/>
+              
             </Route>
             <Route path={`uploadpost/accessUserId=:userId`} element = {<Createpost/>} />
             <Route path="forumbreed" element={<ForumBreed />} />
+            <Route path={`forumbreed/:postId`} element={<Post />} />
             <Route path="forumcrop" element={<ForumCrop />} />
             <Route path="buysell" element={<ForumBuySell />} />
           </Route>

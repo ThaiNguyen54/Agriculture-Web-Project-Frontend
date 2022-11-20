@@ -9,10 +9,14 @@ import Container from 'react-bootstrap/Container';
 import logo from "../../images/AFlogo.png"
 import { Link } from 'react-router-dom'
 import "../../styles/navbar.css"
-import { Dropdown } from 'react-bootstrap';
+import { Col, Dropdown, Row } from 'react-bootstrap';
 import { logout } from '../features/users/userSlice';
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux';
+import Scrollnews from '../Scroll_news'
+import ForumOption from '../Body/Forum/Forum_option';
+import WeatherContent from '../Weather_content';
+
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a ref={ref} style={{textDecoration: "none"}} onClick={(e) => {
@@ -74,7 +78,24 @@ const NavBar = () => {
           </Container>
         </Navbar>
       </header>
-      <Outlet />
+      <div className='all-content-newfeed'>
+          <Scrollnews />
+          <div className='body-content d-flex'>
+              <Container className="dis-flex">
+                <Row>
+                  <Col lg="2">
+                    <ForumOption />
+                  </Col>
+                  <Col lg="8">
+                    <Outlet />
+                  </Col>
+                  <Col lg="2">
+                    <WeatherContent />
+                  </Col>
+                </Row>
+              </Container>
+          </div>
+      </div>
       </div>
     );
 }

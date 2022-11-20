@@ -20,7 +20,6 @@ const postSlice = createSlice({
             })
             .addCase(postFetch.fulfilled, (state, action) => {
                 state.posts = action.payload
-                console.log(action.payload)
                 state.status = 'success'
             })
             .addCase(postFetch.rejected, (state) => {
@@ -30,4 +29,5 @@ const postSlice = createSlice({
     }
 })
 
+export const {getPostCrop} = postSlice.actions
 export default postSlice.reducer
