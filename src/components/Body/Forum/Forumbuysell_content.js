@@ -1,13 +1,17 @@
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Pen from '../../../images/Pen.png'
-import ph from '../../../images/pointedhand.png'
-import message from '../../../images/Message.png'
-import snb from '../../../images/SellandBuy.png'
 import '../../../styles/forum.css'
+import { useReducer } from 'react';
+import { getPostCrop } from '../../features/posts/postSlice';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import PostShow from './ShowPost';
 function ForumbuysellContent(){
+    const {posts} = useSelector((state) => state.post)
+
+    const postSell = posts.filter((post) => (post.TagName === "Mua bán"))
+
     return(
         <Container>
             <Row>
@@ -17,9 +21,13 @@ function ForumbuysellContent(){
                 <div className='content-news-first'>
                     <h3>Mua Bán</h3>
                 </div>
-                <Col lg="6">
-                    
-                </Col>
+                    {
+                        postSell.map((item) => (
+                        <Col lg="12">
+                            <PostShow item={item} />
+                        </Col>
+                    ))
+                    }
             </Row>
         </Container>
     );
