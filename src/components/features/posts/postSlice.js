@@ -7,11 +7,21 @@ const initialState = {
     error: null
 }
 
+export const getPostId = (state, postId) => {
+    return state.post.posts.filter((item) => {
+        if(item._id === postId){
+            return item
+        }
+    })
+}
+
 const postSlice = createSlice({
     name: 'post',
     initialState,
     reducers:{
-
+        getPostId: (state) => {
+            console.log(state)
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -29,5 +39,4 @@ const postSlice = createSlice({
     }
 })
 
-export const {getPostCrop} = postSlice.actions
 export default postSlice.reducer

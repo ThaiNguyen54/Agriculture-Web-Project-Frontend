@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import Scrollnews from '../Scroll_news'
 import ForumOption from '../Body/Forum/Forum_option';
 import WeatherContent from '../Weather_content';
+import FooterPage from '../Footer/Footer'
 
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -78,24 +79,25 @@ const NavBar = () => {
           </Container>
         </Navbar>
       </header>
-      <div className='all-content-newfeed'>
+        <div className='all-content-newfeed'>
           <Scrollnews />
-          <div className='body-content d-flex'>
-              <Container className="dis-flex">
-                <Row>
-                  <Col lg="2">
-                    <ForumOption />
-                  </Col>
-                  <Col lg="8">
-                    <Outlet />
-                  </Col>
-                  <Col lg="2">
-                    <WeatherContent />
-                  </Col>
-                </Row>
-              </Container>
-          </div>
-      </div>
+            <div className='body-content d-flex'>
+                <Container className="dis-flex">
+                  <Row className="w-100">
+                    <Col lg="2">
+                      <ForumOption />
+                    </Col>
+                    <Col lg="8">
+                      <Outlet />
+                    </Col>
+                    <Col lg="2">
+                      <WeatherContent />
+                    </Col>
+                  </Row>
+                </Container>
+            </div>
+        </div>
+        <FooterPage />
       </div>
     );
 }

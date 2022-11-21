@@ -27,16 +27,14 @@ function App() {
             <Route path={`uploadpost/accessUserId=:userId`} element = {<Createpost/>} />
             <Route path="forumbreed">
               <Route index element={<ForumBreed />} />
-              <Route path={`:postId`} element={<Post />} />
             </Route>
             <Route path="forumcrop">
               <Route index element={<ForumCrop />}/>
-              <Route path={":postId"} element={<Post />} />
             </Route>
             <Route path="buysell" >
               <Route index element={<ForumBuySell />} />
-              <Route path={":postId"} element={<Post />} />
             </Route>
+            <Route path={"post/:postId"} element={<Post />}/>
           </Route>
           <Route path="login" element = {<Login />} />
           <Route path="register" element={<Register />} />
