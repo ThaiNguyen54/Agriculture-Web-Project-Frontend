@@ -21,14 +21,14 @@ function NewsForum(){
                 <Col lg="6">
                     <Card className='Card'>
                         <Card.Header className='cardh'>
-                            <img className='Pen' src={Pen} width='40rem'  />
+                            <img className='Pen' src={Pen} width='40rem' alt='q'/>
                             <span>Bài Viết Mới </span>
                         </Card.Header>
                         <Card.Body className='cardbg'>
                             {
                                 post.posts.map((item, idx) => (
                                     <Card.Text key={idx}>
-                                        <img className='ph' src={ph} width='25rem'  />
+                                        <img className='ph' src={ph} width='25rem' alt='q' />
                                         {item.Title}
                                     </Card.Text>
 
@@ -40,32 +40,32 @@ function NewsForum(){
                 <Col lg="6">
                 <Card className='Card'>
                         <Card.Header className='cardh'>
-                            <img className='Pen' src={message} width='40rem'  />
+                            <img className='Pen' src={message} width='40rem' alt='q'/>
                             <span>Câu Hỏi Mới </span>
                         </Card.Header>
                         <Card.Body className='cardbg'>
                         <Card.Text >
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
                         <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
                         <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
                         <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
                         <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
@@ -75,32 +75,32 @@ function NewsForum(){
                 <Col lg="6">
                 <Card className='Card'>
                         <Card.Header className='cardh'>
-                            <img className='Pen' src={snb} width='40rem'  />
+                            <img className='Pen' src={snb} width='40rem' alt='q'/>
                             <span>Mua Bán Mới </span>
                         </Card.Header>
                         <Card.Body className='cardbg'>
                         <Card.Text >
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
                         <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
                         <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
                         <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
                         <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
@@ -110,32 +110,32 @@ function NewsForum(){
                 <Col lg="6">
                 <Card className='Card'>
                         <Card.Header className='cardh'>
-                            <img className='Pen' src={snb} width='40rem'  />
+                            <img className='Pen' src={snb} width='40rem' alt='q'/>
                             <span>Mua Bán Mới </span>
                         </Card.Header>
                         <Card.Body className='cardbg'>
                         <Card.Text >
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
                         <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
                         <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
                         <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
                         <Card.Text>
-                            <img className='ph' src={ph} width='25rem'  />
+                            <img className='ph' src={ph} width='25rem' alt='q'/>
                             This is a wider card with supporting text below as a natural lead-in
                             to additional content.
                         </Card.Text>
