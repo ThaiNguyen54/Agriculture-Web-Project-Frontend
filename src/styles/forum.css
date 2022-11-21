@@ -50,3 +50,28 @@
 .card-text {
     color: black
 }
+
+.detail-post-image{
+    background-color: #124684;
+    padding: 1rem 0 1rem 2.5rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.detail-post-text{
+    background-color: #FAF7F0;
+    padding: 2.5rem 1rem 1rem 2rem;
+}
+
+.footer{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+}
+
+footer{
+    background-color: #CFF5E7;
+}
+
+.detail-post-text-font{
+    font-size: 1rem;
+}

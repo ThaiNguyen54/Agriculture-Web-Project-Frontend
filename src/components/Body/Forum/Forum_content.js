@@ -8,10 +8,10 @@ import message from '../../../images/Message.png'
 import snb from '../../../images/SellandBuy.png'
 import '../../../styles/forum.css'
 import { useSelector } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 function NewsForum(){
     const post = useSelector((state) => state.post)
-    console.log(post);
+
     return(
         <Container>
             <Row>
@@ -27,10 +27,12 @@ function NewsForum(){
                         <Card.Body className='cardbg'>
                             {
                                 post.posts.map((item, idx) => (
+                                    <Link to={`/post/${item._id}`}>
                                     <Card.Text key={idx}>
                                         <img className='ph' src={ph} width='25rem' alt='q' />
                                         {item.Title}
                                     </Card.Text>
+                                    </Link>
 
                                 ))    
                             }

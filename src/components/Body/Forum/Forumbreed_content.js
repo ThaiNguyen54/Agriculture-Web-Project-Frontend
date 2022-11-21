@@ -8,11 +8,13 @@ import message from '../../../images/Message.png'
 import snb from '../../../images/SellandBuy.png'
 import '../../../styles/forum.css'
 import PostShow from './ShowPost';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useReducer } from 'react';
+import { postFetch } from '../../features/posts/postFetch';
 import { getPostCrop } from '../../features/posts/postSlice';
 function ForumbreedContent(){
+    
     const {posts} = useSelector((state) => state.post)
     const postBreed = posts.filter((post) => (post.TagName === "Chăn nuôi"))
     return(

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function PostShow({item}){
     return(
         <div className='create-post-forum post-show'>
-            <Link to={`${item._id}`} style={{textDecoration:"none"}}>
+            <Link to={`/post/${item._id}`} style={{textDecoration:"none"}}>
             <div className="avt-name-post d-flex">
                 <img src={avatar}></img>
                 <p>Tín</p>
