@@ -53,7 +53,7 @@
 
 .detail-post-image{
     background-color: #124684;
-    padding: 1rem 0 1rem 2.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
 }
@@ -74,4 +74,20 @@ footer{
 
 .detail-post-text-font{
     font-size: 1rem;
+}
+
+.detail-post-image h6{
+    margin-top: 2rem;
+    color:#FAF7F0;
+}
+
+.ripple-surface{
+    border: 0px;
+    border-radius: 1rem;
+}
+
+.username-detail-post{
+    text-align: center;
+    color:aliceblue;
+    margin-top: 0.5rem;
 }
