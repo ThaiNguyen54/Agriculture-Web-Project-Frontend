@@ -1,7 +1,7 @@
-import user from '../../images/user.png'
+import User from '../../images/user.png'
 import notification from '../../images/bell.png'
 import setting from '../../images/setting.png'
-import { Outlet} from 'react-router-dom'
+import { Outlet, useNavigate} from 'react-router-dom'
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -24,11 +24,14 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
         e.preventDefault();
         onClick(e);}}>
       {children}
-      <img className="image-item item-left" src={user} alt="buying"></img>
+      
     </a>
 ));
 
+
+
 const NavBar = () => {
+    const Navigate = useNavigate()
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
     return (
@@ -57,10 +60,12 @@ const NavBar = () => {
                     <Nav.Item><img className="image-item item-left" src={notification} alt="buying"></img></Nav.Item>
                     <Nav.Item><img className="image-item item-left" src={setting} alt="buying"></img></Nav.Item>
                     <Dropdown align="end">
-                      <Dropdown.Toggle id="dropdown-custom-components" as={CustomToggle}></Dropdown.Toggle>
+                      <Dropdown.Toggle id="dropdown-custom-components" as={CustomToggle}>
+                        <img className="image-item item-left" src={user.userInfo.Avatar || User} alt="buying"></img>  
+                      </Dropdown.Toggle>
                       <Dropdown.Menu className='dropdown-custom'>
                           <Dropdown.ItemText eventKey="1" className='dropdown-custom-a'>Hello, {user.userInfo.UserName}</Dropdown.ItemText>
-                          <Dropdown.Item eventKey="2">Profile</Dropdown.Item>
+                          <Dropdown.Item eventKey="2" onClick={() => Navigate('/profile')}>Profile</Dropdown.Item>
                           <Dropdown.Item eventKey="3">Settings</Dropdown.Item>
                           <Dropdown.Item eventKey="1" onClick={() => dispatch(logout())}>Log out</Dropdown.Item>
                       </Dropdown.Menu>

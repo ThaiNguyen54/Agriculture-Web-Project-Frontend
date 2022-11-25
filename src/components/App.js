@@ -14,6 +14,7 @@ import ForumBuySell from "../pages/ForumBuySell";
 import { useDispatch } from "react-redux";
 import { postFetch } from "./features/posts/postFetch";
 import Post from "../pages/Post";
+import Profile from "../pages/Profile";
 function App() {
   const dispatch = useDispatch();
   dispatch(postFetch());
@@ -34,10 +35,14 @@ function App() {
             <Route path="buysell" >
               <Route index element={<ForumBuySell />} />
             </Route>
+            <Route path="profile" >       
+              <Route index element={<Profile/>}/>
+            </Route>
             <Route path={"post/:postId"} element={<Post />}/>
           </Route>
           <Route path="login" element = {<Login />} />
           <Route path="register" element={<Register />} />
+          
         </Routes>
       </PersistGate>
   );

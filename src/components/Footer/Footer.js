@@ -86,7 +86,7 @@ function FooterPage(){
                         AGRIT
                     </h6>
                     <p className="footer">
-                        Đây là dự án phát triển web dành cho những bà con nông dân
+                        Đây là dự án phát triển web dành cho bà con nông dân
                     </p>
                     </MDBCol>
 
