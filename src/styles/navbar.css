@@ -6,3 +6,9 @@
 .me-auto-a:hover{
     color:cornflowerblue;
 }
+
+.image-item{
+    border-radius: 50%;
+    width: 35px;
+    cursor: pointer;
+}

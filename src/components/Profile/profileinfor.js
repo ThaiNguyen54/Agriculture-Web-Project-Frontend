@@ -1,16 +1,15 @@
 import React from 'react'
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row';
-import "./profile.css"
+import "../../styles/profile.css"
 import Card from 'react-bootstrap/Card';
-import bg from '../../images/news-2.jpg'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 function Profileinfor() {
     const user = useSelector((state) => state.user);
     const Navigate = useNavigate()
-    console.log(user)
+    
   return (
     <>
 
@@ -19,7 +18,7 @@ function Profileinfor() {
                 <Container>
                     <Row>
                         <div className='content-news-first'>
-                            <h3 className='title'>YOUR PROFILE</h3>
+                            <h3 className='title'>THÔNG TIN TÀI KHOẢN</h3>
                         </div>
                     </Row>
                     <Card className='card1'>
@@ -31,14 +30,15 @@ function Profileinfor() {
                     </Card>
                     <Card className='card2'>
                             <Card.Body>
+                            
                             <Card.Text>
-                                Email: {user.userInfo.Email}
+                                <strong>Email:</strong> {user.userInfo.Email}
                             </Card.Text>
                             <Card.Text>
-                                Created date: {user.userInfo.RegisterDate}
+                                <strong>Ngày tạo:</strong> {user.userInfo.RegisterDate}
                             </Card.Text>
                             <Card.Text>
-                                Badge: 
+                                <strong>Danh hiệu:</strong> Vua buôn bán
                             </Card.Text>
                             </Card.Body>
                     </Card>
