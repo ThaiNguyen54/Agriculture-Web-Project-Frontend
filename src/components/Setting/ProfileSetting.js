@@ -19,39 +19,25 @@ function Profilesetting() {
   const user = useSelector((state) => state.user);
   const Navigate = useNavigate()
   const notification = useNotification();
+  const [update, setUpdate] = useState(null)
 
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const [avatar, setAvatar] = useState("")
-  const [bgImg, setBgImg] = useState("")
-  
-  const handleUserName = (e) => {
-    setUsername(e.target.value)
-  }
-  const handleEmail = (e) => {
-    setEmail(e.target.value)
-  }
-  const handleAvatar = (e) => {
-    setAvatar(e.target.value)
-  }
-  const handleBgImg = (e) => {
-    setBgImg(e.target.value)
+  const handleUpdate = (e) => {
+    const value = e.target.value;
+    setUpdate({...update, [e.target.name]: value})
   }
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const response = await axios.put(`${apiUrl}/ver1/authenticate/user/${user.userInfo.id}`, {
-        UserName: username,
-        Email: email,
-        Avatar: avatar,
-        BackgroundImg: bgImg,
-        access_token: user.userInfo.token,
+    const response = await axios.put(`${apiUrl}/ver1/authenticate/user/${user.userInfo.id}`, update, {
+        headers:{
+            "access_token":  user.userInfo.token
+          }
     })
 
     if(response){
         try {
             notification.show({
-                message: 'Cập nhật thành công', 
+                message: 'Cập nhật thành công. Đăng nhập lại để xem thay đổi', 
                 title: 'Delivery Status',
                 variant: 'success'
             })
@@ -108,7 +94,7 @@ function Profilesetting() {
                                     type="text"
                                     name="UserName" 
                                     placeholder={user.userInfo.UserName}
-                                    onChange={handleUserName}>
+                                    onChange={handleUpdate}>
                                 </input>
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
@@ -123,7 +109,7 @@ function Profilesetting() {
                                     type="text"
                                     name="Email" 
                                     placeholder={user.userInfo.Email}
-                                    onChange={handleEmail}>
+                                    onChange={handleUpdate}>
                                 </input>
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
@@ -138,7 +124,7 @@ function Profilesetting() {
                                     type="text"
                                     name="Avatar" 
                                     placeholder={user.userInfo.Avatar}
-                                    onChange={handleAvatar}>
+                                    onChange={handleUpdate}>
                                 </input>
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
@@ -153,7 +139,7 @@ function Profilesetting() {
                                     type="text"
                                     name="BackgroundImg" 
                                     placeholder={user.userInfo.BackgroundImg}
-                                    onChange={handleBgImg}>
+                                    onChange={handleUpdate}>
                                 </input>
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
