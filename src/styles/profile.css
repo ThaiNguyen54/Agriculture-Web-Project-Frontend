@@ -1,0 +1,28 @@
+.title{
+    text-align: center;
+}
+
+.card1{
+    border: solid;
+    width: 25rem;
+    margin: 0 auto;
+}
+
+.card2{
+    border: solid;
+    width: 25rem;
+    margin: 2rem auto;
+}
+
+.un{
+    margin-top: 100px;
+    text-align: center;
+}
+
+.userpic{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: solid;
+    margin: -80px auto;
+}
