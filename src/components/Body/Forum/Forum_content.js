@@ -26,15 +26,19 @@ function NewsForum(){
                         </Card.Header>
                         <Card.Body className='cardbg'>
                             {
-                                post.posts.map((item, idx) => (
-                                    <Link to={`/post/${item._id}`}>
-                                    <Card.Text key={idx}>
-                                        <img className='ph' src={ph} width='25rem' alt='q' />
-                                        {item.Title}
-                                    </Card.Text>
-                                    </Link>
-
-                                ))    
+                                post.posts.map((item, idx) => {
+                                    if(idx < 10){
+                                        return(
+                                            <Link to={`/post/${item._id}`}>
+                                            <Card.Text key={idx}>
+                                                <img className='ph' src={ph} width='25rem' alt='q' />
+                                                {item.Title}
+                                            </Card.Text>
+                                            </Link>
+                                        )
+                                    }
+                                    }
+                                )    
                             }
                         </Card.Body>
                     </Card>

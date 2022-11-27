@@ -1,4 +1,4 @@
-import userReducer from "../features/users/userSlice"
+import userReducer from "../features/user/userSlice"
 import postReducer from "../features/posts/postSlice"
 import { configureStore } from '@reduxjs/toolkit'
 import storage from "redux-persist/lib/storage";

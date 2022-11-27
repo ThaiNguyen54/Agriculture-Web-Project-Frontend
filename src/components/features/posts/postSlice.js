@@ -15,6 +15,10 @@ export const getPostId = (state, postId) => {
     })
 }
 
+export const getUserId = (state, userId) => {
+    
+}
+
 const postSlice = createSlice({
     name: 'post',
     initialState,

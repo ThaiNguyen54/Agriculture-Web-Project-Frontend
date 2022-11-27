@@ -10,7 +10,7 @@ import logo from "../../images/AFlogo.png"
 import { Link } from 'react-router-dom'
 import "../../styles/navbar.css"
 import { Col, Dropdown, Row } from 'react-bootstrap';
-import { logout } from '../features/users/userSlice';
+import { logout } from '../features/user/userSlice';
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux';
 import Scrollnews from '../Scroll_news'

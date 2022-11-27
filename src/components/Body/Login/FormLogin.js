@@ -4,9 +4,9 @@ import "../../../styles/Login.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { userLogin } from "../../features/users/userAction";
+import { userLogin } from "../../features/user/userAction";
 import logo from "../../../images/AFlogo.png";
-import { loginfailed } from "../../features/users/userSlice";
+import { loginfailed } from "../../features/user/userSlice";
 function FormLogin(){
     const [loginname, setLoginname] = useState("");
     const [Password, setpassword] = useState("");

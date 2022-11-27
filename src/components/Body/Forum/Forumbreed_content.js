@@ -17,6 +17,8 @@ function ForumbreedContent(){
     
     const {posts} = useSelector((state) => state.post)
     const postBreed = posts.filter((post) => (post.TagName === "Chăn nuôi"))
+    const {users} = useSelector((state) => state.user)
+
     return(
         <Container>
             <Row>
