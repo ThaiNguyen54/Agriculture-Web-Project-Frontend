@@ -64,53 +64,61 @@ function CreatePost(){
     }
 
     return(
-        <Container>
-            <Row>
-                <Col lg="12">
-                    <Form onSubmit={submitPost}>
-                        <div className="create-post-forum">
-                            <div className="dis-flex specify-create-post">
-                                <img src={createPostImg}></img>
-                                <p>Tạo câu hỏi</p>
-                            </div>
-                            <div className="title-post d-flex">
-                                <p>Chủ đề:</p>
-                                <textarea className="title-post-text" type="text" placeholder="Chủ đề bạn đang thắc mắc" onChange={handleTitle}></textarea>
-                            </div>
-                            <div className="input-all-create-post">
-                                <textarea className="input-create-post" type="text" placeholder="Bạn đang thắc mắc điều gì" onChange={handleContent}></textarea>
-                            </div>
-                                <div className="d-flex bottom-createpost-button">
-                                    <div className="d-flex button-type-createpost">
-                                        <div className="text-type-choosing-button">
-                                            <p>Loại chủ đề: </p>
+        <>
+            {
+                user.userInfo? (
+                    <Container>
+                        <Row>
+                            <Col lg="12">
+                                <Form onSubmit={submitPost}>
+                                    <div className="create-post-forum">
+                                        <div className="dis-flex specify-create-post">
+                                            <img src={createPostImg}></img>
+                                            <p>Tạo câu hỏi</p>
                                         </div>
-                                        <ButtonGroup>
-                                            {radios.map((radio, idx) => (
-                                                <ToggleButton
-                                                key={idx}
-                                                id={`radio-${idx}`}
-                                                type="radio"
-                                                variant={'outline-success'}
-                                                name="radio"
-                                                value={radio.value}
-                                                checked={radioValue === radio.value}
-                                                onChange={(e) => setRadioValue(e.currentTarget.value)}
-                                                >
-                                                {radio.name}
-                                                </ToggleButton>
-                                            ))}
-                                        </ButtonGroup>
+                                        <div className="title-post d-flex">
+                                            <p>Chủ đề:</p>
+                                            <textarea className="title-post-text" type="text" placeholder="Chủ đề bạn đang thắc mắc" onChange={handleTitle}></textarea>
+                                        </div>
+                                        <div className="input-all-create-post">
+                                            <textarea className="input-create-post" type="text" placeholder="Bạn đang thắc mắc điều gì" onChange={handleContent}></textarea>
+                                        </div>
+                                            <div className="d-flex bottom-createpost-button">
+                                                <div className="d-flex button-type-createpost">
+                                                    <div className="text-type-choosing-button">
+                                                        <p>Loại chủ đề: </p>
+                                                    </div>
+                                                    <ButtonGroup>
+                                                        {radios.map((radio, idx) => (
+                                                            <ToggleButton
+                                                            key={idx}
+                                                            id={`radio-${idx}`}
+                                                            type="radio"
+                                                            variant={'outline-success'}
+                                                            name="radio"
+                                                            value={radio.value}
+                                                            checked={radioValue === radio.value}
+                                                            onChange={(e) => setRadioValue(e.currentTarget.value)}
+                                                            >
+                                                            {radio.name}
+                                                            </ToggleButton>
+                                                        ))}
+                                                    </ButtonGroup>
+                                                </div>
+                                                <div className="div-for-button-post">
+                                                    <Button size="sm" className="button-post" type="submit">Đăng</Button>
+                                                </div>
+                                            </div>
                                     </div>
-                                    <div className="div-for-button-post">
-                                        <Button size="sm" className="button-post" type="submit">Đăng</Button>
-                                    </div>
-                                </div>
-                        </div>
-                    </Form>
-                </Col>
-            </Row>
-        </Container>
+                                </Form>
+                            </Col>
+                        </Row>
+                    </Container>
+                ) : (
+                    navigate('/')
+                )
+            }
+        </>     
     );
 }
 

@@ -2,7 +2,6 @@ import React from 'react'
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row';
 import "../../styles/profile.css"
-import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
@@ -13,37 +12,68 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { apiUrl } from '../../Constants/constants';
+import { useNotification } from "use-toast-notification";
+import { Form } from "react-bootstrap";
 
 function Profilesetting() {
   const user = useSelector((state) => state.user);
   const Navigate = useNavigate()
-  const [users, setUsers] = useState(null)
-  console.log(user)
+  const notification = useNotification();
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setUsers({...users, [e.target.name]: value})
-  }   
-
-  const handleSubmit = async event => {
-    event.preventDefault();
-    try {        
-        await axios.put(`${apiUrl}/ver1/authenticate/user/${user.userInfo.id}`, users, {
-            headers:{
-              "Authorization": 'Bearer ' + JSON.parse(localStorage.getItem("user")).accessToken
-            }
-           })
-        Navigate('/profile')
-    } catch (error) {
-      console.log(error.response)
-    }
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [avatar, setAvatar] = useState("")
+  const [bgImg, setBgImg] = useState("")
+  
+  const handleUserName = (e) => {
+    setUsername(e.target.value)
   }
+  const handleEmail = (e) => {
+    setEmail(e.target.value)
+  }
+  const handleAvatar = (e) => {
+    setAvatar(e.target.value)
+  }
+  const handleBgImg = (e) => {
+    setBgImg(e.target.value)
+  }
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    const response = await axios.put(`${apiUrl}/ver1/authenticate/user/${user.userInfo.id}`, {
+        UserName: username,
+        Email: email,
+        Avatar: avatar,
+        BackgroundImg: bgImg,
+        access_token: user.userInfo.token,
+    })
+
+    if(response){
+        try {
+            notification.show({
+                message: 'Cập nhật thành công', 
+                title: 'Delivery Status',
+                variant: 'success'
+            })
+            Navigate('/')
+        } catch(e){
+            notification.show({
+                message: 'Cập nhật thất bại', 
+                title: 'Delivery Status',
+                variant: 'error'
+            })
+            }
+        }else{
+            Navigate('/')
+        }
+    }
 
   return (
     <>
       {
             user.userInfo? (
-                <Container>
+                <Container >
+                
                     <Row>
                       <Nav className="me-auto">
                           <div className='box1'>
@@ -65,8 +95,11 @@ function Profilesetting() {
                             </Card.Text>
                             </Card.Body>
                     </Card>
-                    <Card className='card2' onSubmit={handleSubmit}>
-                            <Card.Body>
+                    
+                    <Card className='card2' >
+                        <Form onSubmit={handleSubmit}>
+
+                        <Card.Body>
                             <Card.Text>
                                 <strong>Tên người dùng: </strong>
                             </Card.Text>
@@ -75,7 +108,7 @@ function Profilesetting() {
                                     type="text"
                                     name="UserName" 
                                     placeholder={user.userInfo.UserName}
-                                    onChange={handleChange}>
+                                    onChange={handleUserName}>
                                 </input>
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
@@ -90,7 +123,7 @@ function Profilesetting() {
                                     type="text"
                                     name="Email" 
                                     placeholder={user.userInfo.Email}
-                                    onChange={handleChange}>
+                                    onChange={handleEmail}>
                                 </input>
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
@@ -105,7 +138,7 @@ function Profilesetting() {
                                     type="text"
                                     name="Avatar" 
                                     placeholder={user.userInfo.Avatar}
-                                    onChange={handleChange}>
+                                    onChange={handleAvatar}>
                                 </input>
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
@@ -120,7 +153,7 @@ function Profilesetting() {
                                     type="text"
                                     name="BackgroundImg" 
                                     placeholder={user.userInfo.BackgroundImg}
-                                    onChange={handleChange}>
+                                    onChange={handleBgImg}>
                                 </input>
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
@@ -131,10 +164,10 @@ function Profilesetting() {
                                 <strong>Danh hiệu: </strong>
                             </Card.Text>
                             <div className="submitbutt">
-                                <Button size="md" className="button-post">Chỉnh Sửa</Button>
+                                <Button size="md" className="button-post" type="submit">Cập nhật</Button>
                             </div>
-
-                        </Card.Body>
+                            </Card.Body>
+                        </Form>
                     </Card>
                 </Container>
             ) : (
