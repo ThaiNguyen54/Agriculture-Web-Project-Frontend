@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import { userLogin } from "./userAction";
-import { getUserById } from "./userAction";
+
 const initialState = {
     userInfo: null,
     status: 'idle',
@@ -33,21 +33,7 @@ const userSlice = createSlice({
         state.status = 'failed'
         state.error = action.error.message
       })
-      .addCase(getUserById.pending, (state) => {
 
-      })
-      .addCase(getUserById.fulfilled, (state, action) => {
-        state.status = 'succeeded'
-        state.users.map((item) => {
-          if(item.UserName !== action.payload.users.UserName)
-          {
-            state.users.push(action.payload.users);
-          }
-        })
-      })
-      .addCase(getUserById.rejected, (state, action) => {
-
-      })
   }
 })
 

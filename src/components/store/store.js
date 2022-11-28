@@ -1,5 +1,6 @@
 import userReducer from "../features/user/userSlice"
 import postReducer from "../features/posts/postSlice"
+import allUserReducer from "../features/users/allUserSlice"
 import { configureStore } from '@reduxjs/toolkit'
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
@@ -13,7 +14,8 @@ const persistConfig = {
 
 const reducer = combineReducers({
     user: userReducer,
-    post: postReducer
+    post: postReducer,
+    alluser: allUserReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, reducer);

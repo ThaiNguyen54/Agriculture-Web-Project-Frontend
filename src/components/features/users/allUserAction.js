@@ -1,16 +1,20 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { apiUrl } from "../../../Constants/constants"
+import axios from "axios";
+
+
 export const getAllUsers = createAsyncThunk(
-    'user/login',
-    async ({ rejectWithValue }) => {
+    'allUser/getdata',
+    async () => {
         try {
-        const response = await axios.get(`${apiUrl}/ver1/authenticate/users`)
-        return response
+        const response = await axios.get(`${apiUrl}/ver1/users`)
+        .catch((err) => {
+            return err
+        })
+        return response.data
         
         } catch (error) {
-            if (error.response && error.response.data.message) {
-                return rejectWithValue(error.response.data.message)
-            } else {
-                return rejectWithValue(error.message)
-            }
+
         }
     }
 )

@@ -15,17 +15,21 @@ export const getPostId = (state, postId) => {
     })
 }
 
-export const getUserId = (state, userId) => {
-    
+export const countPost = (state, userId) => {
+    let count = 0;
+    state.post.posts.map((item) => {
+        if(item.UserID === userId){
+            count++;
+        }
+    })
+    return count
 }
 
 const postSlice = createSlice({
     name: 'post',
     initialState,
     reducers:{
-        getPostId: (state) => {
-            console.log(state)
-        }
+
     },
     extraReducers: (builder) => {
         builder

@@ -1,23 +1,24 @@
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Pen from '../../../images/Pen.png'
-import ph from '../../../images/pointedhand.png'
-import message from '../../../images/Message.png'
-import snb from '../../../images/SellandBuy.png'
 import '../../../styles/forum.css'
 import PostShow from './ShowPost';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { useReducer } from 'react';
-import { postFetch } from '../../features/posts/postFetch';
-import { getPostCrop } from '../../features/posts/postSlice';
+import Pagination from '../../Pagination/Pagination';
+import { useState, useMemo } from 'react';
 function ForumbreedContent(){
     
     const {posts} = useSelector((state) => state.post)
     const postBreed = posts.filter((post) => (post.TagName === "Chăn nuôi"))
-    const {users} = useSelector((state) => state.user)
+
+    let PageSize = 2;
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const currentTableData = useMemo(() => {
+      const firstPageIndex = (currentPage - 1) * PageSize;
+      const lastPageIndex = firstPageIndex + PageSize;
+      return postBreed.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage]);
 
     return(
         <Container>
@@ -29,13 +30,20 @@ function ForumbreedContent(){
                     <h3>Chăn Nuôi</h3>
                 </div>
                 {
-                    postBreed.map((item) => (
+                    currentTableData.map((item) => (
                         <Col lg="12">
                             <PostShow item={item} />
                         </Col>
                     ))
                 }
             </Row>
+            <Pagination
+                className="pagination-bar"
+                currentPage={currentPage}
+                totalCount={postBreed.length}
+                pageSize={PageSize}
+                onPageChange={page => setCurrentPage(page)}
+                />
         </Container>
     );
 }
