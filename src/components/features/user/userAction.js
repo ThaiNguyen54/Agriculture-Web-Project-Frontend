@@ -10,9 +10,8 @@ export const userLogin = createAsyncThunk(
         const response  =  await axios.post(`${apiUrl}/login`, {
             LoginName: email,
             Password: password
-        }).catch((err)=>{
-            return err.response;
         })
+
         return response.data
         
         } catch (error) {
@@ -24,3 +23,4 @@ export const userLogin = createAsyncThunk(
         }
     }
 )
+

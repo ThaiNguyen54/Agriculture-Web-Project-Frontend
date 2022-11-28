@@ -9,8 +9,13 @@ import snb from '../../../images/SellandBuy.png'
 import '../../../styles/forum.css'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { reset } from '../../features/users/allUserSlice';
+import { getAllUsers } from '../../features/users/allUserAction';
 function NewsForum(){
     const post = useSelector((state) => state.post)
+    const {users} = useSelector((state) => state.alluser)
+
     return(
         <Container>
             <Row>
@@ -25,15 +30,19 @@ function NewsForum(){
                         </Card.Header>
                         <Card.Body className='cardbg'>
                             {
-                                post.posts.map((item, idx) => (
-                                    <Link to={`/post/${item._id}`}>
-                                    <Card.Text key={idx}>
-                                        <img className='ph' src={ph} width='25rem' alt='q' />
-                                        {item.Title}
-                                    </Card.Text>
-                                    </Link>
-
-                                ))    
+                                post.posts.map((item, idx) => {
+                                    if(idx < 10){
+                                        return(
+                                            <Link to={`/post/${item._id}`}>
+                                            <Card.Text key={idx}>
+                                                <img className='ph' src={ph} width='25rem' alt='q' />
+                                                {item.Title}
+                                            </Card.Text>
+                                            </Link>
+                                        )
+                                    }
+                                    }
+                                )    
                             }
                         </Card.Body>
                     </Card>

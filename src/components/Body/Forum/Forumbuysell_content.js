@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux';
 import PostShow from './ShowPost';
 function ForumbuysellContent(){
     const {posts} = useSelector((state) => state.post)
-
     const postSell = posts.filter((post) => (post.TagName === "Mua bán"))
+    const {users} = useSelector((state) => state.user)
 
     return(
         <Container>

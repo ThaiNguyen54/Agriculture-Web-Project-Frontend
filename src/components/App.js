@@ -17,9 +17,11 @@ import Post from "../pages/Post";
 import Profile from "../pages/Profile";
 import Setting1 from "../pages/Setting1";
 import Setting2 from "../pages/Setting2";
+import { getAllUsers } from "./features/users/allUserAction";
 function App() {
   const dispatch = useDispatch();
   dispatch(postFetch());
+  dispatch(getAllUsers());
   const persistor = persistStore(store);
   return (
       <PersistGate persistor={persistor}>
