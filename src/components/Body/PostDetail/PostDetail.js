@@ -1,18 +1,48 @@
 import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
+import { Button, Col, Container, Row } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux';
+import {useParams } from 'react-router-dom'
 import { countPost, getPostId } from '../../features/posts/postSlice';
-import profile from '../../../images/profile.png'
 import { MDBIcon } from 'mdb-react-ui-kit';
+import { useState } from 'react';
 import { GetUserId } from '../../features/users/allUserSlice';
-
+import axios from 'axios';
+import { apiUrl } from '../../../Constants/constants';
+import { getCommentPostId } from '../../features/answers/answersSlice';
+import { useNotification } from 'use-toast-notification';
+import { answerFetch } from '../../features/answers/answersFetch';
+import CommentContainer from './CommentContainer';
 const PostDetail = () => {
     const {postId} = useParams();
     const post = useSelector((state) => getPostId(state, postId))
-
+    const dispatch = useDispatch();
+    const {userInfo} = useSelector((state) => state.user)
     const userItem = useSelector((state) => GetUserId(state, post[0].UserID))
     const numPost = useSelector((state) => countPost(state, post[0].UserID))
+    const [text, setText] = useState('');
+    const answers = useSelector((state) => getCommentPostId(state, postId));
+    const [allanswers, setAllAnswers] = useState(answers);
+    const notification = useNotification();
+
+    const submitComment = async() => {
+        const response = await axios.post(`${apiUrl}/ver1/authenticate/answer`, {
+            UserID: userInfo.id,
+            QuestionID: postId,
+            AContent: text,
+            access_token: userInfo.token
+        })
+
+        if(response.data){
+            dispatch(answerFetch());
+            setAllAnswers([...allanswers, response.data.answer[0]]);
+            notification.show({
+                message: 'Bình luận thành công', 
+                title: 'Delivery Status',
+                variant: 'success'
+            })
+            setText('');
+        }
+    }
 
     return (
         <Row>
@@ -37,6 +67,34 @@ const PostDetail = () => {
                             </Col>
                             <Col lg="9" className='detail-post-text'>
                                 <p className="detail-post-text-font">{post[0].QContent}</p>
+                            </Col>
+                        </Row>
+                        <Row className='comment-container'>
+                            <Col lg="12" style={{padding: "0"}}>
+                                <h6>BÌNH LUẬN</h6>
+                                <div className='leave-our-comment d-flex'>
+                                    <div>
+                                        <img src={userInfo.Avatar} alt="avatar"/>
+                                    </div>
+                                    <textarea type="text" placeholder={`Bình luận công khai bằng ` + userInfo.UserName} 
+                                    onChange={(e) => setText(e.target.value)} value={text}/>
+                                    <div className="button-post-comment">
+                                        <Button onClick={submitComment}>Đăng</Button>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row className="comment-container-all-users">
+                            <Col lg="12">
+                                {
+                                    allanswers.map((item, idx) => {
+                                        if(idx < 3){
+                                            return(
+                                                <CommentContainer userInfo={userInfo} item={item} idx={idx}/>
+                                            );
+                                        }
+                                    })
+                                }
                             </Col>
                         </Row>
                     </div>

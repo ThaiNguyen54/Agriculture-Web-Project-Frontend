@@ -18,10 +18,15 @@ import Profile from "../pages/Profile";
 import Setting1 from "../pages/Setting1";
 import Setting2 from "../pages/Setting2";
 import { getAllUsers } from "./features/users/allUserAction";
+import { answerFetch } from "./features/answers/answersFetch";
+import { commentFetch } from "./features/comments/commentFetch";
 function App() {
   const dispatch = useDispatch();
   dispatch(postFetch());
   dispatch(getAllUsers());
+  dispatch(answerFetch());
+  dispatch(commentFetch());
+  
   const persistor = persistStore(store);
   return (
       <PersistGate persistor={persistor}>
@@ -52,7 +57,6 @@ function App() {
           </Route>
           <Route path="login" element = {<Login />} />
           <Route path="register" element={<Register />} />
-          
         </Routes>
       </PersistGate>
   );
