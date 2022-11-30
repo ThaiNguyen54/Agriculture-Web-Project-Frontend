@@ -6,11 +6,22 @@ import { useReducer } from 'react';
 import { getPostCrop } from '../../features/posts/postSlice';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useState, useMemo } from 'react';
+import Pagination from '../../Pagination/Pagination';
 import PostShow from './ShowPost';
 function ForumbuysellContent(){
     const {posts} = useSelector((state) => state.post)
     const postSell = posts.filter((post) => (post.TagName === "Mua bán"))
     const {users} = useSelector((state) => state.user)
+
+    let PageSize = 5;
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const currentTableData = useMemo(() => {
+      const firstPageIndex = (currentPage - 1) * PageSize;
+      const lastPageIndex = firstPageIndex + PageSize;
+      return postSell.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage]);
 
     return(
         <Container>
@@ -22,13 +33,20 @@ function ForumbuysellContent(){
                     <h3>Mua Bán</h3>
                 </div>
                     {
-                        postSell.map((item) => (
+                        currentTableData.map((item) => (
                         <Col lg="12">
                             <PostShow item={item} />
                         </Col>
                     ))
                     }
             </Row>
+            <Pagination
+                className="pagination-bar"
+                currentPage={currentPage}
+                totalCount={postSell.length}
+                pageSize={PageSize}
+                onPageChange={page => setCurrentPage(page)}
+                />
         </Container>
     );
 }
