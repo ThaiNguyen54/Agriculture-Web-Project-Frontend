@@ -6,12 +6,14 @@ import PostShow from './ShowPost';
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from '../../Pagination/Pagination';
 import { useState, useMemo } from 'react';
+import { getPostFromUserId } from '../../features/posts/postSlice';
 function ForumbreedContent(){
+    // const post = useSelector((state) => getPostFromUserId(state, userId))
     
     const {posts} = useSelector((state) => state.post)
     const postBreed = posts.filter((post) => (post.TagName === "Chăn nuôi"))
 
-    let PageSize = 2;
+    let PageSize = 5;
     const [currentPage, setCurrentPage] = useState(1);
 
     const currentTableData = useMemo(() => {
