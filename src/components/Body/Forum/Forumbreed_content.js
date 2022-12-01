@@ -7,9 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Pagination from '../../Pagination/Pagination';
 import { useState, useMemo } from 'react';
 import { getPostFromUserId } from '../../features/posts/postSlice';
-function ForumbreedContent(){
-    // const post = useSelector((state) => getPostFromUserId(state, userId))
-    
+function ForumbreedContent(){    
     const {posts} = useSelector((state) => state.post)
     const postBreed = posts.filter((post) => (post.TagName === "Chăn nuôi"))
 

@@ -78,10 +78,10 @@ function CreatePost(){
                                         </div>
                                         <div className="title-post d-flex">
                                             <p>Chủ đề:</p>
-                                            <textarea className="title-post-text" type="text" placeholder="Chủ đề bạn đang thắc mắc" onChange={handleTitle}></textarea>
+                                            <textarea className="title-post-text" type="text" placeholder="Chủ đề bạn đang thắc mắc" onChange={handleTitle} required></textarea>
                                         </div>
                                         <div className="input-all-create-post">
-                                            <textarea className="input-create-post" type="text" placeholder="Bạn đang thắc mắc điều gì" onChange={handleContent}></textarea>
+                                            <textarea className="input-create-post" type="text" placeholder="Bạn đang thắc mắc điều gì" onChange={handleContent} required></textarea>
                                         </div>
                                             <div className="d-flex bottom-createpost-button">
                                                 <div className="d-flex button-type-createpost">

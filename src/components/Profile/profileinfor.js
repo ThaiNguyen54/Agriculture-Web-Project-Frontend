@@ -38,7 +38,7 @@ function Profileinfor() {
                                 <strong>Ngày tạo:</strong> {user.userInfo.RegisterDate}
                             </Card.Text>
                             <Card.Text>
-                                <strong>Danh hiệu:</strong> Vua buôn bán
+                                <strong>Danh hiệu:</strong> 
                             </Card.Text>
                             </Card.Body>
                     </Card>

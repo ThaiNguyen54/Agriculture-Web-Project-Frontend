@@ -13,7 +13,7 @@ import { useNotification } from 'use-toast-notification';
 import { answerFetch } from '../../features/answers/answersFetch';
 import CommentContainer from './CommentContainer';
 import "../../../styles/postdetail.css"
-import TimeAgo from '../../store/TimeAgo';
+import { Link } from 'react-router-dom';
 
 const PostDetail = () => {
     const {postId} = useParams();
@@ -64,7 +64,9 @@ const PostDetail = () => {
                     <div className='detail-post'>
                         <Row>
                             <Col lg="3" className='detail-post-image'>
-                                <img src={userItem[0].avatarImg || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} className="avatar-post" alt="avatar"/>
+                                <Link>
+                                    <img src={userItem[0].avatarImg || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} className="avatar-post" alt="avatar"/>
+                                </Link>
                                 <p className="username-detail-post">{userItem[0].userName}</p>
                                 <h6>Số bài đăng: {numPost}</h6>
                             </Col>
@@ -79,7 +81,9 @@ const PostDetail = () => {
                                         <h6>BÌNH LUẬN</h6>
                                         <div className='leave-our-comment d-flex'>
                                             <div>
-                                                <img src={userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar"/>
+                                                <Link>
+                                                    <img src={userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar" />
+                                                </Link>
                                             </div>
                                             <textarea type="text" placeholder={`Bình luận công khai bằng ` + userInfo.UserName} 
                                             onChange={(e) => setText(e.target.value)} value={text}/>

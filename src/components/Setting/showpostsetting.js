@@ -10,10 +10,9 @@ import { Button } from 'react-bootstrap';
 import "../../styles/postsetting.css"
 import axios from 'axios';
 import { apiUrl } from '../../Constants/constants';
-import { useNotification } from 'use-toast-notification';
+
 
 function PostShowSetting({item}){
-    const notification = useNotification();
     const [deleted, setDelete] = useState(false)
     const userItem = useSelector((state) => GetUserId(state, item.UserID))
     const user = useSelector((state) => state.user);
@@ -23,13 +22,16 @@ function PostShowSetting({item}){
     }
 
     const handleDelete = async(e) => {
-        const response = await axios.delete(`${apiUrl}/ver1/questions/${item._id}?accessUserId=${item.UserID}`,{
-            access_token: user.userInfo.token,
+        const response = await axios.delete(`${apiUrl}/ver1/authenticate/questions/${item._id}`,{
+            headers:{
+                "access_token":  user.userInfo.token
+            }
         })
-
+        
         window.location.reload(false);
         
         if(response.data){
+            window.location.reload(false);
             setDelete(!deleted);
         }
     }
@@ -68,9 +70,11 @@ function PostShowSetting({item}){
                 )
             }
             <div className='butt'>
-                <Button className='buttons'>
-                    <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
-                </Button>
+                <Link to={`/editpost/${item._id}`}>
+                    <Button className='buttons' >
+                        <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </Button>
+                </Link>
                 <Button className='buttons' onClick={handleDeleteQuestion}>
                     <i className="fa fa-trash" aria-hidden="true"></i>
                 </Button>

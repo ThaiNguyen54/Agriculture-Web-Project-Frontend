@@ -31,7 +31,7 @@ function Profilesetting() {
     const response = await axios.put(`${apiUrl}/ver1/authenticate/user/${user.userInfo.id}`, update, {
         headers:{
             "access_token":  user.userInfo.token
-          }
+        }
     })
 
     if(response){

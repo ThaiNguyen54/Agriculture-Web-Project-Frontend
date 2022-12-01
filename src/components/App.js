@@ -20,6 +20,7 @@ import Setting2 from "../pages/Setting2";
 import { getAllUsers } from "./features/users/allUserAction";
 import { answerFetch } from "./features/answers/answersFetch";
 import { commentFetch } from "./features/comments/commentFetch";
+import EditPost from "./Setting/postedit";
 function App() {
   const dispatch = useDispatch();
   dispatch(postFetch());
@@ -44,7 +45,7 @@ function App() {
             <Route path="buysell" >
               <Route index element={<ForumBuySell />} />
             </Route>
-            <Route path="profile" >       
+            <Route path="profile/:userId" >       
               <Route index element={<Profile/>}/>
             </Route>
             <Route path="profilesetting/:userId">
@@ -53,6 +54,7 @@ function App() {
             <Route path="postsetting/:userId">
               <Route index element={<Setting2/>}/>
             </Route>
+            <Route path={`editpost/:postId`} element = {<EditPost/>} />
             <Route path={"post/:postId"} element={<Post />}/>
           </Route>
           <Route path="login" element = {<Login />} />
