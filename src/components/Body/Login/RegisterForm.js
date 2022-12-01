@@ -45,7 +45,7 @@ function RegisterForm(){
                     <input className="input100" 
                         type="text" 
                         name="UserName" 
-                        placeholder="User Name" 
+                        placeholder="Tên Người Dùng" 
                         onChange={(e) => {
                         setUsername(e.target.value)}}>
                     </input>
@@ -58,7 +58,7 @@ function RegisterForm(){
                     <input className="input100" 
                         type="text" 
                         name="LoginName" 
-                        placeholder="Login Name" 
+                        placeholder="Tên Đăng Nhập" 
                         onChange={(e) => {
                         setLoginname(e.target.value)}}>
                     </input>
@@ -84,7 +84,7 @@ function RegisterForm(){
                     <input className="input100" 
                         type="password"
                         name="Password" 
-                        placeholder="Enter Password"
+                        placeholder="Mật Khẩu"
                         onChange={(e) => {
                             setPassword(e.target.value)
                         }}>
@@ -98,7 +98,7 @@ function RegisterForm(){
                     <input className="input100" 
                         type="password"
                         name="apassword" 
-                        placeholder="Enter Password Again"
+                        placeholder="Nhập Lại Mật Khẩu"
                         onChange={(e) => {
                             setAPassword(e.target.value)
                         }}>
@@ -110,15 +110,15 @@ function RegisterForm(){
                 </div>
                 <div className="container-login100-form-btn">
                     <button className="login100-form-btn" type="submit">
-                        Register
+                        Đăng Ký
                     </button>
                 </div>
                 <div className="text-center p-t-12">
                     <span className="txt1">
-                        Already have an account?
+                        Đã Có Tài Khoản?
                     </span>
                     <a className="txt1" href="/login">
-                        Click here
+                        Tham Gia Ngay!
                     </a>
                 </div>
             </form>

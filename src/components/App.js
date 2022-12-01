@@ -46,15 +46,16 @@ function App() {
             <Route path="buysell" >
               <Route index element={<ForumBuySell />} />
             </Route>
-            <Route path="profile" >       
+            <Route path="profile/:userId" >       
               <Route index element={<Profile/>}/>
             </Route>
-            <Route path="profilesetting">
+            <Route path="profilesetting/:userId">
               <Route index element={<Setting1/>}/>
             </Route>
-            <Route path="postsetting">
+            <Route path="postsetting/:userId">
               <Route index element={<Setting2/>}/>
             </Route>
+            <Route path={`editpost/:postId`} element = {<EditPost/>} />
             <Route path={"post/:postId"} element={<Post />}/>
           </Route>
           <Route path="login" element = {<Login />} />

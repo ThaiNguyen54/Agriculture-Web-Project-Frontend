@@ -9,7 +9,7 @@ const ReplyComment = ({item}) => {
     return (
         <div className='reply-comment-all d-flex'>
             <div>
-                <img alt="avatar-user" src={user[0].avatarImg}></img>
+                <img alt="avatar-user" src={user[0].avatarImg || "https://cdn-icons-png.flaticon.com/512/44/44948.png"}></img>
             </div>
             <p>{item.CContent}</p>
         </div>

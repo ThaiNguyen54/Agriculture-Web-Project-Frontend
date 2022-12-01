@@ -58,10 +58,11 @@ const CommentContainer = ({userInfo, item, idx}) => {
     }
 
     const handleDelete = async(e) => {
-        const response = await axios.delete(`${apiUrl}/ver1/answers/${item._id}?accessUserId=${userInfo.id}`,{
-            access_token: userInfo.token,
+        const response = await axios.delete(`${apiUrl}/ver1/authenticate/answers/${item._id}`,{
+            headers:{
+                "access_token":  userInfo.token
+            },
             AnswerId: item._id,
-            accessUserId: userInfo.id
         })
 
         window.location.reload(false);
@@ -109,7 +110,9 @@ const CommentContainer = ({userInfo, item, idx}) => {
                 <div className='comment-container-all-users-array d-flex'>
                     <Col lg="1">
                         <div>
-                            <img src={user[0].avatarImg} alt="avatar"/>
+                            <Link>
+                                <img src={user[0].avatarImg} alt="avatar"/>
+                            </Link>
                         </div>
                     </Col>
                     <Col lg="9">
@@ -175,7 +178,7 @@ const CommentContainer = ({userInfo, item, idx}) => {
                 replying && (
                     <div className="reply-comment-all d-flex">
                         <div>
-                            <img src={userInfo.Avatar} alt="avatar"/>
+                            <img src={userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar"/>
                         </div>
                         <textarea onChange={(e) => setText(e.target.value)} value={text}/>
                         <div className='mt-1'>

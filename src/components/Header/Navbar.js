@@ -58,15 +58,15 @@ const NavBar = () => {
                       <Link className='button-post' to={`uploadpost/accessUserId=${user.userInfo.id}`}>Đăng bài</Link>
                     </div>
                     <Nav.Item><img className="image-item item-left" src={notification} alt="buying"></img></Nav.Item>
-                    <Nav.Item onClick={() => Navigate('/profilesetting')}><img className="image-item item-left" src={setting} alt="buying"></img></Nav.Item>
+                    <Nav.Item onClick={() => Navigate(`/profilesetting/${user.userInfo.id}`)}><img className="image-item item-left" src={setting} alt="buying"></img></Nav.Item>
                     <Dropdown align="end">
                       <Dropdown.Toggle id="dropdown-custom-components" as={CustomToggle} style="border-radius: 50%;">
                         <img className="image-item item-left" src={user.userInfo.Avatar || User} alt="buying"></img>  
                       </Dropdown.Toggle>
                       <Dropdown.Menu className='dropdown-custom'>
                           <Dropdown.ItemText eventKey="1" className='dropdown-custom-a'>Xin Chào, {user.userInfo.UserName}</Dropdown.ItemText>
-                          <Dropdown.Item eventKey="2" onClick={() => Navigate('/profile')}>Tài Khoản</Dropdown.Item>
-                          <Dropdown.Item eventKey="3" onClick={() => Navigate('/profilesetting')}>Cài Đặt</Dropdown.Item>
+                          <Dropdown.Item eventKey="2" onClick={() => Navigate(`/profile/${user.userInfo.id}`)}>Tài Khoản</Dropdown.Item>
+                          <Dropdown.Item eventKey="3" onClick={() => Navigate(`/profilesetting/${user.userInfo.id}`)}>Cài Đặt</Dropdown.Item>
                           <Dropdown.Item eventKey="1" onClick={() => dispatch(logout())}>Đăng Xuất</Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

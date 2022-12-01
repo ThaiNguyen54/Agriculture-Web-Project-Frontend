@@ -87,7 +87,9 @@ const PostDetail = () => {
                     <div className='detail-post'>
                         <Row>
                             <Col lg="3" className='detail-post-image'>
-                                <img src={userItem[0].avatarImg} className="avatar-post" alt="avatar"/>
+                                <Link>
+                                    <img src={userItem[0].avatarImg || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} className="avatar-post" alt="avatar"/>
+                                </Link>
                                 <p className="username-detail-post">{userItem[0].userName}</p>
                                 <h6>Số bài đăng: {numPost}</h6>
                             </Col>
@@ -95,21 +97,32 @@ const PostDetail = () => {
                                 <p className="detail-post-text-font">{post[0].QContent}</p>
                             </Col>
                         </Row>
-                        <Row className='comment-container'>
-                            <Col lg="12" style={{padding: "0"}}>
-                                <h6>BÌNH LUẬN</h6>
-                                <div className='leave-our-comment d-flex'>
-                                    <div>
-                                        <img src={userInfo.Avatar} alt="avatar"/>
-                                    </div>
-                                    <textarea type="text" placeholder={`Bình luận công khai bằng ` + userInfo.UserName} 
-                                    onChange={(e) => setText(e.target.value)} value={text}/>
-                                    <div className="button-post-comment">
-                                        <Button onClick={submitComment}>Đăng</Button>
-                                    </div>
-                                </div>
-                            </Col>
-                        </Row>
+                        {
+                            userInfo? (
+                                <Row className='comment-container'>
+                                    <Col lg="12" style={{padding: "0"}}>
+                                        <h6>BÌNH LUẬN</h6>
+                                        <div className='leave-our-comment d-flex'>
+                                            <div>
+                                                <Link>
+                                                    <img src={userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar" />
+                                                </Link>
+                                            </div>
+                                            <textarea type="text" placeholder={`Bình luận công khai bằng ` + userInfo.UserName} 
+                                            onChange={(e) => setText(e.target.value)} value={text}/>
+                                            <div className="button-post-comment">
+                                                <Button onClick={submitComment}>Đăng</Button>
+                                            </div>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                
+                            ):(
+                                <Button className='buttonl'>
+                                    <a className='buttonlogin' href='/login'>Đăng nhập để bình luận bài viết này</a>
+                                </Button>
+                            )
+                        }
                         <Row className="comment-container-all-users">
                             <Col lg="12">
                                 {

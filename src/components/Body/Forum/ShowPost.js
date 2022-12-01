@@ -20,7 +20,7 @@ function PostShow({item}){
         <div className='create-post-forum post-show'>
             <Link to={`/post/${item._id}`} style={{textDecoration:"none"}}>
             <div className="avt-name-post d-flex">
-                <img src={userItem[0].avatarImg} style={{borderRadius: "100%"}}></img>
+                <img src={userItem[0].avatarImg || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} style={{borderRadius: "100%"}}></img>
                 <p>{userItem[0].userName}</p>
                 <TimeAgo timestamp={item.PostedDate} />
             </div>

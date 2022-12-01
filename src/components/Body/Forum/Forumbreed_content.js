@@ -11,7 +11,7 @@ function ForumbreedContent(){
     // const post = useSelector((state) => getPostFromUserId(state, userId))
     
     const {likes} = useSelector((state) => state.like);
-    console.log(likes);
+
     const {posts} = useSelector((state) => state.post)
     const postBreed = posts.filter((post) => (post.TagName === "Chăn nuôi"))
 

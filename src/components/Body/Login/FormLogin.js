@@ -36,14 +36,14 @@ function FormLogin(){
         <div className="limiter">
             <div className="login100-form validate-form">
                 <span className="login100-form-title">
-                    Member Login
+                    Đăng Nhập Thành Viên
                 </span>
                 <form onSubmit={HandleSubmit}>
                     <div className="wrap-input100 validate-input">
                         <input className="input100" 
                             type="text" 
                             name="LoginName" 
-                            placeholder="Login Name" 
+                            placeholder="Tên Đăng Nhập" 
                             onChange={(e) => {
                             setLoginname(e.target.value)}}>
                         </input>
@@ -56,7 +56,7 @@ function FormLogin(){
                         <input className="input100" 
                             type="password"
                             name="Password" 
-                            placeholder="Password"
+                            placeholder="Mật Khẩu"
                             onChange={(e) => {
                                 setpassword(e.target.value)
                             }}>
@@ -68,17 +68,17 @@ function FormLogin(){
                     </div>
                     <div className="container-login100-form-btn">
                         <button className="login100-form-btn" type="submit">
-                            Login
+                            Đăng Nhập
                         </button>
                     </div>
                 </form>
                 <p>{loginStatus}</p>
                 <div className="text-center p-t-12">
                     <span className="txt1">
-                        Don't have account?
+                        Bạn Chưa Có Tài Khoản?
                     </span>
                     <a className="txt1" href="/register">
-                        Click here
+                        Đăng Ký Ngay!
                     </a>
                 </div>
             </div>
