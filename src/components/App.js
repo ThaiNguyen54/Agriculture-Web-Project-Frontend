@@ -18,10 +18,19 @@ import Profile from "../pages/Profile";
 import Setting1 from "../pages/Setting1";
 import Setting2 from "../pages/Setting2";
 import { getAllUsers } from "./features/users/allUserAction";
+import { answerFetch } from "./features/answers/answersFetch";
+import { commentFetch } from "./features/comments/commentFetch";
+import EditPost from "./Setting/postedit";
+import { likeFetch } from "./features/likes/likeFetch";
+
 function App() {
   const dispatch = useDispatch();
   dispatch(postFetch());
   dispatch(getAllUsers());
+  dispatch(answerFetch());
+  dispatch(commentFetch());
+  dispatch(likeFetch());
+  
   const persistor = persistStore(store);
   return (
       <PersistGate persistor={persistor}>
@@ -39,20 +48,20 @@ function App() {
             <Route path="buysell" >
               <Route index element={<ForumBuySell />} />
             </Route>
-            <Route path="profile" >       
+            <Route path="profile/:userId" >       
               <Route index element={<Profile/>}/>
             </Route>
-            <Route path="profilesetting">
+            <Route path="profilesetting/:userId">
               <Route index element={<Setting1/>}/>
             </Route>
-            <Route path="postsetting">
+            <Route path="postsetting/:userId">
               <Route index element={<Setting2/>}/>
             </Route>
+            <Route path={`editpost/:postId`} element = {<EditPost/>} />
             <Route path={"post/:postId"} element={<Post />}/>
           </Route>
           <Route path="login" element = {<Login />} />
           <Route path="register" element={<Register />} />
-          
         </Routes>
       </PersistGate>
   );

@@ -6,12 +6,16 @@ import PostShow from './ShowPost';
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from '../../Pagination/Pagination';
 import { useState, useMemo } from 'react';
+import { getPostFromUserId } from '../../features/posts/postSlice';
 function ForumbreedContent(){
+    // const post = useSelector((state) => getPostFromUserId(state, userId))
     
+    const {likes} = useSelector((state) => state.like);
+
     const {posts} = useSelector((state) => state.post)
     const postBreed = posts.filter((post) => (post.TagName === "Chăn nuôi"))
 
-    let PageSize = 2;
+    let PageSize = 5;
     const [currentPage, setCurrentPage] = useState(1);
 
     const currentTableData = useMemo(() => {
@@ -24,10 +28,7 @@ function ForumbreedContent(){
         <Container>
             <Row>
                 <div className='content-news-first'>
-                    <h3>Kiến Thức Nhà Nông</h3>
-                </div>
-                <div className='content-news-first'>
-                    <h3>Chăn Nuôi</h3>
+                    <h3>Kiến Thức Nhà Nông - Chăn nuôi</h3>
                 </div>
                 {
                     currentTableData.map((item) => (

@@ -1,0 +1,17 @@
+.buttons{
+    margin-left: 10px;
+}
+
+.butt{
+    position: relative;
+    margin-left: 600px;
+    margin-top: -40px;
+}
+
+.font-delete-comment{
+    color: rgb(224, 42, 42);
+}
+
+.button-delete-comment{
+    background-color: red;
+}

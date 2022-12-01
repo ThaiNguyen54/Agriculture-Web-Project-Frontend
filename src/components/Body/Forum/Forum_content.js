@@ -15,7 +15,7 @@ import { getAllUsers } from '../../features/users/allUserAction';
 function NewsForum(){
     const post = useSelector((state) => state.post)
     const {users} = useSelector((state) => state.alluser)
-
+    
     return(
         <Container>
             <Row>
@@ -33,11 +33,11 @@ function NewsForum(){
                                 post.posts.map((item, idx) => {
                                     if(idx < 10){
                                         return(
-                                            <Link to={`/post/${item._id}`}>
-                                            <Card.Text key={idx}>
-                                                <img className='ph' src={ph} width='25rem' alt='q' />
-                                                {item.Title}
-                                            </Card.Text>
+                                            <Link to={`/post/${item._id}`}  className="text-forum-site">
+                                                <Card.Text key={idx}>
+                                                    <img className='ph' src={ph} width='25rem' alt='q' />
+                                                    {item.Title.substring(0, 60)}...
+                                                </Card.Text>
                                             </Link>
                                         )
                                     }

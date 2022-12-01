@@ -15,6 +15,14 @@ export const getPostId = (state, postId) => {
     })
 }
 
+export const getPostFromUserId = (state, userId) => {
+    return state.post.posts.filter((item) => {
+        if(item.UserID === userId){
+            return item
+        }
+    })
+}
+
 export const countPost = (state, userId) => {
     let count = 0;
     state.post.posts.map((item) => {
@@ -37,7 +45,10 @@ const postSlice = createSlice({
                 state.status = 'loading'
             })
             .addCase(postFetch.fulfilled, (state, action) => {
-                state.posts = action.payload
+                var sorted_answer = action.payload.sort((a, b) => {
+                    return new Date(a.PostedDate).getTime() - new Date(b.PostedDate).getTime()
+                }).reverse();
+                state.posts = sorted_answer
                 state.status = 'success'
             })
             .addCase(postFetch.rejected, (state) => {

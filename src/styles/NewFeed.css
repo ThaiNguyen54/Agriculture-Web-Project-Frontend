@@ -114,8 +114,8 @@
 }
 
 .Whatnew p{
-    padding: 0.5rem;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .Forum{
@@ -123,6 +123,10 @@
     padding: 1rem;
     margin-right: 1rem;
     border-radius: 1rem;
+}
+
+.Forum p{
+    font-family: 'Montserrat', sans-serif;
 }
 
 .hyper-navbar{
@@ -245,6 +249,7 @@
     background-color: #B2C8DF;
     border-radius: 1rem;
     width: 97%;
+    padding: 0.4rem 1rem;
     font-family: 'Montserrat', sans-serif;
 }
 
