@@ -98,8 +98,10 @@ const CommentContainer = ({userInfo, item, idx}) => {
     }
 
     useEffect(() => {
-        if(userInfo.id === item.UserID){
-            setEditAuth(true)
+        if(userInfo){
+            if(userInfo.id === item.UserID){
+                setEditAuth(true)
+            }
         }
     }, [copyComment])
 

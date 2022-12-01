@@ -7,6 +7,7 @@ import { MDBIcon } from 'mdb-react-ui-kit';
 import { useState } from 'react';
 import { GetUserId } from '../../features/users/allUserSlice';
 import axios from 'axios';
+import "../../../styles/postdetail.css"
 import { apiUrl } from '../../../Constants/constants';
 import { getCommentPostId } from '../../features/answers/answersSlice';
 import { useNotification } from 'use-toast-notification';
@@ -35,8 +36,7 @@ const PostDetail = () => {
             QuestionID: postId,
             access_token: userInfo.token
         })
-
-        console.log(response);
+        
         if(response.data.success === false){
             dispatch(likeFetch());
             setLikeCount(likes--);
@@ -116,7 +116,6 @@ const PostDetail = () => {
                                         </div>
                                     </Col>
                                 </Row>
-                                
                             ):(
                                 <Button className='buttonl'>
                                     <a className='buttonlogin' href='/login'>Đăng nhập để bình luận bài viết này</a>
