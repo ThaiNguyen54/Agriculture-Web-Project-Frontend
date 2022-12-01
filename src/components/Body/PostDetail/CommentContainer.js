@@ -95,7 +95,7 @@ const CommentContainer = ({userInfo, item, idx}) => {
             dispatch(commentFetch());
         }
     }
-
+    
 
     return (
         <div key={idx} className="comment-all">
@@ -141,11 +141,18 @@ const CommentContainer = ({userInfo, item, idx}) => {
                     </Col>
                 </div>
             </Row>
-            <div className='d-flex like-reply-ago'>
-                <Link>Like</Link>
-                <Link onClick={handleReply}>Reply</Link>
-                <TimeAgo timestamp={item.PostedDate} />
-            </div>
+            {
+                userInfo? (
+                    <div className='d-flex like-reply-ago'>
+                        <Link>Like</Link>
+                        <Link onClick={handleReply}>Reply</Link>
+                        <TimeAgo timestamp={item.PostedDate} />
+                    </div>
+                ) : (
+                    <TimeAgo timestamp={item.PostedDate} />
+                )
+            }
+            
             {
                 comments.map((item, idx) => {
                     if(idx < 3){
