@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
-import {useParams } from 'react-router-dom'
+import {Link, useParams } from 'react-router-dom'
 import { countPost, getPostId } from '../../features/posts/postSlice';
 import { MDBIcon } from 'mdb-react-ui-kit';
 import { useState } from 'react';
@@ -12,6 +12,8 @@ import { getCommentPostId } from '../../features/answers/answersSlice';
 import { useNotification } from 'use-toast-notification';
 import { answerFetch } from '../../features/answers/answersFetch';
 import CommentContainer from './CommentContainer';
+import { likeCountPost } from '../../features/likes/likeSlice';
+import { likeFetch } from '../../features/likes/likeFetch';
 const PostDetail = () => {
     const {postId} = useParams();
     const post = useSelector((state) => getPostId(state, postId))
@@ -23,6 +25,27 @@ const PostDetail = () => {
     const answers = useSelector((state) => getCommentPostId(state, postId));
     const [allanswers, setAllAnswers] = useState(answers);
     const notification = useNotification();
+    let likes = useSelector((state) => likeCountPost(state, postId));
+    const [likeCount, setLikeCount] = useState(likes);
+
+    const handleLikePost = async(e) => {
+        e.preventDefault();
+        const response = await axios.post(`${apiUrl}/ver1/authenticate/post-like`, {
+            UserID: userInfo.id,
+            QuestionID: postId,
+            access_token: userInfo.token
+        })
+
+        console.log(response);
+        if(response.data.success === false){
+            dispatch(likeFetch());
+            setLikeCount(likes--);
+        }
+        if(response.data.success){
+            dispatch(likeFetch());
+            setLikeCount(likes++);
+        }
+    }
 
     const submitComment = async() => {
         const response = await axios.post(`${apiUrl}/ver1/authenticate/answer`, {
@@ -51,8 +74,11 @@ const PostDetail = () => {
                     <Col lg="10">
                         <h3>{post[0].Title}</h3>
                     </Col>
-                    <Col lg="2">
-                        <MDBIcon icon='thumbs-o-up' className='m-1' size='2x' />
+                    <Col lg="2" className="d-flex">
+                        <Link onClick={handleLikePost}>
+                            <MDBIcon icon='thumbs-o-up' className='m-1' size='2x' />
+                        </Link>
+                        <h3 className='like-count-font'>{likeCount}</h3>
                     </Col>
                 </Row>
             </div>

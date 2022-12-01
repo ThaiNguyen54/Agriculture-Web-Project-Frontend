@@ -3,20 +3,20 @@ import React, {useEffect, useState} from "react";
 
 function TempApp(search){
     const[ city, setCity] = useState(null);
-    useEffect(() => {
-        const fetchApi = async() =>
-        {
-            const url =`http://api.openweathermap.org/data/2.5/weather?q=${search.name}&units=metric&appid=560ff3056a78dbdcc8705ba41dec095a`;
-            const response = await fetch(url);
-            const resJson = await response.json();
-            if(resJson){
-                setCity(resJson);
-            }else{
-                setCity("No data found");
-            }
-        }
-        fetchApi();
-    }, [search])
+    // useEffect(() => {
+    //     const fetchApi = async() =>
+    //     {
+    //         const url =`http://api.openweathermap.org/data/2.5/weather?q=${search.name}&units=metric&appid=560ff3056a78dbdcc8705ba41dec095a`;
+    //         const response = await fetch(url);
+    //         const resJson = await response.json();
+    //         if(resJson){
+    //             setCity(resJson);
+    //         }else{
+    //             setCity("No data found");
+    //         }
+    //     }
+    //     fetchApi();
+    // }, [search])
 
     return (
         city?(

@@ -14,6 +14,16 @@ export const getCommentPostId = (state, postId) => {
     })
 }
 
+export const getCommentCount = (state, postId) => {
+    let count = 0;
+    state.answer.answers.filter((item) => {
+        if(item.QuestionID === postId){
+            count++;
+        }
+    })
+    return count;
+}
+
 export const getCommentWithoutPostId = (state, postId) => {
     return state.answer.answers.filter((item) => {
         if(item.QuestionID !== postId){

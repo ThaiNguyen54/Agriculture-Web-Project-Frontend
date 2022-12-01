@@ -10,6 +10,8 @@ import { getPostFromUserId } from '../../features/posts/postSlice';
 function ForumbreedContent(){
     // const post = useSelector((state) => getPostFromUserId(state, userId))
     
+    const {likes} = useSelector((state) => state.like);
+    console.log(likes);
     const {posts} = useSelector((state) => state.post)
     const postBreed = posts.filter((post) => (post.TagName === "Chăn nuôi"))
 
@@ -26,10 +28,7 @@ function ForumbreedContent(){
         <Container>
             <Row>
                 <div className='content-news-first'>
-                    <h3>Kiến Thức Nhà Nông</h3>
-                </div>
-                <div className='content-news-first'>
-                    <h3>Chăn Nuôi</h3>
+                    <h3>Kiến Thức Nhà Nông - Chăn nuôi</h3>
                 </div>
                 {
                     currentTableData.map((item) => (
