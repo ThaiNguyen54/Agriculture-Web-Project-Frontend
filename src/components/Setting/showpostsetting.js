@@ -10,12 +10,17 @@ import { Button } from 'react-bootstrap';
 import "../../styles/postsetting.css"
 import axios from 'axios';
 import { apiUrl } from '../../Constants/constants';
+import { getCommentCount } from '../features/answers/answersSlice';
+import { likeCountPost } from '../features/likes/likeSlice';
+
 
 
 function PostShowSetting({item}){
     const [deleted, setDelete] = useState(false)
     const userItem = useSelector((state) => GetUserId(state, item.UserID))
     const user = useSelector((state) => state.user);
+    const comments = useSelector((state) => getCommentCount(state, item._id))
+    const likes = useSelector((state) => likeCountPost(state, item._id));
 
     const handleDeleteQuestion = () => {
         setDelete(!deleted);
@@ -52,9 +57,9 @@ function PostShowSetting({item}){
             </div>
             <div className="d-flex comment-post-title">
                 <img src={check}></img>
-                <p>Đã xem: 20</p>
+                <p>Lượt thích: {likes}</p>
                 <img src={comment}></img>
-                <p>Trả lời: 15</p>
+                <p>Trả lời: {comments}</p>
             </div>
             </Link>
             {

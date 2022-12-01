@@ -6,10 +6,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetUserId } from '../../features/users/allUserSlice';
 import TimeAgo from '../../store/TimeAgo';
 import { useEffect } from 'react';
+import { getCommentCount, getCommentPostId, getCountComment } from '../../features/answers/answersSlice';
+import { likeCountPost } from '../../features/likes/likeSlice';
 
 function PostShow({item}){
 
     const userItem = useSelector((state) => GetUserId(state, item.UserID))
+    
+    const comments = useSelector((state) => getCommentCount(state, item._id))
+    const likes = useSelector((state) => likeCountPost(state, item._id));
 
     return(
         <div className='create-post-forum post-show'>
@@ -27,9 +32,9 @@ function PostShow({item}){
             </div>
             <div className="d-flex comment-post-title">
                 <img src={check}></img>
-                <p>Đã xem: 20</p>
+                <p>Lượt thích: {likes}</p>
                 <img src={comment}></img>
-                <p>Trả lời: 15</p>
+                <p>Trả lời: {comments}</p>
             </div>
             </Link>
         </div>

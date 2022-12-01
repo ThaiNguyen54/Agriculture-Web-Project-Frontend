@@ -25,10 +25,7 @@ function ForumcropContent(){
         <Container>
             <Row>
                 <div className='content-news-first'>
-                    <h3>Kiến Thức Nhà Nông</h3>
-                </div>
-                <div className='content-news-first'>
-                    <h3>Trồng Trọt</h3>
+                    <h3>Kiến Thức Nhà Nông - Trồng Trọt</h3>
                 </div>
                     {
                         currentTableData.map((item) => (

@@ -21,12 +21,15 @@ import { getAllUsers } from "./features/users/allUserAction";
 import { answerFetch } from "./features/answers/answersFetch";
 import { commentFetch } from "./features/comments/commentFetch";
 import EditPost from "./Setting/postedit";
+import { likeFetch } from "./features/likes/likeFetch";
+
 function App() {
   const dispatch = useDispatch();
   dispatch(postFetch());
   dispatch(getAllUsers());
   dispatch(answerFetch());
   dispatch(commentFetch());
+  dispatch(likeFetch());
   
   const persistor = persistStore(store);
   return (

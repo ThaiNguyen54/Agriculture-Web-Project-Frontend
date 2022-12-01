@@ -29,9 +29,7 @@ function ForumbuysellContent(){
                 <div className='content-news-first'>
                     <h3>Chợ Nhà Nông - Mua Bán Rao Vặt Nông Nghiệp</h3>
                 </div>
-                <div className='content-news-first'>
-                    <h3>Mua Bán</h3>
-                </div>
+
                     {
                         currentTableData.map((item) => (
                         <Col lg="12">

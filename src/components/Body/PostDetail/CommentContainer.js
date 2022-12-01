@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
 import TimeAgo from '../../store/TimeAgo';
@@ -24,6 +24,7 @@ const CommentContainer = ({userInfo, item, idx}) => {
     const comments = useSelector((state) => getCommentReplyId(state, item._id))
     const user = useSelector((state) => GetUserId(state, item.UserID))
     const [copyComment, setCopyComment] = useState(comments);
+    const [editAuth, setEditAuth] = useState(false);
     const dispatch = useDispatch();
     const notification = useNotification();
     const [edit, setEdit] = useState(false);
@@ -95,7 +96,15 @@ const CommentContainer = ({userInfo, item, idx}) => {
             dispatch(commentFetch());
         }
     }
-    
+
+    useEffect(() => {
+        if(userInfo){
+            if(userInfo.id === item.UserID){
+                setEditAuth(true)
+            }
+        }
+    }, [copyComment])
+
 
     return (
         <div key={idx} className="comment-all">
@@ -135,10 +144,20 @@ const CommentContainer = ({userInfo, item, idx}) => {
                         )
                     }
                     </Col>
-                    <Col lg="2" className='edit-delete'>
-                        <Link onClick={handleEditAnswer}>Edit</Link>
-                        <Link onClick={handleDeleteAnswer}>Delete</Link>
-                    </Col>
+                    {
+                        editAuth?
+                        (
+                            <Col lg="2" className='edit-delete'>
+                                <Link onClick={handleEditAnswer}>Edit</Link>
+                                <Link onClick={handleDeleteAnswer}>Delete</Link>
+                            </Col>
+                        )
+                        :
+                        (
+                            <></>
+                        )
+                    }
+ 
                 </div>
             </Row>
             {

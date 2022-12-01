@@ -3,6 +3,7 @@ import postReducer from "../features/posts/postSlice";
 import allUserReducer from "../features/users/allUserSlice";
 import answerReducer from "../features/answers/answersSlice";
 import commentReducer from "../features/comments/commentSlice";
+import likeReducer from "../features/likes/likeSlice";
 import { configureStore } from '@reduxjs/toolkit'
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
@@ -19,7 +20,8 @@ const reducer = combineReducers({
     post: postReducer,
     alluser: allUserReducer,
     answer: answerReducer,
-    comment: commentReducer
+    comment: commentReducer,
+    like: likeReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, reducer);
