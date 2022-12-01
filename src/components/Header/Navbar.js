@@ -66,7 +66,7 @@ const NavBar = () => {
                       <Dropdown.Menu className='dropdown-custom'>
                           <Dropdown.ItemText eventKey="1" className='dropdown-custom-a'>Xin Chào, {user.userInfo.UserName}</Dropdown.ItemText>
                           <Dropdown.Item eventKey="2" onClick={() => Navigate('/profile')}>Tài Khoản</Dropdown.Item>
-                          <Dropdown.Item eventKey="3" onClick={() => Navigate('/profilesetting')}>Cài Đặt</Dropdown.Item>
+                          <Dropdown.Item eventKey="3" onClick={() => Navigate(`/profilesetting/${user.userInfo.id}`)}>Cài Đặt</Dropdown.Item>
                           <Dropdown.Item eventKey="1" onClick={() => dispatch(logout())}>Đăng Xuất</Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>

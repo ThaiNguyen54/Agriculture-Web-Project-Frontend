@@ -23,7 +23,7 @@ function Profileinfor() {
                     </Row>
                     <Card className='card1'>
                             <Card.Img className="card-news-image" variant="top" src={user.userInfo.BackgroundImg} />
-                            <Card.Img className='userpic' src={user.userInfo.Avatar || "https://cdn.iconscout.com/icon/free/png-256/user-1648810-1401302.png"}/>
+                            <Card.Img className='userpic' src={user.userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"}/>
                             <Card.Body>
                             <Card.Title className='un'>{user.userInfo.UserName}</Card.Title>
                             </Card.Body>

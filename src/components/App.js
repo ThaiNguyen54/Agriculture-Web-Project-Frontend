@@ -47,10 +47,10 @@ function App() {
             <Route path="profile" >       
               <Route index element={<Profile/>}/>
             </Route>
-            <Route path="profilesetting">
+            <Route path="profilesetting/:userId">
               <Route index element={<Setting1/>}/>
             </Route>
-            <Route path="postsetting">
+            <Route path="postsetting/:userId">
               <Route index element={<Setting2/>}/>
             </Route>
             <Route path={"post/:postId"} element={<Post />}/>

@@ -158,7 +158,7 @@ const CommentContainer = ({userInfo, item, idx}) => {
                 replying && (
                     <div className="reply-comment-all d-flex">
                         <div>
-                            <img src={userInfo.Avatar} alt="avatar"/>
+                            <img src={userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar"/>
                         </div>
                         <textarea onChange={(e) => setText(e.target.value)} value={text}/>
                         <div className='mt-1'>
