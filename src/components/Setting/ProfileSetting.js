@@ -70,7 +70,7 @@ function Profilesetting() {
                           </div>
                       </Nav>
                       <div className='roww'></div>
-                    </Row> 
+                    </Row>
                     <Card className='card1'>
                             <Card.Img className="card-news-image" variant="top" src={user.userInfo.BackgroundImg} />
                             <Card.Img className='userpic' src={user.userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"}/>

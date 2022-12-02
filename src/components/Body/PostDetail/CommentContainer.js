@@ -113,7 +113,7 @@ const CommentContainer = ({userInfo, item, idx}) => {
                     <Col lg="1">
                         <div>
                             <Link>
-                                <img src={user[0].avatarImg} alt="avatar"/>
+                                <img src={user[0].Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar"/>
                             </Link>
                         </div>
                     </Col>
