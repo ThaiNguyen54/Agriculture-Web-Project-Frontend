@@ -104,7 +104,7 @@ const PostDetail = () => {
                                         <h6>BÌNH LUẬN</h6>
                                         <div className='leave-our-comment d-flex'>
                                             <div>
-                                                <Link>
+                                                <Link to={`/profile/${userItem[0].userId}`}>
                                                     <img src={userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar" />
                                                 </Link>
                                             </div>
@@ -126,7 +126,7 @@ const PostDetail = () => {
                             <Col lg="12">
                                 {
                                     allanswers.map((item, idx) => {
-                                        if(idx < 3){
+                                        if(idx < 10){
                                             return(
                                                 <CommentContainer userInfo={userInfo} item={item} idx={idx}/>
                                             );

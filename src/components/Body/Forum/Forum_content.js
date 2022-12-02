@@ -36,7 +36,7 @@ function NewsForum(){
                                             <Link to={`/post/${item._id}`}  className="text-forum-site">
                                                 <Card.Text key={idx}>
                                                     <img className='ph' src={ph} width='25rem' alt='q' />
-                                                    {item.Title.substring(0, 60)}...
+                                                    {item.Title.substring(0, 40)}...
                                                 </Card.Text>
                                             </Link>
                                         )
