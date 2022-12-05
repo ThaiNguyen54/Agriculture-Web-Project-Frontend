@@ -95,6 +95,7 @@ const PostDetail = () => {
                             </Col>
                             <Col lg="9" className='detail-post-text'>
                                 <p className="detail-post-text-font">{post[0].QContent}</p>
+                                <img className="image-post-content" src={post[0].Image}></img>
                             </Col>
                         </Row>
                         {

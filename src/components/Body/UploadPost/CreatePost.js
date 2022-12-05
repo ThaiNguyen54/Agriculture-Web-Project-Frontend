@@ -17,7 +17,19 @@ function CreatePost(){
     const [postContent, setPostContent] = useState("");
     const [postTitle, setPostTitle] = useState("");
     const navigate = useNavigate();
+    const [image, setImage] = useState(null);
     const notification = useNotification();
+    const setFileToBase = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          setImage(reader.result);
+        };
+    };
+    function handleChange(e) {
+        const file = e.target.files[0];
+        setFileToBase(file);
+    }
     const radios = [
       { name: 'Chăn nuôi', value: 'Chăn nuôi' },
       { name: 'Trồng trọt', value: 'Trồng trọt' },
@@ -37,10 +49,11 @@ function CreatePost(){
     const submitPost = async(e) => {
         e.preventDefault();
         const response = await axios.post(`${apiUrl}/ver1/authenticate/question`, {
+            access_token: user.userInfo.token,
             Title: postTitle,
             QContent: postContent,
-            access_token: user.userInfo.token,
-            TagName: radioValue
+            TagName: radioValue,
+            Image: image
         })
 
         if(response){
@@ -82,6 +95,10 @@ function CreatePost(){
                                         </div>
                                         <div className="input-all-create-post">
                                             <textarea className="input-create-post" type="text" placeholder="Bạn đang thắc mắc điều gì" onChange={handleContent} required></textarea>
+                                        </div>
+                                        <div className="d-flex">
+                                            <p>Ảnh: </p>
+                                            <input type="file" onChange={handleChange}></input>
                                         </div>
                                             <div className="d-flex bottom-createpost-button">
                                                 <div className="d-flex button-type-createpost">
