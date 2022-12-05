@@ -11,7 +11,7 @@ const initialState = {
 
 export const GetUserId = (state, userId) => {
     return state.alluser.users.filter((item) => {
-        if(item.userId === userId){
+        if(item._id === userId){
             return item
         }
     })

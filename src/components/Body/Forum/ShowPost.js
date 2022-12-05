@@ -12,7 +12,7 @@ import { likeCountPost } from '../../features/likes/likeSlice';
 function PostShow({item}){
 
     const userItem = useSelector((state) => GetUserId(state, item.UserID))
-    
+
     const comments = useSelector((state) => getCommentCount(state, item._id))
     const likes = useSelector((state) => likeCountPost(state, item._id));
 
