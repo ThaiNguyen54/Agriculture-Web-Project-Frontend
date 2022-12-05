@@ -112,8 +112,8 @@ const CommentContainer = ({userInfo, item, idx}) => {
                 <div className='comment-container-all-users-array d-flex'>
                     <Col lg="1">
                         <div>
-                            <Link>
-                                <img src={user[0].avatarImg} alt="avatar"/>
+                            <Link to={`/profile/${user[0].userId}`}>
+                                <img src={user[0].Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar"/>
                             </Link>
                         </div>
                     </Col>
@@ -174,7 +174,7 @@ const CommentContainer = ({userInfo, item, idx}) => {
             
             {
                 comments.map((item, idx) => {
-                    if(idx < 3){
+                    if(idx < 10){
                         return(
                             <ReplyComment item={item} />
                         );
@@ -187,7 +187,9 @@ const CommentContainer = ({userInfo, item, idx}) => {
                 replying && (
                     <div className="reply-comment-all d-flex">
                         <div>
-                            <img src={userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar"/>
+                            <Link to={`/profile/${user[0].userId}`}>
+                                <img src={userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar"/>
+                            </Link>
                         </div>
                         <textarea onChange={(e) => setText(e.target.value)} value={text}/>
                         <div className='mt-1'>

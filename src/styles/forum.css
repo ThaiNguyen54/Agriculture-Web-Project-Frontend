@@ -48,7 +48,7 @@
 }
 
 .card-text {
-    color: black
+    color: black;
 }
 
 .detail-post-image{
@@ -64,6 +64,7 @@
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
     border: 2px solid #404258;
+
 }
 
 .footer{

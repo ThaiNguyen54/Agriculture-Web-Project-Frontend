@@ -87,10 +87,10 @@ const PostDetail = () => {
                     <div className='detail-post'>
                         <Row>
                             <Col lg="3" className='detail-post-image'>
-                                <Link>
-                                    <img src={userItem[0].avatarImg || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} className="avatar-post" alt="avatar"/>
+                                <Link to={`/profile/${userItem[0].userId}`}>
+                                    <img src={userItem[0].Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} className="avatar-post" alt="avatar"/>
                                 </Link>
-                                <p className="username-detail-post">{userItem[0].userName}</p>
+                                <p className="username-detail-post">{userItem[0].UserName}</p>
                                 <h6>Số bài đăng: {numPost}</h6>
                             </Col>
                             <Col lg="9" className='detail-post-text'>
@@ -104,7 +104,7 @@ const PostDetail = () => {
                                         <h6>BÌNH LUẬN</h6>
                                         <div className='leave-our-comment d-flex'>
                                             <div>
-                                                <Link>
+                                                <Link to={`/profile/${userItem[0].userId}`}>
                                                     <img src={userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar" />
                                                 </Link>
                                             </div>
@@ -126,7 +126,7 @@ const PostDetail = () => {
                             <Col lg="12">
                                 {
                                     allanswers.map((item, idx) => {
-                                        if(idx < 3){
+                                        if(idx < 10){
                                             return(
                                                 <CommentContainer userInfo={userInfo} item={item} idx={idx}/>
                                             );

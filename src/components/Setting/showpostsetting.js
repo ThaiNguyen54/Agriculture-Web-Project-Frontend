@@ -45,8 +45,8 @@ function PostShowSetting({item}){
         <div className='create-post-forum post-show'>
             <Link to={`/post/${item._id}`} style={{textDecoration:"none"}}>
             <div className="avt-name-post d-flex">
-                <img src={userItem[0].avatarImg || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} style={{borderRadius: "100%"}}></img>
-                <p>{userItem[0].userName}</p>
+                <img src={userItem[0].Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} style={{borderRadius: "100%"}}></img>
+                <p>{userItem[0].UserName}</p>
                 <TimeAgo timestamp={item.PostedDate} />
             </div>
             <div className="script-post">
