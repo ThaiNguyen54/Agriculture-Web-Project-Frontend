@@ -61,7 +61,7 @@ function NewsNfeed(){
                 </Col>
                 <Col lg="6">
                     <Card>
-                        <Card.Img className="card-news-image" variant="top" src="https://agriviet.com/proxy.php?image=https%3A%2F%2Fphanthuocsinhhoc.net%2Fwp-content%2Fuploads%2F2022%2F09%2Fcay-ot-bi-ru-la.jpg&hash=fe60564ec34b109e2320c4add0a07b48" />
+                        <Card.Img className="card-news-image" variant="top" src="https://t.ex-cdn.com/nongnghiep.vn/resize/560x315/files/giangnt/2020/09/10/2006-ot-1023_20200910_957-105834.jpeg" />
                         <Card.Body>
                         <Card.Title>Tìm hiểu nguyên nhân gây bệnh héo xanh trên cây ớt</Card.Title>
                         <Card.Text>

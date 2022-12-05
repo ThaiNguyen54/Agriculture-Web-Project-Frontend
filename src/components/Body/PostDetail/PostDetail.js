@@ -87,7 +87,7 @@ const PostDetail = () => {
                     <div className='detail-post'>
                         <Row>
                             <Col lg="3" className='detail-post-image'>
-                                <Link to={`/profile/${userItem[0].userId}`}>
+                                <Link to={`/profile/${userItem[0]._id}`}>
                                     <img src={userItem[0].Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} className="avatar-post" alt="avatar"/>
                                 </Link>
                                 <p className="username-detail-post">{userItem[0].UserName}</p>
@@ -104,7 +104,7 @@ const PostDetail = () => {
                                         <h6>BÌNH LUẬN</h6>
                                         <div className='leave-our-comment d-flex'>
                                             <div>
-                                                <Link to={`/profile/${userItem[0].userId}`}>
+                                                <Link to={`/profile/${userItem[0]._id}`}>
                                                     <img src={userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar" />
                                                 </Link>
                                             </div>

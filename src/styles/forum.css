@@ -183,12 +183,13 @@ footer{
     border-radius: 1rem;
 }
 
-.comment-container-all-users-array p{
+.comment-container-all-users-array h6{
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
-    margin-left: 2rem;
+    margin-left: 1rem;
     margin-top: 0.3rem;
     padding-top: 0.3rem;
+    font-weight: bold;
 }
 
 .reply-comment-all{
@@ -223,6 +224,15 @@ footer{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: black;
     padding-top: 0.3rem;
+}
+
+.reply-comment-all h6{
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    padding-top: 0.3rem;
+    font-weight: 500;
 }
 
 .edit-delete{
@@ -277,4 +287,14 @@ footer{
     margin-left: 0.5rem;
     padding: 0.1rem;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.comment-text{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    padding: 0 0 1.5rem 5rem;
+}
+
+.comment-time{
+    margin-left: 2rem;
 }
