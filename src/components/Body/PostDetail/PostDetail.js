@@ -104,7 +104,7 @@ const PostDetail = () => {
                                         <h6>BÌNH LUẬN</h6>
                                         <div className='leave-our-comment d-flex'>
                                             <div>
-                                                <Link to={`/profile/${userItem[0]._id}`}>
+                                                <Link to={`/profile/${userInfo.id}`}>
                                                     <img src={userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar" />
                                                 </Link>
                                             </div>
