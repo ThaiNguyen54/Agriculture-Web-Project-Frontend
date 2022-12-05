@@ -109,15 +109,16 @@ const CommentContainer = ({userInfo, item, idx}) => {
     return (
         <div key={idx} className="comment-all">
             <Row>
-                <div className='comment-container-all-users-array d-flex'>
-                    <Col lg="1">
-                        <div>
-                            <Link to={`/profile/${user[0].userId}`}>
+                <div className='comment-container-all-users-array'>
+                    <Col lg="2">
+                        <div className="d-flex">
+                            <Link to={`/profile/${user[0]._id}`}>
                                 <img src={user[0].Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar"/>
                             </Link>
+                            <h6 className="comment-name-user">{user[0].UserName}</h6>
                         </div>
                     </Col>
-                    <Col lg="9">
+                    <Col lg="10">
                     {
                         edit?
                         (
@@ -128,7 +129,7 @@ const CommentContainer = ({userInfo, item, idx}) => {
                             </>
                         ):
                         (
-                            <p>{editText}</p>
+                            <p className="comment-text">{editText}</p>
                         )
                     }
                     {
@@ -187,7 +188,7 @@ const CommentContainer = ({userInfo, item, idx}) => {
                 replying && (
                     <div className="reply-comment-all d-flex">
                         <div>
-                            <Link to={`/profile/${user[0].userId}`}>
+                            <Link to={`/profile/${userInfo.id}`}>
                                 <img src={userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"} alt="avatar"/>
                             </Link>
                         </div>
