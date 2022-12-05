@@ -13,8 +13,8 @@ function Profileinfor() {
     const {userId} = useParams();
 
     const userProfile = useSelector((state) => GetUserId(state, userId));
-    const CreatedDate = new Date(userProfile[0].CreatedDate).toUTCString();
-
+    const CreatedDate = new Date(userProfile[0].RegisterDate).toUTCString().substring(0, 17);
+    
 
     return (
         <>

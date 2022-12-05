@@ -11,7 +11,7 @@ export const getAllUsers = createAsyncThunk(
         .catch((err) => {
             return err
         })
-        return response.data
+        return response.data.Users
         
         } catch (error) {
 
