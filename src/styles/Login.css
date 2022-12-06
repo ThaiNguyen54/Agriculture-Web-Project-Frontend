@@ -7,8 +7,29 @@
     margin-left: 30rem;
 }
 
+.validate-form{
+    display: grid!important;
+    justify-content: center!important;
+}
+
 .Logo{
-    position: absolute;
-    right: 300px;
-    top: 180px;
+    width: 25rem;
+}
+
+
+@media only screen and (max-width: 992px){
+    .container-login-phase{
+        width: 100%;
+    }
+    .login100-form{
+        width: 100%!important;
+    }
+    .Logo{
+        display: none;
+    }
+}
+
+.login100-form-title{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif!important;
+    font-weight: bold;
 }
