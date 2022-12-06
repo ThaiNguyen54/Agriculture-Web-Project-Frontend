@@ -1,6 +1,4 @@
 import Container from 'react-bootstrap/esm/Container';
-import newsContentImage1 from '../../images/news-1.jpg'
-import newsContentImage2 from '../../images/news-2.jpg'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -16,7 +14,7 @@ function NewsNfeed(){
                         <Card.Img className="card-news-image" variant="top" src="https://agriviet.com/attachments/1644315765247-png.66120/" />
                         <Card.Body>
                         <Card.Title>NUÔI DƯỠNG RỪNG</Card.Title>
-                        <Card.Text>
+                        <Card.Text  >
                         Rừng phục hồi tự nhiên trên đất trống , đồi trọc và nương rẫy sau 8 – 12 năm sẽ đến kỳ khai thác chính nhăm mục đích kinh doanh gỗ lớn.
                         Rừng nghèo do khai thác không hợp lý ,sau thời gian 8 – 12 nămsẽ không đũ tiêu chuẩn rừng khai thác nhưng còn khả năng xúc tiến tái sinh tự nhiên.
                         </Card.Text>

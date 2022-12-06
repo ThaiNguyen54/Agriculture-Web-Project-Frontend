@@ -1,4 +1,5 @@
 import Col from "react-bootstrap/esm/Col";
+import React, { useRef } from 'react';
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import createPostImg from "../../../images/reviews.png"
@@ -12,13 +13,15 @@ import { useSelector } from "react-redux";
 import { Form } from "react-bootstrap";
 import { useNotification } from "use-toast-notification";
 import { useNavigate } from "react-router-dom";
+import { Editor } from '@tinymce/tinymce-react';
+import { useEffect } from "react";
 function CreatePost(){
     const [radioValue, setRadioValue] = useState('1');
-    const [postContent, setPostContent] = useState("");
     const [postTitle, setPostTitle] = useState("");
     const navigate = useNavigate();
     const [image, setImage] = useState(null);
     const notification = useNotification();
+    const editorRef = useRef(null);
     const setFileToBase = (file) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -26,10 +29,12 @@ function CreatePost(){
           setImage(reader.result);
         };
     };
+
     function handleChange(e) {
         const file = e.target.files[0];
         setFileToBase(file);
     }
+
     const radios = [
       { name: 'Chăn nuôi', value: 'Chăn nuôi' },
       { name: 'Trồng trọt', value: 'Trồng trọt' },
@@ -37,10 +42,6 @@ function CreatePost(){
     ];
     
     const user = useSelector((state) => state.user)
-
-    const handleContent = (e) => {
-        setPostContent(e.target.value);
-    }
 
     const handleTitle = (e) => {
         setPostTitle(e.target.value);
@@ -51,7 +52,7 @@ function CreatePost(){
         const response = await axios.post(`${apiUrl}/ver1/authenticate/question`, {
             access_token: user.userInfo.token,
             Title: postTitle,
-            QContent: postContent,
+            QContent: editorRef.current.getContent(),
             TagName: radioValue,
             Image: image
         })
@@ -93,10 +94,20 @@ function CreatePost(){
                                             <p>Chủ đề:</p>
                                             <textarea className="title-post-text" type="text" placeholder="Chủ đề bạn đang thắc mắc" onChange={handleTitle} required></textarea>
                                         </div>
-                                        <div className="input-all-create-post">
-                                            <textarea className="input-create-post" type="text" placeholder="Bạn đang thắc mắc điều gì" onChange={handleContent} required></textarea>
-                                        </div>
-                                        <div className="d-flex">
+                                        <Editor
+                                            apiKey="pd19nv7qg8uavs8yk5cdc07dfoizxdm4um00orijqeqcdn5p"
+                                            onInit={(evt, editor) => editorRef.current = editor}
+                                            init={{
+                                            height: 500,
+                                            menubar: false,
+                                            toolbar: 'undo redo | formatselect | ' + 
+                                            'bold italic backcolor | alignleft aligncenter ' +
+                                            'alignright alignjustify | bullist numlist outdent indent | ' +
+                                            'removeformat | help',
+                                            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                                            }}
+                                        />
+                                        <div className="d-flex image-upload">
                                             <p>Ảnh: </p>
                                             <input type="file" onChange={handleChange}></input>
                                         </div>
