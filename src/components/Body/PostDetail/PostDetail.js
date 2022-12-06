@@ -14,6 +14,7 @@ import { useNotification } from 'use-toast-notification';
 import { answerFetch } from '../../features/answers/answersFetch';
 import CommentContainer from './CommentContainer';
 import { likeCountPost } from '../../features/likes/likeSlice';
+import parse from "html-react-parser";
 import { likeFetch } from '../../features/likes/likeFetch';
 const PostDetail = () => {
     const {postId} = useParams();
@@ -94,7 +95,8 @@ const PostDetail = () => {
                                 <h6>Số bài đăng: {numPost}</h6>
                             </Col>
                             <Col lg="9" className='detail-post-text'>
-                                <p className="detail-post-text-font">{post[0].QContent}</p>
+                                {/* <p className="detail-post-text-font">{post[0].QContent}</p> */}
+                                <div className="detail-post-text-font">{parse(post[0].QContent)}</div>
                                 <img className="image-post-content" src={post[0].Image}></img>
                             </Col>
                         </Row>
