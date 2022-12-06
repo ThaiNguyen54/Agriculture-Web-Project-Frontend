@@ -32,6 +32,7 @@ const PostDetail = () => {
 
     const handleLikePost = async(e) => {
         e.preventDefault();
+        setLikeCount(likes++);
         const response = await axios.post(`${apiUrl}/ver1/authenticate/post-like`, {
             UserID: userInfo.id,
             QuestionID: postId,
@@ -39,12 +40,8 @@ const PostDetail = () => {
         })
         
         if(response.data.success === false){
-            dispatch(likeFetch());
             setLikeCount(likes--);
-        }
-        if(response.data.success){
             dispatch(likeFetch());
-            setLikeCount(likes++);
         }
     }
 
@@ -95,7 +92,6 @@ const PostDetail = () => {
                                 <h6>Số bài đăng: {numPost}</h6>
                             </Col>
                             <Col lg="9" className='detail-post-text'>
-                                {/* <p className="detail-post-text-font">{post[0].QContent}</p> */}
                                 <div className="detail-post-text-font">{parse(post[0].QContent)}</div>
                                 <img className="image-post-content" src={post[0].Image}></img>
                             </Col>
