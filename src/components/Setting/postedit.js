@@ -7,6 +7,7 @@ import { useState } from "react";
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import { ButtonGroup } from "react-bootstrap";
 import axios from "axios";
+import React, {useRef} from 'react';
 import { apiUrl } from "../../Constants/constants";
 import { useSelector } from "react-redux";
 import { Form } from "react-bootstrap";
@@ -14,13 +15,15 @@ import { useNotification } from "use-toast-notification";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { getPostId } from "../features/posts/postSlice";
-
+import { Editor } from '@tinymce/tinymce-react';
+import parse from "html-react-parser";
 function EditPost(){
     const {postId} = useParams();
     const post = useSelector((state) => getPostId(state, postId))
     const [radioValue, setRadioValue] = useState(post[0].TagName);
     const navigate = useNavigate();
     const notification = useNotification();
+    const editorRef = useRef(null);
     const radios = [
       { name: 'Chăn nuôi', value: 'Chăn nuôi' },
       { name: 'Trồng trọt', value: 'Trồng trọt' },
@@ -28,7 +31,7 @@ function EditPost(){
     ];
     const [updateTitle, setUpdateTitle] = useState(post[0].Title)
     const [updateContent, setUpdateContent] = useState(post[0].QContent)
-    
+
     const user = useSelector((state) => state.user)
 
     const handleTitle = (e) => {
@@ -47,19 +50,22 @@ function EditPost(){
         e.preventDefault();
         const response = await axios.put(`${apiUrl}/ver1/authenticate/questions/${post[0]._id}`, {
             Title: updateTitle,
-            QContent: updateContent,
+            QContent: editorRef.current.getContent(),
             access_token: user.userInfo.token,
             TagName: radioValue
         })
 
         if(response){
             try {
+                navigate("/")
                 notification.show({
-                    message: 'Chỉnh sửa thành công, đăng nhập lại để xem chỉnh sửa', 
+                    message: 'Chỉnh sửa thành công', 
                     title: 'Delivery Status',
                     variant: 'success'
                 })
-                navigate("/")
+                setTimeout(() => {
+                    window.location.reload(false);
+                }, 2000)
             } catch(e){
                 notification.show({
                     message: 'Đăng bài thất bại', 
@@ -90,7 +96,20 @@ function EditPost(){
                                             <textarea className="title-post-text" name="Title" value={updateTitle} type="text"  onChange={handleTitle}></textarea>
                                         </div>
                                         <div className="input-all-create-post">
-                                            <textarea className="input-create-post" name="QContent" value={updateContent} type="text" onChange={handleContent}></textarea>
+                                            <Editor
+                                                apiKey="pd19nv7qg8uavs8yk5cdc07dfoizxdm4um00orijqeqcdn5p"
+                                                initialValue={post[0].QContent}
+                                                onInit={(evt, editor) => editorRef.current = editor}
+                                                init={{
+                                                height: 500,
+                                                menubar: false,
+                                                toolbar: 'undo redo | formatselect | ' + 
+                                                'bold italic backcolor | alignleft aligncenter ' +
+                                                'alignright alignjustify | bullist numlist outdent indent | ' +
+                                                'removeformat | help',
+                                                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                                                }}
+                                            />
                                         </div>
                                             <div className="d-flex bottom-createpost-button">
                                                 <div className="d-flex button-type-createpost">
