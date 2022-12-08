@@ -91,7 +91,6 @@ function Profilesetting() {
       {
             user.userInfo? (
                 <Container >
-                
                     <Row>
                       <Nav className="me-auto">
                           <div className='box1'>

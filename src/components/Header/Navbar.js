@@ -15,7 +15,6 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux';
 import Scrollnews from '../Scroll_news'
 import ForumOption from '../Body/Forum/Forum_option';
-import WeatherContent from '../Weather_content';
 import FooterPage from '../Footer/Footer'
 
 
@@ -94,9 +93,6 @@ const NavBar = () => {
                     </Col>
                     <Col lg="8">
                       <Outlet />
-                    </Col>
-                    <Col lg="2">
-                      <WeatherContent />
                     </Col>
                   </Row>
                 </Container>
