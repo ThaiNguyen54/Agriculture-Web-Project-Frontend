@@ -8,7 +8,7 @@ import Nav from 'react-bootstrap/Nav';
 const NavbarAdmin = () => {
   return (
     <div>
-        <div className="sidebar pe-4 pb-3">
+        <div className="sidebar">
             <nav className="navbar bg-light navbar-light">
                 <a href="index.html" className="navbar-brand mx-4 mb-3">
                     <h3 className="text-primary"><i className="fa fa-hashtag me-2"></i>AGRIT</h3>
@@ -27,9 +27,9 @@ const NavbarAdmin = () => {
         </div>
         <Row>
             <Col lg="2">
-            <nav className='navbar'>
+            <nav className='navbar navbar-admin'>
                 <div className="navbar-nav w-100 navbar-admin">
-                    <a href="index.html" className="nav-item nav-link"><i className="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <Link to="spamlist" className='nav-item nav-link'><i className="fa fa-tachometer-alt me-2"></i>Bài viết spam</Link>
                     <div className="nav-item dropdown">
                         <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i className="fa fa-laptop me-2"></i>Elements</a>
                         <div className="dropdown-menu bg-transparent border-0">
@@ -53,6 +53,9 @@ const NavbarAdmin = () => {
                     </div>
                 </div>
             </nav>
+            </Col>
+            <Col lg="9" >
+                <Outlet />
             </Col>
         </Row>
     </div>

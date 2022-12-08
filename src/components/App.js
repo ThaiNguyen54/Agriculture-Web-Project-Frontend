@@ -23,6 +23,8 @@ import { commentFetch } from "./features/comments/commentFetch";
 import EditPost from "./Setting/postedit";
 import { likeFetch } from "./features/likes/likeFetch";
 import AdminHome from "../pages/AdminHome";
+import NavbarAdmin from "./Admin/Headers/NavbarAdmin";
+import SpamList from "./Admin/Body/SpamList";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,7 +65,9 @@ function App() {
           </Route>
           <Route path="login" element = {<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="admin" element={<AdminHome />} />
+          <Route path="/admin" element={<NavbarAdmin />} >
+            <Route path="spamlist" element={<SpamList />}/>
+          </Route>
         </Routes>
       </PersistGate>
   );

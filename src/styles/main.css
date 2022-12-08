@@ -537,6 +537,66 @@ iframe {
   }
 }
 
-.navbar-admin{
+.flag-report{
+  color: #FF0000;
+  display: flex;
+  margin-top: 2rem;
+  padding-left: 1.8rem;
+  text-decoration: none;
+}
 
+.flag-report p{
+  font-size: 1rem;
+  color:#e6e6e6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.flag-report i{
+  width: 3rem;
+}
+
+@keyframes popupcontent {
+  0% {
+    top: -100px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+.popup-content-report{
+  position: relative;
+  background-color: #C4D7E0;
+  width: 25rem;
+  height: 20rem;
+  border-radius: 1rem;
+  display: grid;
+  justify-content: center;
+  animation: popupcontent 300ms
+}
+
+.popup-content-report h1{
+  margin-top: 2rem;
+}
+
+.popup-content-report textarea{
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  padding-top: 1rem;
+}
+
+.popup-button{
+  margin-top: 1rem;
+  padding: 0 2rem;
+}
+
+.popup-button button{
+  margin: 0 1rem;
+}
+
+.navbar-admin{
+  background-color: #C4D7E0;
+  padding-left: 0.5rem;
+  margin-top: 0;
 }

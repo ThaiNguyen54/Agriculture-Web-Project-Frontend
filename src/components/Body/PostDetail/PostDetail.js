@@ -16,10 +16,19 @@ import CommentContainer from './CommentContainer';
 import { likeCountPost } from '../../features/likes/likeSlice';
 import parse from "html-react-parser";
 import { likeFetch } from '../../features/likes/likeFetch';
+import { useModal } from 'react-hooks-use-modal';
+import { render } from 'react-dom';
+
+
 const PostDetail = () => {
     const {postId} = useParams();
     const post = useSelector((state) => getPostId(state, postId))
     const dispatch = useDispatch();
+    const [Modal, open, close, isOpen] = useModal('root', {
+        preventScroll: true,
+        closeOnOverlayClick: false
+    });
+
     const {userInfo} = useSelector((state) => state.user)
     const userItem = useSelector((state) => GetUserId(state, post[0].UserID))
     const numPost = useSelector((state) => countPost(state, post[0].UserID))
@@ -29,6 +38,23 @@ const PostDetail = () => {
     const notification = useNotification();
     let likes = useSelector((state) => likeCountPost(state, postId));
     const [likeCount, setLikeCount] = useState(likes);
+    const [flagname, setFlagName] = useState("");
+    const handleFlag = async() => {
+        const addFlag = await axios.post(`${apiUrl}/ver1/authenticate/flag`, {
+            QuestionID: postId,
+            access_token: userInfo.token,
+            UserID: userInfo.id,
+            FlagName: flagname
+        })
+        if(addFlag.data.success){
+            notification.show({
+                message: 'Cảm ơn bạn đã báo cáo', 
+                title: 'Delivery Status',
+                variant: 'success'
+            })
+            close();
+        }
+    }
 
     const handleLikePost = async(e) => {
         e.preventDefault();
@@ -82,6 +108,7 @@ const PostDetail = () => {
             </div>
             <Col lg="12">
                 <Container>
+
                     <div className='detail-post'>
                         <Row>
                             <Col lg="3" className='detail-post-image'>
@@ -90,6 +117,21 @@ const PostDetail = () => {
                                 </Link>
                                 <p className="username-detail-post">{userItem[0].UserName}</p>
                                 <h6>Số bài đăng: {numPost}</h6>
+                                <Link className='flag-report' onClick={open}><i class="fa fa-flag fa-2x" aria-hidden="true"></i><p>Báo cáo bài viết</p></Link>
+                                <Modal>
+                                    <div className='popup-content-report'>
+                                        <Row>
+                                            <h1>Báo cáo bài viết</h1>
+                                        </Row>
+                                        <Row>
+                                            <textarea onChange={(e) => setFlagName(e.target.value)}></textarea>
+                                        </Row>
+                                        <div className='popup-button'>
+                                            <Button variant="danger" onClick={handleFlag}>Báo cáo</Button>
+                                            <Button variant="primary" onClick={close}>Từ chối</Button>
+                                        </div>
+                                    </div>
+                                </Modal>
                             </Col>
                             <Col lg="9" className='detail-post-text'>
                                 <div className="detail-post-text-font">{parse(post[0].QContent)}</div>
