@@ -88,10 +88,10 @@ const NavBar = () => {
             <div className='body-content d-flex'>
                 <Container className="dis-flex">
                   <Row className="w-100">
-                    <Col lg="2">
+                    <Col lg="3">
                       <ForumOption />
                     </Col>
-                    <Col lg="10">
+                    <Col lg="9">
                       <Outlet />
                     </Col>
                   </Row>
