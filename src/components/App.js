@@ -11,7 +11,7 @@ import Register from "../pages/Register";
 import Createpost from "../pages/Createpost";
 import ForumCrop from "../pages/ForumCrop";
 import ForumBuySell from "../pages/ForumBuySell";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { postFetch } from "./features/posts/postFetch";
 import Post from "../pages/Post";
 import Profile from "../pages/Profile";
@@ -22,6 +22,7 @@ import { answerFetch } from "./features/answers/answersFetch";
 import { commentFetch } from "./features/comments/commentFetch";
 import EditPost from "./Setting/postedit";
 import { likeFetch } from "./features/likes/likeFetch";
+import AdminHome from "../pages/AdminHome";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ function App() {
           </Route>
           <Route path="login" element = {<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="admin" element={<AdminHome />} />
         </Routes>
       </PersistGate>
   );
