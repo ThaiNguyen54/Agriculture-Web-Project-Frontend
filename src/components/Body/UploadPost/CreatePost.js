@@ -119,7 +119,7 @@ function CreatePost(){
                                                     </ButtonGroup>
                                                 </div>
                                                 <div className="div-for-button-post">
-                                                    <Button size="sm" className="button-post" type="submit">Đăng</Button>
+                                                    <Button disabled={true} size="sm" className="button-post" type="submit">Đăng</Button>
                                                 </div>
                                             </div>
                                     </div>
