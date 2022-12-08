@@ -14,16 +14,16 @@
 }
 
 .cardbg {
-    background-color: #9FD3FA;
+    background-color: #bedef7;
     
 }
 
 .cardh {
-    background-color: #376FFF;
+    background-color: #5b78c1;
 }
 
 .cardh2 {
-    background-color: #00A023;
+    background-color: #4eaf63;
 }
 
 .cardh2 span {
@@ -49,6 +49,10 @@
 
 .card-text {
     color: black;
+}
+
+.card-text:hover{
+    color: rgb(72, 72, 177)
 }
 
 .detail-post-image{

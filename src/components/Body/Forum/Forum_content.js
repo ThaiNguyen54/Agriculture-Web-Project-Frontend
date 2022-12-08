@@ -15,7 +15,14 @@ import { getAllUsers } from '../../features/users/allUserAction';
 function NewsForum(){
     const post = useSelector((state) => state.post)
     const {users} = useSelector((state) => state.alluser)
-    
+    const {posts} = useSelector((state) => state.post)
+    const postSell = posts.filter((post) => (post.TagName === "Mua bán"))
+    const postBreed = posts.filter((post) => (post.TagName === "Chăn nuôi"))
+    const postCrop = posts.filter((post) => (post.TagName === "Trồng trọt"))
+    const postwithoutbuysell = posts.filter((post) => (post.TagName !== "Mua bán"))
+
+
+
     return(
         <Container>
             <Row>
@@ -30,7 +37,7 @@ function NewsForum(){
                         </Card.Header>
                         <Card.Body className='cardbg'>
                             {
-                                post.posts.map((item, idx) => {
+                                postwithoutbuysell.map((item, idx) => {
                                     if(idx < 10){
                                         return(
                                             <Link to={`/post/${item._id}`}  className="text-forum-site">
@@ -51,34 +58,24 @@ function NewsForum(){
                 <Card className='Card'>
                         <Card.Header className='cardh'>
                             <img className='Pen' src={message} width='40rem' alt='q'/>
-                            <span>Câu Hỏi Mới </span>
+                            <span>Bài Viết Mới </span>
                         </Card.Header>
                         <Card.Body className='cardbg'>
-                        <Card.Text >
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
+                        {
+                            postwithoutbuysell.map((item, idx) => {
+                                if(idx > 10){
+                                    return(
+                                        <Link to={`/post/${item._id}`}  className="text-forum-site">
+                                            <Card.Text key={idx}>
+                                                <img className='ph' src={ph} width='25rem' alt='q' />
+                                                {item.Title.substring(0, 40)}...
+                                            </Card.Text>
+                                        </Link>
+                                    )
+                                }
+                            }
+                            )    
+                        }
                         </Card.Body>
                     </Card>
                 </Col>
@@ -89,31 +86,21 @@ function NewsForum(){
                             <span>Mua Bán Mới </span>
                         </Card.Header>
                         <Card.Body className='cardbg'>
-                        <Card.Text >
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
+                        {
+                            postSell.map((item, idx) => {
+                                if(idx < 10){
+                                    return(
+                                        <Link to={`/post/${item._id}`}  className="text-forum-site">
+                                            <Card.Text key={idx}>
+                                                <img className='ph' src={ph} width='25rem' alt='q' />
+                                                {item.Title.substring(0, 40)}...
+                                            </Card.Text>
+                                        </Link>
+                                    )
+                                }
+                            }
+                            )    
+                        }
                         </Card.Body>
                     </Card>
                 </Col>
@@ -124,31 +111,21 @@ function NewsForum(){
                             <span>Mua Bán Mới </span>
                         </Card.Header>
                         <Card.Body className='cardbg'>
-                        <Card.Text >
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            <img className='ph' src={ph} width='25rem' alt='q'/>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
+                        {
+                            postSell.map((item, idx) => {
+                                if(idx > 10){
+                                    return(
+                                        <Link to={`/post/${item._id}`}  className="text-forum-site">
+                                            <Card.Text key={idx}>
+                                                <img className='ph' src={ph} width='25rem' alt='q' />
+                                                {item.Title.substring(0, 40)}...
+                                            </Card.Text>
+                                        </Link>
+                                    )
+                                }
+                            }
+                            )    
+                        }
                         </Card.Body>
                     </Card>
                 </Col>
@@ -160,31 +137,21 @@ function NewsForum(){
                             <span>KIẾN THỨC NÔNG NGHIỆP </span>
                         </Card.Header>
                         <Card.Body className='cardbg'>
-                        <Card.Text >
-                    
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
+                        {
+                            postwithoutbuysell.map((item, idx) => {
+                                if(idx < 10){
+                                    return(
+                                        <Link to={`/post/${item._id}`}  className="text-forum-site">
+                                            <Card.Text key={idx}>
+                                                <img className='ph' src={ph} width='25rem' alt='q' />
+                                                {item.Title.substring(0, 40)}...
+                                            </Card.Text>
+                                        </Link>
+                                    )
+                                }
+                            }
+                            )    
+                        }
                         </Card.Body>
                     </Card>
                 </Col>
@@ -196,31 +163,21 @@ function NewsForum(){
                             <span>CHỢ NHÀ NÔNG </span>
                         </Card.Header>
                         <Card.Body className='cardbg'>
-                        <Card.Text >
-                    
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
-                        <Card.Text>
-                            
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content.
-                        </Card.Text>
+                        {
+                            postSell.map((item, idx) => {
+                                if(idx < 10){
+                                    return(
+                                        <Link to={`/post/${item._id}`}  className="text-forum-site">
+                                            <Card.Text key={idx}>
+                                                <img className='ph' src={ph} width='25rem' alt='q' />
+                                                {item.Title.substring(0, 40)}...
+                                            </Card.Text>
+                                        </Link>
+                                    )
+                                }
+                            }
+                            )    
+                        }
                         </Card.Body>
                     </Card>
                 </Col>

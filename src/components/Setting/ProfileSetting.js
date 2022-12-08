@@ -95,10 +95,10 @@ function Profilesetting() {
                     <Row>
                       <Nav className="me-auto">
                           <div className='box1'>
-                              <Link className="me-auto-a" to={`/profilesetting/${user.userInfo.id}`}>Cài Đặt Tài Khoản</Link>
+                              <Link className="me-auto-a" to={`/profilesetting/${user.userInfo._id}`}>Cài Đặt Tài Khoản</Link>
                           </div>
                           <div className='box2'>
-                              <Link className="me-auto-a" to={`/postsetting/${user.userInfo.id}`}>Bài Đăng Của Bạn</Link>
+                              <Link className="me-auto-a" to={`/postsetting/${user.userInfo._id}`}>Bài Đăng Của Bạn</Link>
                           </div>
                       </Nav>
                       <div className='roww'></div>
