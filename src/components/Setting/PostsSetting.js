@@ -18,11 +18,9 @@ function Postsetting() {
   const user = useSelector((state) => state.user);
   const post = useSelector((state) => getPostFromUserId(state, userId))
   const Navigate = useNavigate()
-
   
   let PageSize = 5;
     const [currentPage, setCurrentPage] = useState(1);
-
     const currentTableData = useMemo(() => {
       const firstPageIndex = (currentPage - 1) * PageSize;
       const lastPageIndex = firstPageIndex + PageSize;
