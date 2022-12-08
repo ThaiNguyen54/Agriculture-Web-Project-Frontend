@@ -5,7 +5,6 @@ import { Col, Dropdown, Row } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-import "../../../styles/bootstrap.min.css"
 const NavbarAdmin = () => {
   return (
     <div>
