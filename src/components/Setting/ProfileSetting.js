@@ -11,37 +11,69 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import { apiUrl } from '../../Constants/constants';
 import { useNotification } from "use-toast-notification";
 import { Form } from "react-bootstrap";
+import { getUserInfo } from '../features/user/userAction';
 
 function Profilesetting() {
-  const user = useSelector((state) => state.user);
-  const Navigate = useNavigate()
-  const notification = useNotification();
-  const [update, setUpdate] = useState(null)
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+    const Navigate = useNavigate()
+    const notification = useNotification();
+    const [update, setUpdate] = useState(null)
 
-  const handleUpdate = (e) => {
-    const value = e.target.value;
-    setUpdate({...update, [e.target.name]: value})
-  }
+    const [avatarValue, setAvatar]  = useState(null);
+    const [backgroundValue, setBackgroundValue] = useState(null);
 
-  const handleSubmit = async(e) => {
-    e.preventDefault();
-    const response = await axios.put(`${apiUrl}/ver1/authenticate/user/${user.userInfo.id}`, update, {
-        headers:{
-            "access_token":  user.userInfo.token
-        }
-    })
+    const handleUpdate = (e) => {
+        const value = e.target.value;
+        setUpdate({...update, [e.target.name]: value})
+    }
+    
+    const handleChangeAvatar = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+        setAvatar(reader.result);
+        };
+    }
 
-    if(response){
+    const handleChangeBackground = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setBackgroundValue(reader.result);
+        };
+    }
+
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        const response = await axios.put(`${apiUrl}/ver1/authenticate/user/${user.userInfo.id}`, {
+            ...update,
+            Avatar: avatarValue,
+            BackgroundImg: backgroundValue
+        }, {
+            headers:{
+                "access_token":  user.userInfo.token
+            }
+        })
+    
+    if(response.data){
         try {
+            dispatch(getUserInfo({UserID: user.userInfo._id}))
+            Navigate('/')
             notification.show({
-                message: 'Cập nhật thành công. Đăng nhập lại để xem thay đổi', 
+                message: 'Cập nhật thành công.', 
                 title: 'Delivery Status',
                 variant: 'success'
             })
-            Navigate('/')
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000)
         } catch(e){
             notification.show({
                 message: 'Cập nhật thất bại', 
@@ -120,11 +152,11 @@ function Profilesetting() {
                                 <strong>Ảnh đại diện: </strong>
                             </Card.Text>
                             <div className="wrap-input100 validate-input">
-                                <input className="input100" 
-                                    type="text"
+                                <input className="input100  p-t-10" 
+                                    type="file"
                                     name="Avatar" 
                                     placeholder={user.userInfo.Avatar}
-                                    onChange={handleUpdate}>
+                                    onChange={handleChangeAvatar}>
                                 </input>
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
@@ -135,11 +167,11 @@ function Profilesetting() {
                                 <strong>Ảnh bìa: </strong>
                             </Card.Text>
                             <div className="wrap-input100 validate-input">
-                                <input className="input100" 
-                                    type="text"
+                                <input className="input100 p-t-10" 
+                                    type="file"
                                     name="BackgroundImg" 
                                     placeholder={user.userInfo.BackgroundImg}
-                                    onChange={handleUpdate}>
+                                    onChange={handleChangeBackground}>
                                 </input>
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
