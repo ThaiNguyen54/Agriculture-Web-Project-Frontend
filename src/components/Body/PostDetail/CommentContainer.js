@@ -64,12 +64,12 @@ const CommentContainer = ({userInfo, item, idx}) => {
             },
             AnswerId: item._id,
         })
-
-        window.location.reload(false);
         
         if(response.data){
-            window.location.reload(false);
             dispatch(answerFetch());
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000)
             setDelete(!deleted);
             notification.show({
                 message: 'Xóa thành công', 

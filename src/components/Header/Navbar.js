@@ -91,7 +91,7 @@ const NavBar = () => {
                     <Col lg="2">
                       <ForumOption />
                     </Col>
-                    <Col lg="8">
+                    <Col lg="10">
                       <Outlet />
                     </Col>
                   </Row>
