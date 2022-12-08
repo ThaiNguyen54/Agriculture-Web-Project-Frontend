@@ -22,18 +22,7 @@ function CreatePost(){
     const [image, setImage] = useState(null);
     const notification = useNotification();
     const editorRef = useRef(null);
-    const setFileToBase = (file) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-          setImage(reader.result);
-        };
-    };
 
-    function handleChange(e) {
-        const file = e.target.files[0];
-        setFileToBase(file);
-    }
 
     const radios = [
       { name: 'Chăn nuôi', value: 'Chăn nuôi' },
@@ -107,10 +96,6 @@ function CreatePost(){
                                             content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
                                             }}
                                         />
-                                        <div className="d-flex image-upload">
-                                            <p>Ảnh: </p>
-                                            <input type="file" onChange={handleChange}></input>
-                                        </div>
                                             <div className="d-flex bottom-createpost-button">
                                                 <div className="d-flex button-type-createpost">
                                                     <div className="text-type-choosing-button">
