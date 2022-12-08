@@ -11,7 +11,7 @@ import Register from "../pages/Register";
 import Createpost from "../pages/Createpost";
 import ForumCrop from "../pages/ForumCrop";
 import ForumBuySell from "../pages/ForumBuySell";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postFetch } from "./features/posts/postFetch";
 import Post from "../pages/Post";
 import Profile from "../pages/Profile";

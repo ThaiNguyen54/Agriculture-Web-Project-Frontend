@@ -21,9 +21,9 @@ function FormLogin(){
         event.preventDefault();
         dispatch(userLogin({email: loginname, password: Password}));
     }
-    console.log(status);
+
     useEffect(() => {
-        if(status === 'succeeded'){
+        if(status === 'succeeded' && userInfo){
             if(userInfo.success){
                 navigate("/")
             }else{

@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import { userLogin } from "./userAction";
-
+import { getUserInfo } from "./userAction";
 const initialState = {
     userInfo: null,
     status: 'idle',
@@ -33,7 +33,10 @@ const userSlice = createSlice({
         state.status = 'failed'
         state.error = action.error.message
       })
-
+      .addCase(getUserInfo.fulfilled, (state, action) => {
+        state.status = 'succeeded'
+        state.userInfo = action.payload
+      })
   }
 })
 

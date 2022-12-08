@@ -7,47 +7,73 @@ import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
 import "../../styles/menu1.css"
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import { apiUrl } from '../../Constants/constants';
 import { useNotification } from "use-toast-notification";
 import { Form } from "react-bootstrap";
-import { GetUserId } from '../features/users/allUserSlice';
+import { getUserInfo } from '../features/user/userAction';
 
 function Profilesetting() {
-  const user = useSelector((state) => state.user);
-  const {userId} = useParams();
-  const userProfile = useSelector((state) => GetUserId(state, userId));
-  const Navigate = useNavigate()
-  const notification = useNotification();
-  const [update, setUpdate] = useState(null)
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+    const Navigate = useNavigate()
+    const notification = useNotification();
+    const [update, setUpdate] = useState(null)
 
-  const handleUpdate = (e) => {
-    const value = e.target.value;
-    setUpdate({...update, [e.target.name]: value})
-  }
+    const [avatarValue, setAvatar]  = useState(null);
+    const [backgroundValue, setBackgroundValue] = useState(null);
 
-  const handleSubmit = async(e) => {
-    e.preventDefault();
-    const response = await axios.put(`${apiUrl}/ver1/authenticate/user/${userProfile[0]._id}`, update, {
-        headers:{
-            "access_token":  user.userInfo.token
-        }
-    })
+    const handleUpdate = (e) => {
+        const value = e.target.value;
+        setUpdate({...update, [e.target.name]: value})
+    }
+    
+    const handleChangeAvatar = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+        setAvatar(reader.result);
+        };
+    }
 
-    if(response){
+    const handleChangeBackground = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setBackgroundValue(reader.result);
+        };
+    }
+
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        const response = await axios.put(`${apiUrl}/ver1/authenticate/user/${user.userInfo.id}`, {
+            ...update,
+            Avatar: avatarValue,
+            BackgroundImg: backgroundValue
+        }, {
+            headers:{
+                "access_token":  user.userInfo.token
+            }
+        })
+    
+    if(response.data){
         try {
+            dispatch(getUserInfo({UserID: user.userInfo._id}))
             Navigate('/')
             notification.show({
-                message: 'Cập nhật thành công!', 
+                message: 'Cập nhật thành công.', 
                 title: 'Delivery Status',
                 variant: 'success'
             })
             setTimeout(() => {
-                window.location.reload(false);
-            }, 2000)       
+                window.location.reload();
+            }, 2000)
         } catch(e){
             notification.show({
                 message: 'Cập nhật thất bại', 
@@ -69,21 +95,21 @@ function Profilesetting() {
                     <Row>
                       <Nav className="me-auto">
                           <div className='box1'>
-                              <Link className="me-auto-a" to={`/profilesetting/${userProfile[0]._id}`}>Cài Đặt Tài Khoản</Link>
+                              <Link className="me-auto-a" to={`/profilesetting/${user.userInfo._id}`}>Cài Đặt Tài Khoản</Link>
                           </div>
                           <div className='box2'>
-                              <Link className="me-auto-a" to={`/postsetting/${userProfile[0]._id}`}>Bài Đăng Của Bạn</Link>
+                              <Link className="me-auto-a" to={`/postsetting/${user.userInfo._id}`}>Bài Đăng Của Bạn</Link>
                           </div>
                       </Nav>
                       <div className='roww'></div>
                     </Row>
                     <Card className='card1'>
-                            <Card.Img className="card-news-image" variant="top" src={userProfile[0].BackgroundImg} />
-                            <Card.Img className='userpic' src={userProfile[0].Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"}/>
+                            <Card.Img className="card-news-image" variant="top" src={user.userInfo.BackgroundImg} />
+                            <Card.Img className='userpic' src={user.userInfo.Avatar || "https://cdn-icons-png.flaticon.com/512/44/44948.png"}/>
                             <Card.Body>
-                            <Card.Title className='un'>{userProfile[0].UserName}</Card.Title>
+                            <Card.Title className='un'>{user.userInfo.UserName}</Card.Title>
                             <Card.Text>
-                                <strong>Tên đăng nhập:</strong> {userProfile[0].LoginName}
+                                <strong>Tên đăng nhập:</strong> {user.userInfo.LoginName}
                             </Card.Text>
                             </Card.Body>
                     </Card>
@@ -126,11 +152,11 @@ function Profilesetting() {
                                 <strong>Ảnh đại diện: </strong>
                             </Card.Text>
                             <div className="wrap-input100 validate-input">
-                                <input className="input100" 
-                                    type="text"
+                                <input className="input100  p-t-10" 
+                                    type="file"
                                     name="Avatar" 
                                     placeholder={user.userInfo.Avatar}
-                                    onChange={handleUpdate}>
+                                    onChange={handleChangeAvatar}>
                                 </input>
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
@@ -141,11 +167,11 @@ function Profilesetting() {
                                 <strong>Ảnh bìa: </strong>
                             </Card.Text>
                             <div className="wrap-input100 validate-input">
-                                <input className="input100" 
-                                    type="text"
+                                <input className="input100 p-t-10" 
+                                    type="file"
                                     name="BackgroundImg" 
                                     placeholder={user.userInfo.BackgroundImg}
-                                    onChange={handleUpdate}>
+                                    onChange={handleChangeBackground}>
                                 </input>
                                 <span className="focus-input100"></span>
                                 <span className="symbol-input100">
