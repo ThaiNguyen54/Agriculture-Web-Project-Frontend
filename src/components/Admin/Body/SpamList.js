@@ -1,13 +1,17 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import SpamCheck from '../../Body/Forum/SpamCheck';
 import Table from 'react-bootstrap/Table';
 import { GetUserId } from '../../features/users/allUserSlice';
 import SpamUser from './SpamUser';
+import { reportFetch } from '../../features/reports/reportFetch';
 
 
 const SpamList = () => {
+    const dispatch = useDispatch();
+    dispatch(reportFetch());
     const {posts} = useSelector((state) => state.post);
+
     let i = 0;
     return (
         <Table striped bordered hover>

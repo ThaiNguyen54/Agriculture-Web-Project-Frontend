@@ -16,6 +16,9 @@ import { useSelector } from 'react-redux';
 import Scrollnews from '../Scroll_news'
 import ForumOption from '../Body/Forum/Forum_option';
 import FooterPage from '../Footer/Footer'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { GetUserId } from '../features/users/allUserSlice'
 
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -28,11 +31,11 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
 ));
 
 
-
 const NavBar = () => {
     const Navigate = useNavigate()
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
+    console.log(user.userInfo)
     return (
       <div>
       <header>

@@ -2,7 +2,7 @@
 import comment from '../../images/comment.png'
 import check from '../../images/double-check.png'
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { GetUserId } from '../features/users/allUserSlice';
 import TimeAgo from '../store/TimeAgo';
 import { useState } from 'react';
@@ -12,6 +12,7 @@ import axios from 'axios';
 import { apiUrl } from '../../Constants/constants';
 import { getCommentCount } from '../features/answers/answersSlice';
 import { likeCountPost } from '../features/likes/likeSlice';
+import { postFetch } from '../features/posts/postFetch';
 
 
 
@@ -21,7 +22,7 @@ function PostShowSetting({item}){
     const user = useSelector((state) => state.user);
     const comments = useSelector((state) => getCommentCount(state, item._id))
     const likes = useSelector((state) => likeCountPost(state, item._id));
-
+    const dispatch = useDispatch();
     const handleDeleteQuestion = () => {
         setDelete(!deleted);
     }
@@ -33,10 +34,11 @@ function PostShowSetting({item}){
             }
         })
         
-        window.location.reload(false);
-        
         if(response.data){
-            window.location.reload(false);
+            dispatch(postFetch());
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500)
             setDelete(!deleted);
         }
     }
