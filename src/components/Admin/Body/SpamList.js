@@ -5,11 +5,13 @@ import Table from 'react-bootstrap/Table';
 import { GetUserId } from '../../features/users/allUserSlice';
 import SpamUser from './SpamUser';
 import { reportFetch } from '../../features/reports/reportFetch';
+import { postFetch } from '../../features/posts/postFetch';
 
 
 const SpamList = () => {
     const dispatch = useDispatch();
     dispatch(reportFetch());
+    dispatch(postFetch());
     const {posts} = useSelector((state) => state.post);
 
     let i = 0;
