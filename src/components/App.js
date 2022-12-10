@@ -22,10 +22,11 @@ import { answerFetch } from "./features/answers/answersFetch";
 import { commentFetch } from "./features/comments/commentFetch";
 import EditPost from "./Setting/postedit";
 import { likeFetch } from "./features/likes/likeFetch";
-import AdminHome from "../pages/AdminHome";
 import NavbarAdmin from "./Admin/Headers/NavbarAdmin";
 import SpamList from "./Admin/Body/SpamList";
-
+import ReportList from "./Admin/Body/ReportLists/ReportList";
+import RequireAuth from "./utils/RequireAuth";
+import LoadingPage from "../pages/LoadingPage";
 function App() {
   const dispatch = useDispatch();
   dispatch(postFetch());
@@ -63,11 +64,15 @@ function App() {
             <Route path={`editpost/:postId`} element = {<EditPost/>} />
             <Route path={"post/:postId"} element={<Post />}/>
           </Route>
+          <Route path="loading" element={<LoadingPage />}/>
           <Route path="login" element = {<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="/admin" element={<NavbarAdmin />} >
-            <Route path="spamlist" element={<SpamList />}/>
-          </Route>
+          <Route element={<RequireAuth />}>
+            <Route path="/admin" element={<NavbarAdmin />} >
+              <Route path="spamlist" element={<SpamList />}/>
+              <Route path="reportlist" element={<ReportList />} />
+            </Route>
+          </Route> 
         </Routes>
       </PersistGate>
   );
