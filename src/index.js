@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './components/store/store';
 import NotificationProvider from 'use-toast-notification';
+// LeSyThanh was here
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
