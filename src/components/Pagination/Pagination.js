@@ -2,7 +2,6 @@ import React from 'react';
 import classnames from 'classnames';
 import { usePagination, DOTS } from './PaginationPostList';
 import "../../styles/pagination.scss"
-
 const Pagination = props => {
   const {
     onPageChange,
@@ -25,12 +24,28 @@ const Pagination = props => {
   }
 
   const onNext = () => {
-    onPageChange(currentPage + 1);
+    const element = document.getElementById('head');
+    if (element) {
+      onPageChange(currentPage + 1);
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const onPrevious = () => {
-    onPageChange(currentPage - 1);
+    const element = document.getElementById('head');
+    if (element) {
+      onPageChange(currentPage - 1);
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
+
+  const selectPage = (pageNumber) => {
+    const element = document.getElementById('head');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    onPageChange(pageNumber);
+  }
 
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
@@ -55,7 +70,7 @@ const Pagination = props => {
             className={classnames('pagination-item', {
               selected: pageNumber === currentPage
             })}
-            onClick={() => onPageChange(pageNumber)}
+            onClick={() => selectPage(pageNumber)}
           >
             {pageNumber}
           </li>

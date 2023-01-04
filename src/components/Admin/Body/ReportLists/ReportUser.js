@@ -13,21 +13,22 @@ const ReportUser = ({idx, item}) => {
     const {userInfo} = useSelector((state) => state.user)
     const dispatch = useDispatch();
     const deletePost = async() => {
-        const deleteQuestion = await axios.delete(`${apiUrl}/ver1/authenticate/questions/${post[0]._id}`, {
+        const deleteFlag = await axios.delete(`${apiUrl}/ver1/authenticate/flags/${item._id}`, {
             headers:{
                 "access_token":  userInfo.token
             }
-        }).then((err, result) => {
-            axios.delete(`${apiUrl}/ver1/authenticate/flags/${item._id}`, {
+        })
+        if(deleteFlag.data){
+            axios.delete(`${apiUrl}/ver1/authenticate/questions/${post[0]._id}`, {
                 headers:{
                     "access_token":  userInfo.token
                 }
             })
-            setTimeout(() => {
-                dispatch(reportFetch())
-                window.location.reload();
-            }, 2000)
-        })
+        setTimeout(() => {
+            dispatch(reportFetch())
+            window.location.reload();
+        }, 2000)
+        }
     }
     return (
         <tr>

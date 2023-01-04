@@ -2,7 +2,7 @@
 
 function Scrollnews(){
     return(
-        <div className="d-flex justify-content-center news-scroller-content">
+        <div className="d-flex justify-content-center news-scroller-content" id="head">
             <p>Tin tức:</p>
             <div class="scroller">
                 <span>
