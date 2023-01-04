@@ -69,7 +69,10 @@ function PostShowSetting({item}){
                     (
                         <div className='deleteQ'>
                             <p className='font-delete-comment col-lg-9'>Bạn có chắc là sẽ xóa bài viết này không?</p>
-                            <Button className='button-delete-comment' onClick={handleDelete}>Xóa</Button>
+                            <div className='button-choosing-delete'>
+                                <Button className='button-delete-comment' onClick={handleDelete}>Xóa</Button>
+                                <Button className='button-delete-comment button-delete-unaccept' onClick={handleDeleteQuestion}>Hủy bỏ</Button>
+                            </div>
                         </div>
                     ):
                 (

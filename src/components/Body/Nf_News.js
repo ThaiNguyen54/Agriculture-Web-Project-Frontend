@@ -14,7 +14,7 @@ function NewsNfeed(){
         <Container className="search-home-page-container">
             <Row>
                 <Col lg="12" className="title-homepage">
-                    <h1>ĐỒ ÁN NÀY ĐƯỢC 10 <3</h1>
+                    <h1>TÌM KIẾM BÀI VIẾT</h1>
                 </Col>
                 <Col lg="12" className="d-flex justify-content-center search-home-page">
                     <input onChange={(e) => setSearchContent(e.target.value)}></input>
