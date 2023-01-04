@@ -57,11 +57,11 @@ body{
 
 .post-show{
     margin: 1.5rem 0;
-    background-color: #256D85;
+    background-color: #319DA0;
 }
 
 .post-show:hover{
-    background-color: #319DA0;
+    background-color: #39A6A3;
     transition: 0.5s;
 }
 
