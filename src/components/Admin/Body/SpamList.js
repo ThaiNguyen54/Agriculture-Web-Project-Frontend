@@ -23,7 +23,7 @@ const SpamList = () => {
                 <th>Tiêu đề</th>
                 <th>Tên người dùng</th>
                 <th>Email</th>
-                <th>Duyệt</th>
+                <th>Xóa</th>
             </tr>
             </thead>
             <tbody>
