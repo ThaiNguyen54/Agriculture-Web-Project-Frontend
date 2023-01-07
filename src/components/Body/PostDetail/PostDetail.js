@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
-import {Link, useParams } from 'react-router-dom'
+import {Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import { countPost, getPostId } from '../../features/posts/postSlice';
 import { MDBIcon } from 'mdb-react-ui-kit';
 import { useState } from 'react';
@@ -18,7 +18,7 @@ import parse from "html-react-parser";
 import { likeFetch } from '../../features/likes/likeFetch';
 import { useModal } from 'react-hooks-use-modal';
 import { render } from 'react-dom';
-
+import { postFetch } from '../../features/posts/postFetch';
 
 const PostDetail = () => {
     const {postId} = useParams();
@@ -28,8 +28,8 @@ const PostDetail = () => {
         preventScroll: true,
         closeOnOverlayClick: false
     });
-
     const {userInfo} = useSelector((state) => state.user)
+    const userProfile = useSelector((state) => GetUserId(state, userInfo.id));
     const userItem = useSelector((state) => GetUserId(state, post[0].UserID))
     const numPost = useSelector((state) => countPost(state, post[0].UserID))
     const [text, setText] = useState('');
@@ -39,6 +39,7 @@ const PostDetail = () => {
     let likes = useSelector((state) => likeCountPost(state, postId));
     const [likeCount, setLikeCount] = useState(likes);
     const [flagname, setFlagName] = useState("");
+    const navigate = useNavigate();
     const handleFlag = async() => {
         const addFlag = await axios.post(`${apiUrl}/ver1/authenticate/flag`, {
             QuestionID: postId,
@@ -56,18 +57,35 @@ const PostDetail = () => {
         }
     }
 
+    const handleDeletePost = async() => {
+        const deleteQuestion = await axios.delete(`${apiUrl}/ver1/authenticate/questions/${postId}`, {
+            headers:{
+                "access_token":  userInfo.token
+            }
+        })
+        if(deleteQuestion){
+            dispatch(postFetch());
+            setTimeout(() => {
+                window.location.reload(false);
+            }, 1000)
+            navigate("/forum");
+        }
+    }
+
+
     const handleLikePost = async(e) => {
         e.preventDefault();
-        setLikeCount(likes++);
         const response = await axios.post(`${apiUrl}/ver1/authenticate/post-like`, {
             UserID: userInfo.id,
             QuestionID: postId,
             access_token: userInfo.token
         })
-        
+        dispatch(likeFetch());
         if(response.data.success === false){
             setLikeCount(likes--);
-            dispatch(likeFetch());
+        }else{
+            setLikeCount(likes++);
+            window.location.reload(false);
         }
     }
 
@@ -78,7 +96,6 @@ const PostDetail = () => {
             AContent: text,
             access_token: userInfo.token
         })
-
         if(response.data){
             dispatch(answerFetch());
             setAllAnswers([...allanswers, response.data.answer[0]]);
@@ -138,6 +155,14 @@ const PostDetail = () => {
                                 <img className="image-post-content" src={post[0].Image}></img>
                             </Col>
                         </Row>
+                        {
+                            userProfile[0].UserRight ==="ADMIN"?
+                            <div className='d-flex justify-content-center'>
+                                <Button onClick={handleDeletePost}>Delete</Button>
+                            </div>
+                            : <></>
+                        }
+
                         {
                             userInfo? (
                                 <Row className='comment-container'>
