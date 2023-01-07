@@ -157,7 +157,7 @@ const PostDetail = () => {
                         </Row>
                         {
                             userProfile[0].UserRight ==="ADMIN"?
-                            <div className='d-flex justify-content-center'>
+                            <div className='d-flex justify-content-center mt-3'>
                                 <Button onClick={handleDeletePost}>Delete</Button>
                             </div>
                             : <></>

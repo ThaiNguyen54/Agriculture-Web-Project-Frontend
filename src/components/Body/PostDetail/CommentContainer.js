@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
 import TimeAgo from '../../store/TimeAgo';
+import likeimg from "../../../images/like.png"
 import { Button, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { apiUrl } from '../../../Constants/constants';
@@ -19,7 +20,7 @@ const CommentContainer = ({userInfo, item, idx}) => {
     const handleReply = () => {
         setReplying(!replying);
     }
-
+    const [like, setLike] = useState(false)
     const [text, setText] = useState('');
     const comments = useSelector((state) => getCommentReplyId(state, item._id))
     const user = useSelector((state) => GetUserId(state, item.UserID))
@@ -47,6 +48,10 @@ const CommentContainer = ({userInfo, item, idx}) => {
             })
             setText('');
         }
+    }
+
+    const handleLike = () => {
+        setLike(!like);
     }
 
     const handleEditAnswer = () => {
@@ -164,7 +169,18 @@ const CommentContainer = ({userInfo, item, idx}) => {
             {
                 userInfo? (
                     <div className='d-flex like-reply-ago'>
-                        <Link>Like</Link>
+                        {
+                            !like?
+                            (
+                                <Link onClick={handleLike}>Like</Link>
+                            ):
+                            (
+                                <Link onClick={handleLike}>
+                                    <img src={likeimg}></img>
+                                    <Link onClick={handleLike} style={{color : "blue"}}>Like</Link>
+                                </Link>
+                            )
+                        }
                         <Link onClick={handleReply}>Reply</Link>
                         <TimeAgo timestamp={item.PostedDate} />
                     </div>
