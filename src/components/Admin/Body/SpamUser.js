@@ -4,10 +4,13 @@ import { GetUserId } from '../../features/users/allUserSlice'
 import { Button } from 'react-bootstrap'
 import axios from 'axios'
 import { apiUrl } from '../../../Constants/constants'
+import { Link } from 'react-router-dom'
+import { reportFetch } from '../../features/reports/reportFetch'
+import { useDispatch } from 'react-redux'
 const SpamUser = ({item, idx}) => {
     const user = useSelector((state) => GetUserId(state, item.UserID))
     const {userInfo} = useSelector((state) => state.user)
-
+    const dispatch = useDispatch();
     const deletePost = async() => {
         const deleteQuestion = await axios.delete(`${apiUrl}/ver1/authenticate/questions/${item._id}`, {
             headers:{
@@ -16,6 +19,7 @@ const SpamUser = ({item, idx}) => {
         })
         if(deleteQuestion){
             setTimeout(() => {
+                dispatch(reportFetch());
                 window.location.reload();
             }, 2000)
         }
@@ -23,7 +27,11 @@ const SpamUser = ({item, idx}) => {
     return (
         <tr>
             <td>{idx}</td>
-            <td>{item.Title.substring(0, 20)}...</td>
+                <td>
+                    <Link to={`/post/${item._id}`}>
+                        {item.Title.substring(0, 20)}...
+                    </Link>
+                </td>
             <td>{user[0].UserName}</td>
             <td>{user[0].Email}</td>
             <td>

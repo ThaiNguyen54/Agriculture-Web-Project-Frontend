@@ -9,12 +9,13 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import { ButtonGroup } from "react-bootstrap";
 import axios from "axios";
 import { apiUrl } from "../../../Constants/constants";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Form } from "react-bootstrap";
 import { useNotification } from "use-toast-notification";
 import { useNavigate } from "react-router-dom";
 import { Editor } from '@tinymce/tinymce-react';
 import { useEffect } from "react";
+import { postFetch } from "../../features/posts/postFetch";
 function CreatePost(){
     const [radioValue, setRadioValue] = useState('1');
     const [postTitle, setPostTitle] = useState("");
@@ -22,7 +23,7 @@ function CreatePost(){
     const [image, setImage] = useState(null);
     const notification = useNotification();
     const editorRef = useRef(null);
-
+    const dispatch = useDispatch();
 
     const radios = [
       { name: 'Chăn nuôi', value: 'Chăn nuôi' },
@@ -53,7 +54,10 @@ function CreatePost(){
                     title: 'Delivery Status',
                     variant: 'success'
                 })
-                navigate("/")
+                dispatch(postFetch())
+                setTimeout(() => {
+                    navigate("/")
+                }, 1000)
             } catch(e){
                 notification.show({
                     message: 'Đăng bài thất bại', 

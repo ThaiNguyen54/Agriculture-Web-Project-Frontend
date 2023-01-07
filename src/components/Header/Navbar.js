@@ -35,7 +35,6 @@ const NavBar = () => {
     const Navigate = useNavigate()
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
-    console.log(user.userInfo)
     return (
       <div>
       <header>

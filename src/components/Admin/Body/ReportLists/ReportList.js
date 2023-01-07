@@ -15,7 +15,7 @@ const ReportList = () => {
           <th>Nội dung báo cáo</th>
           <th>Tiêu đề</th>
           <th>Email</th>
-          <th>Xóa</th>
+          <th>Duyệt</th>
       </tr>
       </thead>
       <tbody>

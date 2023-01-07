@@ -7,6 +7,7 @@ import axios from 'axios'
 import { apiUrl } from '../../../../Constants/constants'
 import { useDispatch } from 'react-redux'
 import { reportFetch } from '../../../features/reports/reportFetch'
+import { Link } from 'react-router-dom'
 const ReportUser = ({idx, item}) => {
     const post = useSelector((state) => getPostId(state, item.QuestionID))
     const user = useSelector((state) => GetUserId(state, item.UserID))
@@ -24,8 +25,8 @@ const ReportUser = ({idx, item}) => {
                     "access_token":  userInfo.token
                 }
             })
+        dispatch(reportFetch())
         setTimeout(() => {
-            dispatch(reportFetch())
             window.location.reload();
         }, 2000)
         }
@@ -37,7 +38,11 @@ const ReportUser = ({idx, item}) => {
             {
                 post[0]?
                 (
-                    <td>{post[0].Title}</td>
+                    <td>
+                        <Link to={`/post/${item._id}`}>  
+                            {post[0].Title}
+                        </Link>
+                    </td>
                 ):
                 (
                     <></>
